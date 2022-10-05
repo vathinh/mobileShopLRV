@@ -51,3 +51,4 @@ Route::post('admin/xulysuadh/{id}','Product@Controller@updateOrderProcess');
 Route::get('admin/xoadh/{id}','ItemController@deleteOrder');
 
 //------------------END ADMIN - CUD -ORDER ----------------
+Route::get('user/trangchu','UserCotroller@index');
