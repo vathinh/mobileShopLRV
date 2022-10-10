@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,37 +20,19 @@ Route::get('/', function () {
 });
 
 
-//------------------ADMIN - CRUD -PRODUCT ----------------
-//READ
-Route::get('admin/xemsp','Product@Controller@showProducts');
-
-//CREATE
-Route::get('admin/themsp','Product@Controller@createNewProduct');
-Route::post('admin/xulythemsp','Product@Controller@createNewProductProcess');
-
-//UPDATE
-Route::get('admin/suasp/{id}','Product@Controller@updateProduct');
-Route::post('admin/xulysuasp/{id}','Product@Controller@updateProductProcess');
-
-//DELETE
-Route::get('admin/xoasp/{id}','ItemController@delete');
-
-//------------------END ADMIN - CRUD -PRODUCT ----------------
-
-
-
-
-//------------------ADMIN - CUD -ORDER ----------------
-//READ
-Route::get('admin/xemdh','Product@Controller@showOrders');
-
-
-//UPDATE
-Route::get('admin/suadh/{id}','Product@Controller@updateOrder');
-Route::post('admin/xulysuadh/{id}','Product@Controller@updateOrderProcess');
-
-//DELETE
-Route::get('admin/xoadh/{id}','ItemController@deleteOrder');
-
-//------------------END ADMIN - CUD -ORDER ----------------
-Route::get('user/trangchu','UserCotroller@index');
+Auth::routes();
+// Route User
+Route::middleware(['auth','user-role:user'])->group(function()
+{
+    Route::get("/home",[HomeController::class, 'userHome'])->name("userDB.userDB");
+});
+// Route Editor
+Route::middleware(['auth','user-role:editor'])->group(function()
+{
+    Route::get("/editor/home",[HomeController::class, 'editorHome'])->name("editor.home");
+});
+// Route Admin
+Route::middleware(['auth','user-role:admin'])->group(function()
+{
+    Route::get("/admin/home",[HomeController::class, 'adminHome'])->name("adminDB.adminDB");
+});
