@@ -35,4 +35,18 @@ Route::middleware(['auth','user-role:editor'])->group(function()
 Route::middleware(['auth','user-role:admin'])->group(function()
 {
     Route::get("/admin/home",[HomeController::class, 'adminHome'])->name("adminDB.adminDB");
+    // Read user
+    Route::get("/admin/user/readUser",[HomeController::class, 'readUser']) ->name("readUser");
+
+    // Create user
+    Route::get("/admin/user/createUser",[HomeController::class, 'createUser']) ->name("createUser");
+    Route::post("/admin/user/createUserProc",[HomeController::class, 'createUserProc']) ->name("createUserProc");
+
+    // Update user
+    Route::get("/admin/user/updateUser/{id}",[HomeController::class, 'updateUser']) ->name("updateUser");
+    Route::post("/admin/user/updateUserProc/{id}",[HomeController::class, 'updateUserProc']) ->name("updateUserProc");
+
+    // Delete user
+    Route::get("/admin/user/deleteUser/{id}",[HomeController::class, 'deleteUser']) ->name("deleteUser");
+
 });

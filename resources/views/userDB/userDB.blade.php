@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('userLayout.app')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <h4>Cambotutorial.com</h4>
+            <h4>Welcome User</h4>
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
 

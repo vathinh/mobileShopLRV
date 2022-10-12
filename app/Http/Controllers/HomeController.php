@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -46,4 +47,62 @@ class HomeController extends Controller
     {
         return view('adminDB.adminDB',["msg"=>"Hello! I am admin"]);
     }
+
+    //1. Read Users
+    public function readUser() {
+        $rs = User::all();
+        return view('adminDB.readUser')->with(['rs' => $rs]);
+    }
+
+    //2 Create Users
+    public function createUser() {
+        return view('adminDB.createUser');
+    }
+
+    public function createUserProc(Request $rqst) {
+        $id          = $rqst -> input('txtID');
+        $name        = $rqst -> input('txtName');
+        $email       = $rqst -> input('txtEmail');
+        $password    = $rqst -> input('txtPwd');
+        User::create([
+            'id'        => $id,
+            'name'      => $id,
+            'email'     => $id,
+            'password'  => $password
+        ]);
+
+        return redirect() -> action(HomeController::class, 'readUser');
+
+    }
+
+    //3. Update Users
+
+    public function updateUser($id) {
+        $rs = User::find($id);
+        return view('adminDB.updateUser',['rs' => $rs]);
+
+    }
+
+    public function updateUserProc(Request $rqst, $id) {
+        $email   = $rqst -> input('txtEmail');
+        $name   = $rqst -> input('txtName');
+        $password   = $rqst -> input('txtPwd');
+        User::where('ID', $id)
+            -> update([
+                'email'         => $email,
+                'name'          => $name,
+                'password'      => $password
+
+            ]);
+        return redirect() -> action(HomeController::class, 'readUser');
+    }
+
+    // 4 Delete 
+    
+    public function deleteUser($id) {
+
+    }
+
+
+
 }

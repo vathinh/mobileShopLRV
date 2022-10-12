@@ -28,11 +28,11 @@
                 </button>
 
                 <!-- Left Side Of Navbar -->
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">   
+                <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">   
                     <ul class="navbar-nav me-auto">
                         <li><a href="{{ url("admin/user/readUser") }}">User Management</a></li>
 
-                    </ul>
+                    </ul> -->
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
