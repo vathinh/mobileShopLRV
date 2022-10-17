@@ -24,6 +24,7 @@ Auth::routes();
 // Route User
 Route::middleware(['auth','user-role:user'])->group(function()
 {
+    
     Route::get("/home",[HomeController::class, 'userHome'])->name("userDB.userDB");
 });
 // Route Editor
@@ -50,3 +51,13 @@ Route::middleware(['auth','user-role:admin'])->group(function()
     Route::get("/admin/user/deleteUser/{id}",[HomeController::class, 'deleteUser']) ->name("deleteUser");
 
 });
+
+Route::get("/index", function(){
+    return view('index');
+});
+
+Route::get("/admintmp", function(){
+    return view('adminTemp');
+});
+ 
+

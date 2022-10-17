@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -66,12 +67,12 @@ class HomeController extends Controller
         $password    = $rqst -> input('txtPwd');
         User::create([
             'id'        => $id,
-            'name'      => $id,
-            'email'     => $id,
-            'password'  => $password
+            'name'      => $name,
+            'email'     => $email,
+            'password'  => Hash::make($password)
         ]);
 
-        return redirect() -> action(HomeController::class, 'readUser');
+        return redirect() -> action('HomeController@readUser');
 
     }
 
