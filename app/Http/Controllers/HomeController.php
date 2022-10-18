@@ -100,7 +100,18 @@ class HomeController extends Controller
     // 4 Delete 
     
     public function deleteUser($id) {
+        User::where('ID', $id) -> delete();
+        return redirect() -> action('HomeController@readUser');
 
+    }
+
+    //5 Reset Password
+    public function resetPwd($id) {
+        $password = "12345678";
+        User::where('ID', $id) ->update(array(
+            'password' => Hash::make($password)
+        ));
+        return redirect() -> action('HomeController@readUser')->with('success','Password has changed successfully to 12345678');
     }
 
 

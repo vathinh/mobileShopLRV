@@ -43,8 +43,9 @@
                         <td>{{ $data -> email }}</td>
                         <td>{{ $data -> role }}</td>
                         <td>
-                            <a href="{{ url("admin/user/updateUser/{$data -> id}") }}">Update</a>
-                            <a href="{{ url("admin/user/deleteUser/{$data -> id}") }}">Delete</a>
+                            <a href="{{ url("admin/user/updateUser/{$data -> id}") }}">Update</a> |
+                            <a href="{{ url("admin/user/deleteUser/{$data -> id}") }}">Delete</a> |
+                            <a href="{{ url("admin/user/resetPwd/{$data -> id}") }}">Reset Password</a>
 
                         </td>
                     </tr>

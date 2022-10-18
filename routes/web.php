@@ -52,6 +52,9 @@ Route::middleware(['auth','user-role:admin'])->group(function()
     // Delete user
     Route::get("/admin/user/deleteUser/{id}",[HomeController::class, 'deleteUser']) ->name("deleteUser");
 
+    // Reset User Password
+    Route::get("/admin/user/resetPwd/{id}",[HomeController::class, 'resetPwd']) ->name("resetPwd");
+
     // Read product
     Route::get("/admin/product/readproduct",[ProductController::class, 'showProducts']) ->name("showProducts");
 
