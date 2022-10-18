@@ -1,20 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Product</title>
-</head>
-<body>
-<div class="row">
-        <div class="col-12">
+@extends('adminLayouts.app')
+
+@section('content')
+    <section class="content">
+    <button><a href="{{ url("admin/home") }}">Back to dashboard</a></button>
+    <h1>List of User</h1>
+    <h3><a href="{{ url('/admin/product/createproduct') }}">Create New Product</a></h3>
+    <div class="row">
+          <div class="col-12">
             <div class="card">
-                <div class="card-body">
-                    <span><a href="{{ url('/admin/product/createproduct') }}">Create New Product</a></span>
-                    <!--Chèn đoạn mả <table></table vào đây-->
-                    <table class="table table-hove table-bordered">
-                        <tr>
+              <div class="card-header">
+                <h3 class="card-title">Responsive Hover Table</h3>
+
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default">
+                        <i class="fas fa-search"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                  <thead>
+                        
                             <th style="text-align: center;">ID</th>
                             <th style="text-align: center;">Name</th>
                             <th style="text-align: center;">Price</th>
@@ -23,7 +36,9 @@
                             <th style="text-align: center;">Quantity</th>
                             <th style="text-align: center;">Function</th>
                         </tr>
-                        @foreach($rs as $data)
+                  </thead>
+                  <tbody
+                    @foreach($rs as $data)
                         <tr>
                             <td style="text-align: center;"> {{ $data -> p_id }}</td>
                             <td style="text-align: center;"> {{ $data -> p_name }}</td>
@@ -37,13 +52,16 @@
                             </td>
                         </tr>
                         @endforeach
-                    </table>
+                    </tbody>
+                </table>
                 </div>
-                <!-- /.card-body -->
+              <!-- /.card-body -->
             </div>
             <!-- /.card -->
+          </div>
         </div>
-        <!-- /.col -->
-    </div>
-    <!-- /.row -->
-</html>
+        <!-- /.row -->
+       
+    </section>
+
+    @endsection

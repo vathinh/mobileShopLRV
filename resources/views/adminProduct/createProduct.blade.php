@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Product</title>
-</head>
-<body>
+@extends('adminLayouts.app')
+
+@section('content')
+<div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Create new  Users</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
 <form action="{{ url("/admin/product/createproductProcess") }}" method="POST">
                         @csrf
                         <table>
@@ -51,5 +51,7 @@
                         </table>
                         <input type="submit" value="Add New Product">
                     </form>
-</body>
-</html>
+                    </div>
+            <!-- /.card -->
+   
+@endsection
