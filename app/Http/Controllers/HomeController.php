@@ -52,12 +52,12 @@ class HomeController extends Controller
     //1. Read Users
     public function readUser() {
         $rs = User::all();
-        return view('adminDB.readUser')->with(['rs' => $rs]);
+        return view('adminUser.readUser')->with(['rs' => $rs]);
     }
 
     //2 Create Users
     public function createUser() {
-        return view('adminDB.createUser');
+        return view('adminUser.createUser');
     }
 
     public function createUserProc(Request $rqst) {
@@ -80,7 +80,7 @@ class HomeController extends Controller
 
     public function updateUser($id) {
         $rs = User::find($id);
-        return view('adminDB.updateUser',['rs' => $rs]);
+        return view('adminUser.updateUser',['rs' => $rs]);
 
     }
 
