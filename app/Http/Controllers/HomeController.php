@@ -91,11 +91,10 @@ class HomeController extends Controller
         User::where('ID', $id)
             -> update([
                 'email'         => $email,
-                'name'          => $name,
-                'password'      => $password
+                'name'          => $name
 
             ]);
-        return redirect() -> action(HomeController::class, 'readUser');
+        return redirect() -> action('HomeController@readUser');
     }
 
     // 4 Delete 
