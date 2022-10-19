@@ -50,6 +50,13 @@ Route::middleware(['auth','user-role:admin'])->group(function()
     // Delete user
     Route::get("/admin/user/deleteUser/{id}",[HomeController::class, 'deleteUser']) ->name("deleteUser");
 
+    // Oder
+    Route::get("/admin/oder/viewOD", [OderController::class, 'oderlist']) -> name("oderlist");
+
+    // Category Routes
+    Route::get('category',[App\Http\Controllers\Admin\CategoryController::class,'cindex']);
+    Route::get('category/create',[App\Http\Controllers\Admin\CategoryController::class,'create']);
+
 });
 
 Route::get("/index", function(){
