@@ -40,15 +40,15 @@
                   <tbody
                     @foreach($rs as $data)
                         <tr>
-                            <td style="text-align: center;"> {{ $data -> p_id }}</td>
-                            <td style="text-align: center;"> {{ $data -> p_name }}</td>
-                            <td style="text-align: center;"> {{ $data -> p_price }}</td>
-                            <td style="text-align: center;"> {{ $data -> p_storage }}</td>
-                            <td style="text-align: center;"> {{ $data -> p_color }}</td>
-                            <td style="text-align: center;"> {{ $data -> p_qty }}</td>
+                            <td style="text-align: center;"> {{ $data -> P_id }}</td>
+                            <td style="text-align: center;"> {{ $data -> P_name }}</td>
+                            <td style="text-align: center;"> {{ $data -> P_price }}</td>
+                            <td style="text-align: center;"> {{ $data -> P_storage }}</td>
+                            <td style="text-align: center;"> {{ $data -> P_color }}</td>
+                            <td style="text-align: center;"> {{ $data -> P_quantity }}</td>
                             <td style="text-align: center;">
-                                <a href="{{ url("/admin/product/updateProduct/{$data -> p_id}") }}">Update</a>|
-                                <a href="{{ url("/admin/product/deleteProduct/{$data -> p_id}") }}">Delete</a>
+                                <a href="{{ url("/admin/product/updateProduct/{$data -> P_id}") }}">Update</a>|
+                                <a href="{{ url("/admin/product/deleteProduct/{$data -> P_id}") }}">Delete</a>
                             </td>
                         </tr>
                         @endforeach
