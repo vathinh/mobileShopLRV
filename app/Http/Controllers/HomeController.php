@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function userHome()
     {
-        return view('userDB.userDB',["msg"=>"Hello! I am user"]);
+        return view('newWelcome',["msg"=>"Hello! I am user"]);
     }
 
     /**
