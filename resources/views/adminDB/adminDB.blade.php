@@ -1,76 +1,151 @@
-@extends('adminLayouts.app')
+@extends('theme.app')
 
 @section('content')
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3>150</h3>
 
-                <p>Product Management</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-bag"></i>
-              </div>
-              <a href=" {{ url('/admin/product/readproduct') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                <p>Payemnt Management</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-stats-bars"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3>44</h3>
-
-                <p>Users Management</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-              <a href="{{ url("admin/user/readUser") }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-    
-
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3>65</h3>
-
-                <p>Orders Management</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-pie-graph"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="overview-wrap">
+            <h2 class="title-1">overview</h2>
+            
         </div>
-        <!-- /.row -->
+    </div>
+</div>
+<div class="row m-t-25">
+    <div class="col-sm-6 col-lg-3">
+        <div class="overview-item overview-item--c1">
+            <div class="overview__inner">
+                <div class="overview-box clearfix">
+                    <div class="icon">
+                        <i class="zmdi zmdi-account-o"></i>
+                    </div>
+                    <div class="text">
+                        <h2>User Management</h2>
+                        <h3><a  type="button" class="btn btn-info" disabled href="{{ url("admin/user/readUser") }}"> More Info</a></h3>
+                    </div>
+                </div>
+                <div class="overview-chart">
+                    <canvas id="widgetChart1"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <div class="overview-item overview-item--c2">
+            <div class="overview__inner">
+                <div class="overview-box clearfix">
+                    <div class="icon">
+                        <i class="zmdi zmdi-shopping-cart"></i>
+                    </div>
+                    <div class="text">
+                        <h2>Products Management</h2>
+                        <h3><a  type="button" class="btn btn-info" disabled href="{{ url("/admin/product/readproduct") }}"> More Info</a></h3>
+                    </div>
+                </div>
+                <div class="overview-chart">
+                    <canvas id="widgetChart2"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <div class="overview-item overview-item--c3">
+            <div class="overview__inner">
+                <div class="overview-box clearfix">
+                    <div class="icon">
+                        <i class="zmdi zmdi-calendar-note"></i>
+                    </div>
+                    <div class="text">
+                        <h2>Feedback Management</h2>
+                        <h3><a  type="button" class="btn btn-info" disabled href="#"> More Info</a></h3>
+                    </div>
+                </div>
+                <div class="overview-chart">
+                    <canvas id="widgetChart3"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <div class="overview-item overview-item--c4">
+            <div class="overview__inner">
+                <div class="overview-box clearfix">
+                    <div class="icon">
+                        <i class="zmdi zmdi-money"></i>
+                    </div>
+                    <div class="text">
+                        <h2>Orders Management</h2>
+                        <h3><a  type="button" class="btn btn-info" disabled href="#"> More Info</a></h3>
+                    </div>
+                </div>
+                <div class="overview-chart">
+                    <canvas id="widgetChart4"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="au-card recent-report">
+            <div class="au-card-inner">
+                <h3 class="title-2">recent reports</h3>
+                <div class="chart-info">
+                    <div class="chart-info__left">
+                        <div class="chart-note">
+                            <span class="dot dot--blue"></span>
+                            <span>products</span>
+                        </div>
+                        <div class="chart-note mr-0">
+                            <span class="dot dot--green"></span>
+                            <span>services</span>
+                        </div>
+                    </div>
+                    <div class="chart-info__right">
+                        <div class="chart-statis">
+                            <span class="index incre">
+                                <i class="zmdi zmdi-long-arrow-up"></i>25%</span>
+                            <span class="label">products</span>
+                        </div>
+                        <div class="chart-statis mr-0">
+                            <span class="index decre">
+                                <i class="zmdi zmdi-long-arrow-down"></i>10%</span>
+                            <span class="label">services</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="recent-report__chart">
+                    <canvas id="recent-rep-chart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="au-card chart-percent-card">
+            <div class="au-card-inner">
+                <h3 class="title-2 tm-b-5">char by %</h3>
+                <div class="row no-gutters">
+                    <div class="col-xl-6">
+                        <div class="chart-note-wrap">
+                            <div class="chart-note mr-0 d-block">
+                                <span class="dot dot--blue"></span>
+                                <span>products</span>
+                            </div>
+                            <div class="chart-note mr-0 d-block">
+                                <span class="dot dot--red"></span>
+                                <span>services</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="percent-chart">
+                            <canvas id="percent-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-      </div><!-- /.container-fluid -->
-    </section>
+   
 @endsection

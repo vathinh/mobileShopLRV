@@ -115,5 +115,59 @@ class HomeController extends Controller
     }
 
 
+    //View user
+    public function userDetails($id) {
+        $rs = User::find($id);
+        return view('userDB.userViewDetails',['rs' => $rs]);
+    }
+
+
+    public function userDeilsUpdate(Request $rqst, $id) {
+        $name   = $rqst -> input('txtName');
+        $surname   = $rqst -> input('txtSurname');
+        $address   = $rqst -> input('txtAddress');
+        $phone   = $rqst -> input('txtPhone');
+        $email   = $rqst -> input('txtEmail');
+        
+        User::where('ID', $id)
+            -> update([
+                'name'          => $name,
+                'surname'          => $surname,
+                'address'          => $address,
+                'phone'          => $phone,
+                'email'         => $email
+               
+
+            ]);
+        return view('userDB.userDB');
+    }
+
+    public function changePassword() {
+    
+        return view('userDB.change-password');
+    }
+
+    public function updatePassword(Request $request)
+{
+        # Validation
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|confirmed',
+        ]);
+
+
+        #Match The Old Password
+        if(!Hash::check($request->old_password, auth()->user()->password)){
+            return back()->with("error", "Old Password Doesn't match!");
+        }
+
+
+        #Update the new Password
+        User::whereId(auth()->user()->id)->update([
+            'password' => Hash::make($request->new_password)
+        ]);
+
+        return back()->with("status", "Password changed successfully!");
+}
 
 }

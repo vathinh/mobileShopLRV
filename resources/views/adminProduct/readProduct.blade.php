@@ -1,4 +1,4 @@
-@extends('adminLayouts.app')
+@extends('theme.app')
 
 @section('content')
     <section class="content">

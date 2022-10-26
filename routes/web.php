@@ -17,7 +17,7 @@ use App\Http\Controllers\ProductController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('newWelcome');
 });
 
 
@@ -26,7 +26,17 @@ Auth::routes();
 Route::middleware(['auth','user-role:user'])->group(function()
 {
 
-    Route::get("/home",[HomeController::class, 'userHome'])->name("userDB.userDB");
+    // Userhome
+    Route::get("/user/home",[HomeController::class, 'userHome'])->name("userDB.userDB");
+    // View + ChangeInfo
+    Route::get("/user/userDetails/{id}",[HomeController::class,'userDetails'])->name("user.userDetails");
+    Route::post("/user/userDetailsUpdate/{id}",[HomeController::class, 'userDeilsUpdate']) ->name("userDeilsUpdate");
+
+    Route::get("user/change-password", [HomeController::class, 'changePassword'])->name('change-password');
+    Route::post("user/change-password", [HomeController::class, 'updatePassword'])->name('update-password');
+
+
+
 });
 // Route Editor
 Route::middleware(['auth','user-role:editor'])->group(function()
@@ -75,8 +85,8 @@ Route::get("/index", function(){
     return view('index');
 });
 
-Route::get("/admintmp", function(){
-    return view('adminTemp');
+Route::get("/newthem", function(){
+    return view('newthem');
 });
  
 

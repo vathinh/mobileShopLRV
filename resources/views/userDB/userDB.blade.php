@@ -15,8 +15,13 @@
                         </div>
                     @endif
                     {{ Auth::user()->name }}
+             
                     <br>
-                    {{$msg}}
+                    @php
+                    $data = Auth::user()->id;
+                    @endphp
+                    <a href="{{ url("user/userDetails/{$data}") }}">View</a>
+                    
                 </div>
             </div>
         </div>
