@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-
+use App\Models\product;
 class HomeController extends Controller
 {
     /**
@@ -25,7 +25,8 @@ class HomeController extends Controller
      */
     public function userHome()
     {
-        return view('newWelcome',["msg"=>"Hello! I am user"]);
+        $products = Product::all();
+        return view('newWelcome', compact('products'));
     }
 
     /**

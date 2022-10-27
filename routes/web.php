@@ -25,7 +25,7 @@ Route::middleware(['auth','user-role:user'])->group(function()
 {
 
     // Userhome
-    Route::get("/user/home",[HomeController::class, 'userHome'])->name("userDB.userDB");
+    Route::get("/user/home",[HomeController::class, 'userHome'])->name("newWelcome");
     // View + ChangeInfo
     Route::get("/user/userDetails/{id}",[HomeController::class,'userDetails'])->name("user.userDetails");
     Route::post("/user/userDetailsUpdate/{id}",[HomeController::class, 'userDeilsUpdate']) ->name("userDeilsUpdate");
@@ -40,7 +40,7 @@ Route::middleware(['auth','user-role:user'])->group(function()
     Route::delete('remove-from-cart', [ProductController::class, 'remove'])->name('remove.from.cart');
     Route::get('/checkout',[ProductController::class, 'checkout']); 
 
-    Route::post("/user/createOrderProc",[HomeController::class, 'createOrderProc']) ->name("createOrderProc");
+    Route::post("/user/createOrderProc",[ProductController::class, 'createOrderProc']) ->name("createOrderProc");
 
 
 

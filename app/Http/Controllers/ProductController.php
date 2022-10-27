@@ -173,6 +173,7 @@ class ProductController extends Controller
             'O_delieveryAddress'    => $O_delieveryAddress
            
         ]);
+        $O_id       = 
         orderDetail::create([
            
             
