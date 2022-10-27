@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\order;
+use App\Models\orderDetail;
 use Illuminate\Http\Request;
 USE App\Models\product;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -61,7 +64,123 @@ class ProductController extends Controller
 
     //4. DELETE
     public function deleteProduct($id) {
-        product::where('p_id', $id) -> delete();
+        product::where('P_id', $id) -> delete();
+        return redirect() -> action('ProductController@showProducts');
+    }
+
+    
+    
+      /**
+     * Write code on Method
+     *
+     * @return response()
+     */
+    public function index(){
+        $products = Product::all();
+        return view('newWelcome', compact('products'));
+    
+  
+    }
+    
+        
+    /**
+     * Write code on Method
+     *
+     * @return response()
+     */
+    public function cart()
+    {
+        return view('cart');
+    }
+  
+    /**
+     * Write code on Method
+     *
+     * @return response()
+     */
+    public function addToCart($id)
+    {
+        $product = Product::where('P_id', $id) ->first();
+          
+        $cart = session()->get('cart', []);
+  
+        if(isset($cart[$id])) {
+            $cart[$id]['quantity']++;
+        } else {
+            $cart[$id] = [
+                "P_id" => $id,
+                "name" => $product->P_name,
+                "quantity" => 1,
+                "price" => $product->P_price,
+                "image" => $product->P_imgPath
+            ];
+        }
+          
+        session()->put('cart', $cart);
+        return redirect()->back()->with('success', 'Product added to cart successfully!');
+    }
+  
+    /**
+     * Write code on Method
+     *
+     * @return response()
+     */
+    public function update(Request $request)
+    {
+        if($request->id && $request->quantity){
+            $cart = session()->get('cart');
+            $cart[$request->id]["quantity"] = $request->quantity;
+            session()->put('cart', $cart);
+            session()->flash('success', 'Cart updated successfully');
+        }
+    }
+  
+    /**
+     * Write code on Method
+     *
+     * @return response()
+     */
+    public function remove(Request $request)
+    {
+        if($request->id) {
+            $cart = session()->get('cart');
+            if(isset($cart[$request->id])) {
+                unset($cart[$request->id]);
+                session()->put('cart', $cart);
+            }
+            session()->flash('success', 'Product removed successfully');
+        }
+    }
+
+    public function checkout() {
+        return view('checkout');
+    }
+
+
+    //2. CREATE Orders
+   
+    public function createOrderProc(Request $rqst){
+       
+        $id         = Auth::user()->id;
+        $O_delieveryAddress = $rqst -> input('txtAddress');
+        
+        $P_id       =  $rqst -> input('txtProdcutId');
+        $Q_quantity = $rqst -> input('txtProductQuantity');
+
+
+        order::create([
+            'id'                    => $id,
+            'O_delieveryAddress'    => $O_delieveryAddress
+           
+        ]);
+        orderDetail::create([
+           
+            
+            'P_id'          => $P_id,
+       
+            'Q_quantity'    => $Q_quantity
+        ]);
+
         return redirect() -> action('ProductController@showProducts');
     }
 }
