@@ -16,9 +16,7 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('newWelcome');
-});
+Route::get('/', [ProductController::class, 'index']);  
 
 
 Auth::routes();
@@ -34,6 +32,16 @@ Route::middleware(['auth','user-role:user'])->group(function()
 
     Route::get("user/change-password", [HomeController::class, 'changePassword'])->name('change-password');
     Route::post("user/change-password", [HomeController::class, 'updatePassword'])->name('update-password');
+
+
+    Route::get('cart', [ProductController::class, 'cart'])->name('cart');
+    Route::get('add-to-cart/{id}', [ProductController::class, 'addToCart'])->name('add.to.cart');
+    Route::patch('update-cart', [ProductController::class, 'update'])->name('update.cart');
+    Route::delete('remove-from-cart', [ProductController::class, 'remove'])->name('remove.from.cart');
+    Route::get('/checkout',[ProductController::class, 'checkout']); 
+
+    Route::post("/user/createOrderProc",[HomeController::class, 'createOrderProc']) ->name("createOrderProc");
+
 
 
 
@@ -81,12 +89,7 @@ Route::middleware(['auth','user-role:admin'])->group(function()
 
 });
 
-Route::get("/index", function(){
-    return view('index');
-});
+Route::get('/', [ProductController::class, 'index']);  
 
-Route::get("/newthem", function(){
-    return view('newthem');
-});
  
 
