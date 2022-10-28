@@ -184,4 +184,8 @@ class ProductController extends Controller
 
         return redirect() -> action('ProductController@showProducts');
     }
+    public function ushowProducts($id){
+        $product = product::where('P_id', $id) ->first();
+        return view ('productDetails') -> with (['product' => $product]);
+    }
 }

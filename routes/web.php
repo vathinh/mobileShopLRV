@@ -91,5 +91,7 @@ Route::middleware(['auth','user-role:admin'])->group(function()
 
 Route::get('/', [ProductController::class, 'index']);  
 
+Route::get("/user/productDetails/{id}", [ProductController::class, 'ushowProducts']) ->name("ushowProducts");
+
  
 
