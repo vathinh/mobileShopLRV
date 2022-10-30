@@ -7,6 +7,7 @@ use App\Models\orderDetail;
 use Illuminate\Http\Request;
 USE App\Models\product;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -152,8 +153,14 @@ class ProductController extends Controller
         }
     }
 
-    public function checkout() {
-        return view('checkout');
+    public function checkout($id) {
+        
+       
+        order::create([
+            'id' => $id
+        ]);
+        $od = DB::table('orders')->latest('created_at')->first();
+        return view('checkout')-> with (['od' => $od]);
     }
 
 
@@ -165,21 +172,18 @@ class ProductController extends Controller
         $O_delieveryAddress = $rqst -> input('txtAddress');
         
         $P_id       =  $rqst -> input('txtProdcutId');
-        $Q_quantity = $rqst -> input('txtProductQuantity');
+        $QD_quantity = $rqst -> input('txtProductQuantity');
+        $order = order::all();
+        
 
-
-        order::create([
-            'id'                    => $id,
-            'O_delieveryAddress'    => $O_delieveryAddress
-           
-        ]);
-        $O_id       = 
+       
+        $O_id       = $rqst -> input('txtOId');
         orderDetail::create([
            
             
             'P_id'          => $P_id,
-       
-            'Q_quantity'    => $Q_quantity
+            'O_id'          => $O_id,
+            'QD_quantity'    => $QD_quantity
         ]);
 
         return redirect() -> action('ProductController@showProducts');
