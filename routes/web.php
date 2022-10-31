@@ -24,22 +24,28 @@ Auth::routes();
 Route::middleware(['auth','user-role:user'])->group(function()
 {
 
+    //UserDB
+    Route::get("/user/userDB",[HomeController::class, 'userDB'])->name("userDB");
     // Userhome
     Route::get("/user/home",[HomeController::class, 'userHome'])->name("newWelcome");
     // View + ChangeInfo
     Route::get("/user/userDetails/{id}",[HomeController::class,'userDetails'])->name("user.userDetails");
     Route::post("/user/userDetailsUpdate/{id}",[HomeController::class, 'userDeilsUpdate']) ->name("userDeilsUpdate");
 
+    // User change Password
     Route::get("user/change-password", [HomeController::class, 'changePassword'])->name('change-password');
     Route::post("user/change-password", [HomeController::class, 'updatePassword'])->name('update-password');
 
-
+    // Add + Remove + Update + View Cart
     Route::get('cart', [ProductController::class, 'cart'])->name('cart');
     Route::get('add-to-cart/{id}', [ProductController::class, 'addToCart'])->name('add.to.cart');
     Route::patch('update-cart', [ProductController::class, 'update'])->name('update.cart');
     Route::delete('remove-from-cart', [ProductController::class, 'remove'])->name('remove.from.cart');
+    
+    // Checkout from cart + Create order
     Route::get('/checkout/{id}',[ProductController::class, 'checkout']); 
 
+    // Create orderDetails
     Route::post("/user/createOrderProc/{O_id}",[ProductController::class, 'createOrderProc']) ->name("createOrderProc");
 
 
@@ -56,6 +62,7 @@ Route::middleware(['auth','user-role:editor'])->group(function()
 Route::middleware(['auth','user-role:admin'])->group(function()
 {
     Route::get("/admin/home",[HomeController::class, 'adminHome'])->name("adminDB.adminDB");
+    // USER MANAGEMENT
     // Read user
     Route::get("/admin/user/readUser",[HomeController::class, 'readUser']) ->name("readUser");
 
@@ -73,6 +80,9 @@ Route::middleware(['auth','user-role:admin'])->group(function()
     // Reset User Password
     Route::get("/admin/user/resetPwd/{id}",[HomeController::class, 'resetPwd']) ->name("resetPwd");
 
+
+
+    // PRODUCT MANAGEMENT
     // Read product
     Route::get("/admin/product/readproduct",[ProductController::class, 'showProducts']) ->name("showProducts");
 
@@ -86,6 +96,11 @@ Route::middleware(['auth','user-role:admin'])->group(function()
 
     // Delete Product
     Route::get("/admin/product/deleteProduct/{id}", [ProductController::class, 'deleteProduct']) ->name("deleteProduct");
+
+
+    // FEEDBACK MANAGEMENT
+
+    // ORDER MANAGEMENT
 
 });
 

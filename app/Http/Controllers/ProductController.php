@@ -170,29 +170,39 @@ class ProductController extends Controller
    
     public function createOrderProc(Request $rqst, $O_id){
        
-        $id         = Auth::user()->id;
         $O_delieveryAddress = $rqst -> input('txtAddress');
         
-        $P_id       =  $rqst -> input('txtProdcutId');
-        $QD_quantity = $rqst -> input('txtProductQuantity');
-        $order = order::all();
+        $P_id       =  $rqst -> input('txtProdcutId',[]);
+        $QD_quantity = $rqst -> input('txtProductQuantity',[]);
 
         order::where('O_id', $O_id)
         -> update([
             'O_delieveryAddress'    =>  $O_delieveryAddress
             
         ]);
-        
-
+        $O_id       = $rqst -> input('txtOId',[]);
        
-        $O_id       = $rqst -> input('txtOId');
-        orderDetail::create([
-           
-            
-            'P_id'          => $P_id,
-            'O_id'          => $O_id,
-            'QD_quantity'    => $QD_quantity
-        ]);
+        foreach ($rqst->session('cart') as $id=>$details) {
+            $saveData = [
+                'P_id' => $rqst->txtProdcutId[$id],
+                'QD_quantity' => $rqst->txtProductQuantity[$id],
+                'O_id' => $rqst->txtOId[$id],
+            ];
+            DB::table('orderDetail')->insert($rqst->details);
+
+        }
+
+        // orderDetail::insert($data);
+        
+        // $O_id       = $rqst -> input('txtOId');
+        // $ODs = [$P_id,$O_id,$QD_quantity];
+        // foreach($ODs as $OD){
+        //     orderDetail::create([
+        //     'P_id'          => $P_id,
+        //     'O_id'          => $O_id,
+        //     'QD_quantity'    => $QD_quantity
+        //     ]);
+        // }
 
         return redirect() -> action('ProductController@showProducts');
     }

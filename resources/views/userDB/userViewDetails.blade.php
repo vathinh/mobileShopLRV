@@ -1,14 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View user info</title>
-</head>
-<body>
+@extends('userLayout.app')
+
+@section('content')
+
+
+<div class="card">
+    <div class="card-header">
+        <strong>Basic Form</strong> Elements
+    </div>
+    <div class="card-body card-block">
+        <form method="post" action="{{ url("/user/userDetailsUpdate/{$rs -> id}") }}" enctype="multipart/form-data" class="form-horizontal">
+        @csrf
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label class=" form-control-label">Name</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    <p class="form-control-static">{{ $rs -> name }}</p>
+                </div>
+
+                <div class="col col-md-3">
+                    <label class=" form-control-label">Surname</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    <p class="form-control-static">{{ $rs -> surname }}</p>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="text-input" class=" form-control-label">Address</label>
+                </div>
+                <div class="col-12 col-md-9">
+                   
+                    <input type="text" id="text-input" class="form-control"  name="txtAddress" value="{{ $rs -> address }}" >
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="email-input" class=" form-control-label">Email Input</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    <input type="email" name="txtEmail" value="{{ $rs -> email }}" class="form-control" >
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="email-input" class=" form-control-label">Phone </label>
+                </div>
+                <div class="col-12 col-md-9">
+                    
+                    <input type="text" name="txtPhone" value="{{ $rs -> phone }}" class="form-control" >
+                </div>
+            </div>
+
+            
+        </form>
+    </div>
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary btn-sm">
+            <i class="fa fa-dot-circle-o"></i> Update Informations
+        </button>
+        <button type="reset" class="btn btn-danger btn-sm">
+            <i class="fa fa-ban"></i> Reset
+        </button>
+        <button class="btn btn-success btn-sm">
+            <a href="{{ url("/user/change-password") }}">Change Password</a>
+        </button>
+
+    </div>
+</div>
+
+
+
    
     <form method="post" action="{{ url("/user/userDetailsUpdate/{$rs -> id}") }}" class="form">
     @csrf
@@ -57,5 +121,4 @@
         </table>
     </form>
     
-</body>
-</html>
+endsection
