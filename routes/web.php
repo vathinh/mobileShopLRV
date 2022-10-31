@@ -40,7 +40,7 @@ Route::middleware(['auth','user-role:user'])->group(function()
     Route::delete('remove-from-cart', [ProductController::class, 'remove'])->name('remove.from.cart');
     Route::get('/checkout/{id}',[ProductController::class, 'checkout']); 
 
-    Route::post("/user/createOrderProc",[ProductController::class, 'createOrderProc']) ->name("createOrderProc");
+    Route::post("/user/createOrderProc/{O_id}",[ProductController::class, 'createOrderProc']) ->name("createOrderProc");
 
 
 

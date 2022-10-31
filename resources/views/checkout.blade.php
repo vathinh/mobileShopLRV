@@ -116,7 +116,7 @@ span.price {
 <div class="row">
   <div class="col-75">
     <div class="container">
-      <form action="{{ url("user/createOrderProc") }}" method="POST">
+      <form action="{{ url("user/createOrderProc/{$od -> O_id}") }}" method="POST">
       @csrf
         <div class="row">
           <div class="col-50">

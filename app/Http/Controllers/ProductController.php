@@ -155,9 +155,11 @@ class ProductController extends Controller
 
     public function checkout($id) {
         
+        $O_delieveryAddress = Auth::user()->address;
        
         order::create([
             'id' => $id
+            
         ]);
         $od = DB::table('orders')->latest('created_at')->first();
         return view('checkout')-> with (['od' => $od]);
@@ -166,7 +168,7 @@ class ProductController extends Controller
 
     //2. CREATE Orders
    
-    public function createOrderProc(Request $rqst){
+    public function createOrderProc(Request $rqst, $O_id){
        
         $id         = Auth::user()->id;
         $O_delieveryAddress = $rqst -> input('txtAddress');
@@ -174,6 +176,12 @@ class ProductController extends Controller
         $P_id       =  $rqst -> input('txtProdcutId');
         $QD_quantity = $rqst -> input('txtProductQuantity');
         $order = order::all();
+
+        order::where('O_id', $O_id)
+        -> update([
+            'O_delieveryAddress'    =>  $O_delieveryAddress
+            
+        ]);
         
 
        
