@@ -14,15 +14,15 @@
         <table>
             <tr>
                 <td>ID</td>
-                <td><input type="text" name="txtID" readonly value="{{ $rs -> p_id }}"></td>
+                <td><input type="text" name="txtID" readonly value="{{ $rs -> P_id }}"></td>
             </tr>
             <tr>
                 <td>Name</td>
-                <td><input type="text" name="txtName"> <br></td>
+                <td><input type="text" name="txtName" value="{{ $rs ->P_name }}"> <br></td>
             </tr>
             <tr>
                 <td>Price</td>
-                <td><input type="text" name="txtPrice"> <br></td>
+                <td><input type="text" name="txtPrice" value="{{ $rs ->P_price }}"> <br></td>
             </tr>
             <tr>
                 <td>Storage</td>

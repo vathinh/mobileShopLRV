@@ -34,7 +34,7 @@
                             <th style="text-align: center;">Storage</th>
                             <th style="text-align: center;">Color</th>
                             <th style="text-align: center;">Quantity</th>
-                            <th style="text-align: center;">Function</th>
+                            <th style="text-align: center;">Action</th>
                         </tr>
                   </thead>
                   <tbody
