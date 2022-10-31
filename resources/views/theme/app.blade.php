@@ -41,7 +41,6 @@
         <!-- Left Menu here -->
         @include('theme.left')
 
-
         <!-- PAGE CONTAINER-->
         <div class="page-container">
             <!-- Top menu here -->
@@ -53,14 +52,14 @@
                     <div class="container-fluid">
                         <!-- Content here -->
                         @yield('content')
-                      <!-- End content -->
-                        
-                      @include('theme.footer')
+                        <!-- End content -->
+
+                        @include('theme.footer')
                         <!-- Footer -->
                     </div>
                 </div>
             </div>
-           
+
             <!-- END PAGE CONTAINER-->
 
         </div>
