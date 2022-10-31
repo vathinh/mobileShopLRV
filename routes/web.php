@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\FeedBackController;
 
 /*
 |--------------------------------------------------------------------------
@@ -97,12 +98,17 @@ Route::middleware(['auth','user-role:admin'])->group(function()
     // Delete Product
     Route::get("/admin/product/deleteProduct/{id}", [ProductController::class, 'deleteProduct']) ->name("deleteProduct");
 
-
+    // Feedback
+    Route::resource("/admin/product/feedback", FeedBackController::class);
     // FEEDBACK MANAGEMENT
 
     // ORDER MANAGEMENT
 
 });
+
+
+
+
 
 Route::get('/', [ProductController::class, 'index']);  
 
