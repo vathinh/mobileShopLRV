@@ -8,7 +8,10 @@ USE App\Models\order;
 class OrderController extends Controller
 {
     //1. READ
-    public function showOrders(){}
+    public function showOrders(){
+        $rs = order::all();
+        return view ('Oder.admin.OrderList') -> with (['rs' => $rs]);
+    }
 
     
 
