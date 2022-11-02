@@ -1,4 +1,4 @@
-@extends('adminLayouts.app')
+@extends('theme.app')
 
 @section('content')
 <div class="card card-primary">
