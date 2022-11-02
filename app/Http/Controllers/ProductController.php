@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\category;
 use App\Models\order;
 use App\Models\orderDetail;
 use Illuminate\Http\Request;
@@ -11,8 +12,10 @@ use Illuminate\Support\Facades\Auth;
 class ProductController extends Controller
 {
     //1. READ
+
     public function showProducts(){
-        $rs = product::all();
+        $rs = product::join('category','category.C_id','=','products.C_id')
+        ->get(['products.*', 'category.C_name']);
         return view ('adminProduct.readProduct') -> with (['rs' => $rs]);
     }
 
@@ -26,6 +29,7 @@ class ProductController extends Controller
         return view('adminProduct.createProduct');
     }
     public function createNewProductProcess(Request $rqst){
+        
         $id         = $rqst -> input('txtID');
         $name       = $rqst -> input('txtName');
         $price      = $rqst -> input('txtPrice');
