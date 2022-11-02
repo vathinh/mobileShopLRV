@@ -34,6 +34,7 @@
                             <th style="text-align: center;">Storage</th>
                             <th style="text-align: center;">Color</th>
                             <th style="text-align: center;">Quantity</th>
+                            <th style="text-align: center;">Type</th>
                             <th style="text-align: center;">Action</th>
                         </tr>
                   </thead>
@@ -46,6 +47,7 @@
                             <td style="text-align: center;"> {{ $data -> P_storage }}</td>
                             <td style="text-align: center;"> {{ $data -> P_color }}</td>
                             <td style="text-align: center;"> {{ $data -> P_quantity }}</td>
+                            <td style="text-align: center;"> {{ $data -> C_name }}</td>
                             <td style="text-align: center;">
                                 <a href="{{ url("/admin/product/updateProduct/{$data -> P_id}") }}">Update</a>|
                                 <a href="{{ url("/admin/product/deleteProduct/{$data -> P_id}") }}">Delete</a>
