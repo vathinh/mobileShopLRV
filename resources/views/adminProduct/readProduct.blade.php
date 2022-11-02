@@ -49,8 +49,8 @@
                             <td style="text-align: center;"> {{ $data -> P_quantity }}</td>
                             <td style="text-align: center;"> {{ $data -> C_name }}</td>
                             <td style="text-align: center;">
-                                <a href="{{ url("/admin/product/updateProduct/{$data -> P_id}") }}">Update</a>|
-                                <a href="{{ url("/admin/product/deleteProduct/{$data -> P_id}") }}">Delete</a>
+                                <a href="{{ url("/admin/product/updateProduct/{$data -> P_id}") }}">Update</a>
+                                <!-- <a href="{{ url("/admin/product/deleteProduct/{$data -> P_id}") }}">Delete</a> -->
                             </td>
                         </tr>
                         @endforeach
