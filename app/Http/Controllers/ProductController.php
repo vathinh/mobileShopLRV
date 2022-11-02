@@ -8,6 +8,7 @@ use App\Models\orderDetail;
 use Illuminate\Http\Request;
 USE App\Models\product;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -161,35 +162,56 @@ class ProductController extends Controller
         }
     }
 
-    public function checkout() {
-        return view('checkout');
+    public function checkout($id) {
+        
+        $O_delieveryAddress = Auth::user()->address;
+       
+        order::create([
+            'id' => $id
+            
+        ]);
+        $od = DB::table('orders')->latest('created_at')->first();
+        return view('checkout')-> with (['od' => $od]);
     }
 
 
     //2. CREATE Orders
    
-    public function createOrderProc(Request $rqst){
+    public function createOrderProc(Request $rqst, $O_id){
        
-        $id         = Auth::user()->id;
         $O_delieveryAddress = $rqst -> input('txtAddress');
         
-        $P_id       =  $rqst -> input('txtProdcutId');
-        $Q_quantity = $rqst -> input('txtProductQuantity');
+        $P_id       =  $rqst -> input('txtProdcutId',[]);
+        $QD_quantity = $rqst -> input('txtProductQuantity',[]);
 
-
-        order::create([
-            'id'                    => $id,
-            'O_delieveryAddress'    => $O_delieveryAddress
-           
-        ]);
-        $O_id       = 
-        orderDetail::create([
-           
+        order::where('O_id', $O_id)
+        -> update([
+            'O_delieveryAddress'    =>  $O_delieveryAddress
             
-            'P_id'          => $P_id,
-       
-            'Q_quantity'    => $Q_quantity
         ]);
+        $O_id       = $rqst -> input('txtOId',[]);
+       
+        foreach ($rqst->session('cart') as $id=>$details) {
+            $saveData = [
+                'P_id' => $rqst->txtProdcutId[$id],
+                'QD_quantity' => $rqst->txtProductQuantity[$id],
+                'O_id' => $rqst->txtOId[$id],
+            ];
+            DB::table('orderDetail')->insert($rqst->details);
+
+        }
+
+        // orderDetail::insert($data);
+        
+        // $O_id       = $rqst -> input('txtOId');
+        // $ODs = [$P_id,$O_id,$QD_quantity];
+        // foreach($ODs as $OD){
+        //     orderDetail::create([
+        //     'P_id'          => $P_id,
+        //     'O_id'          => $O_id,
+        //     'QD_quantity'    => $QD_quantity
+        //     ]);
+        // }
 
         return redirect() -> action('ProductController@showProducts');
     }

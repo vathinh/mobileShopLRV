@@ -50,6 +50,10 @@ class HomeController extends Controller
         return view('adminDB.adminDB',["msg"=>"Hello! I am admin"]);
     }
 
+    public function userDB() {
+        return view('userDB.userDB');
+    }
+
     //1. Read Users
     public function readUser() {
         $rs = User::all();

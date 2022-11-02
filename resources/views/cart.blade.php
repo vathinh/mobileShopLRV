@@ -58,7 +58,10 @@
         <tr>
             <td colspan="5" class="text-right">
                 <a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a>
-                <a href="{{ url('/checkout') }}" class="btn btn-success"><i class="fa fa-angle-right"></i> Checkout</a>
+                @php
+                    $id = Auth::user()-> id;
+                @endphp
+                <a href="{{ url("/checkout/{$id}") }}" class="btn btn-success"><i class="fa fa-angle-right"></i> Checkout</a>
             </td>
         </tr>
     </tfoot>

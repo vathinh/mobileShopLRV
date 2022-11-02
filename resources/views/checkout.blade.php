@@ -116,7 +116,7 @@ span.price {
 <div class="row">
   <div class="col-75">
     <div class="container">
-      <form action="{{ url("user/createOrderProc") }}" method="POST">
+      <form action="{{ url("user/createOrderProc/{$od -> O_id}") }}" method="POST">
       @csrf
         <div class="row">
           <div class="col-50">
@@ -149,15 +149,26 @@ span.price {
         <!-- TOP CAMPAIGN-->
         <div class="top-campaign">
             <h3 class="title-3 m-b-30">Your orders <b>{{ count((array) session('cart')) }}</b></h3>
+            
             <div class="table-responsive">
                 <table class="table table-top-campaign">
                     <thead>
+                      <tr>
+                        <td>Order Id</td>
+                        @php
+
+                        @endphp
+                        <td>
+                        <input type="text" name="txtOId" value="{{ $od -> O_id}}" readonly>
+                        </td>
+                      </tr>
                         <tr>
                             <th>Product ID</th>
                             <th>Product Name</th>
                             <th>Quantity</th>
                             <th>Price</th>
                         </tr>
+
                         
                     </thead>
                     <tbody>
