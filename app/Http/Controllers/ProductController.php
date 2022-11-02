@@ -30,12 +30,12 @@ class ProductController extends Controller
         $qty        = $rqst -> input('txtQty');
 
         product::create([
-            'p_id'      => $id,
-            'p_name'    => $name,
-            'p_price'   => $price,
-            'p_storage' => $storage,
-            'p_color'   => $color,
-            'p_qty'     => $qty
+            'P_id'      => $id,
+            'P_name'    => $name,
+            'P_price'   => $price,
+            'P_storage' => $storage,
+            'P_color'   => $color,
+            'P_qty'     => $qty
         ]);
 
         return redirect() -> action('ProductController@showProducts');
@@ -54,11 +54,11 @@ class ProductController extends Controller
         $qty    = $rqst -> input('txtQty');
         product::where('p_id', $id)
         -> update([
-            'p_name'    => $name,
-            'p_price'   => $price,
-            'p_storage' => $storage,
-            'p_color'   => $color,
-            'p_qty'     => $qty
+            'P_name'    => $name,
+            'P_price'   => $price,
+            'P_storage' => $storage,
+            'P_color'   => $color,
+            'P_qty'     => $qty
         ]);
         return redirect() -> action('ProductController@showProducts');
     }
