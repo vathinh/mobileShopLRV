@@ -9,9 +9,9 @@
 </head>
 
 <body>
-    <form method="POST" action="{{ url("/admin/product/updateProductProcess/{$rs -> p_id}") }}">
+    <form method="POST" action="{{ url("/admin/product/updateProductProcess/{$rs -> P_id}") }}">
         @csrf
-        <table>
+        <table class="table table-hover text-nowrap">
             <tr>
                 <td>ID</td>
                 <td><input type="text" name="txtID" readonly value="{{ $rs -> P_id }}"></td>

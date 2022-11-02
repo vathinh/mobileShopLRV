@@ -1,4 +1,4 @@
-@extends('adminLayouts.app')
+@extends('theme.app')
 
 @section('content')
 <div class="card card-primary">
@@ -9,7 +9,7 @@
               <!-- form start -->
 <form action="{{ url("/admin/product/createproductProcess") }}" method="POST">
                         @csrf
-                        <table>
+                        <table class="table table-hover text-nowrap" border="1">
                             <tr>
                                 <td>ID</td>
                                 <td><input type="text" name="txtID"></td>

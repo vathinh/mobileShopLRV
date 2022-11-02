@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\category;
 use App\Models\order;
 use App\Models\orderDetail;
 use Illuminate\Http\Request;
@@ -12,7 +13,14 @@ use Illuminate\Support\Facades\DB;
 class ProductController extends Controller
 {
     //1. READ
+
     public function showProducts(){
+        $rs = product::join('category','category.C_id','=','products.C_id')
+        ->get(['products.*', 'category.C_name']);
+        return view ('adminProduct.readProduct') -> with (['rs' => $rs]);
+    }
+
+    public function showProducts1(){
         $rs = product::all();
         return view ('adminProduct.readProduct') -> with (['rs' => $rs]);
     }
@@ -22,6 +30,7 @@ class ProductController extends Controller
         return view('adminProduct.createProduct');
     }
     public function createNewProductProcess(Request $rqst){
+        
         $id         = $rqst -> input('txtID');
         $name       = $rqst -> input('txtName');
         $price      = $rqst -> input('txtPrice');
@@ -43,7 +52,7 @@ class ProductController extends Controller
 
     //3. UPDATE
     public function updateProduct($id){
-        $rs = product::where('p_id', $id) ->first();
+        $rs = product::where('P_id', $id) ->first();
         return view('adminProduct.updateProduct', ['rs' => $rs]);
     }
     public function updateProductProcess(Request $rqst, $id){
@@ -52,7 +61,7 @@ class ProductController extends Controller
         $storage = $rqst -> input('Storage');
         $color  = $rqst -> input('Color');
         $qty    = $rqst -> input('txtQty');
-        product::where('p_id', $id)
+        product::where('P_id', $id)
         -> update([
             'P_name'    => $name,
             'P_price'   => $price,
@@ -120,7 +129,7 @@ class ProductController extends Controller
         session()->put('cart', $cart);
         return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
-  
+    
     /**
      * Write code on Method
      *
