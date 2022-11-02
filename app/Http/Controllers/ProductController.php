@@ -16,6 +16,11 @@ class ProductController extends Controller
         return view ('adminProduct.readProduct') -> with (['rs' => $rs]);
     }
 
+    public function showProducts1(){
+        $rs = product::all();
+        return view ('adminProduct.readProduct') -> with (['rs' => $rs]);
+    }
+
     //2. CREATE
     public function createNewProduct(){
         return view('adminProduct.createProduct');
@@ -119,7 +124,7 @@ class ProductController extends Controller
         session()->put('cart', $cart);
         return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
-  
+    
     /**
      * Write code on Method
      *
