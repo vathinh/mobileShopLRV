@@ -29,12 +29,12 @@ class ProductController extends Controller
         $qty        = $rqst -> input('txtQty');
 
         product::create([
-            'p_id'      => $id,
-            'p_name'    => $name,
-            'p_price'   => $price,
-            'p_storage' => $storage,
-            'p_color'   => $color,
-            'p_qty'     => $qty
+            'P_id'      => $id,
+            'P_name'    => $name,
+            'P_price'   => $price,
+            'P_storage' => $storage,
+            'P_color'   => $color,
+            'P_qty'     => $qty
         ]);
 
         return redirect() -> action('ProductController@showProducts');
@@ -42,7 +42,7 @@ class ProductController extends Controller
 
     //3. UPDATE
     public function updateProduct($id){
-        $rs = product::where('p_id', $id) ->first();
+        $rs = product::where('P_id', $id) ->first();
         return view('adminProduct.updateProduct', ['rs' => $rs]);
     }
     public function updateProductProcess(Request $rqst, $id){
@@ -51,13 +51,13 @@ class ProductController extends Controller
         $storage = $rqst -> input('Storage');
         $color  = $rqst -> input('Color');
         $qty    = $rqst -> input('txtQty');
-        product::where('p_id', $id)
+        product::where('P_id', $id)
         -> update([
-            'p_name'    => $name,
-            'p_price'   => $price,
-            'p_storage' => $storage,
-            'p_color'   => $color,
-            'p_qty'     => $qty
+            'P_name'    => $name,
+            'P_price'   => $price,
+            'P_storage' => $storage,
+            'P_color'   => $color,
+            'P_qty'     => $qty
         ]);
         return redirect() -> action('ProductController@showProducts');
     }

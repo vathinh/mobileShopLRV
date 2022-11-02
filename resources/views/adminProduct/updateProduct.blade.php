@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form method="POST" action="{{ url("/admin/product/updateProductProcess/{$rs -> p_id}") }}">
+    <form method="POST" action="{{ url("/admin/product/updateProductProcess/{$rs -> P_id}") }}">
         @csrf
         <table>
             <tr>
