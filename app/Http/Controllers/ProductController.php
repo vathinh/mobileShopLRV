@@ -93,6 +93,16 @@ class ProductController extends Controller
     }
     
         
+    
+    public function ushowProducts($id){
+        $product = product::where('P_id', $id) ->first();
+        return view ('productDetails') -> with (['product' => $product]);
+    }
+
+
+    // Cart and checkout
+
+
     /**
      * Write code on Method
      *
@@ -162,10 +172,7 @@ class ProductController extends Controller
         }
     }
 
-    public function checkout($id) {
-        
-        $O_delieveryAddress = Auth::user()->address;
-       
+    public function checkout($id) {       
         order::create([
             'id' => $id
             
@@ -175,48 +182,35 @@ class ProductController extends Controller
     }
 
 
-    //2. CREATE Orders
+    //2. CREATE OrdersDetails
    
     public function createOrderProc(Request $rqst, $O_id){
        
         $O_delieveryAddress = $rqst -> input('txtAddress');
         
-        $P_id       =  $rqst -> input('txtProdcutId',[]);
-        $QD_quantity = $rqst -> input('txtProductQuantity',[]);
+        
 
         order::where('O_id', $O_id)
         -> update([
             'O_delieveryAddress'    =>  $O_delieveryAddress
             
         ]);
-        $O_id       = $rqst -> input('txtOId',[]);
-       
-        foreach ($rqst->session('cart') as $id=>$details) {
-            $saveData = [
-                'P_id' => $rqst->txtProdcutId[$id],
-                'QD_quantity' => $rqst->txtProductQuantity[$id],
-                'O_id' => $rqst->txtOId[$id],
-            ];
-            DB::table('orderDetail')->insert($rqst->details);
-
-        }
-
-        // orderDetail::insert($data);
         
-        // $O_id       = $rqst -> input('txtOId');
-        // $ODs = [$P_id,$O_id,$QD_quantity];
-        // foreach($ODs as $OD){
-        //     orderDetail::create([
-        //     'P_id'          => $P_id,
-        //     'O_id'          => $O_id,
-        //     'QD_quantity'    => $QD_quantity
-        //     ]);
-        // }
+       
+   
+        $cart = session()->get('cart', []);
+        
+        foreach(session('cart') as $id => $details) {
+            orderDetail::create([
+                'P_id'          =>$details['P_id'],
+                'O_id'          => $O_id,
+                'QD_quantity'    => $details['quantity']
+                
+            ]);
+        }
+        return redirect() -> action('ProductController@index');
+    }
 
-        return redirect() -> action('ProductController@showProducts');
-    }
-    public function ushowProducts($id){
-        $product = product::where('P_id', $id) ->first();
-        return view ('productDetails') -> with (['product' => $product]);
-    }
+
+   
 }
