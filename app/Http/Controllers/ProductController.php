@@ -44,7 +44,7 @@ class ProductController extends Controller
             'P_price'   => $price,
             'P_storage' => $storage,
             'P_color'   => $color,
-            'P_qty'     => $qty
+            'P_quantity'=> $qty
         ]);
 
         return redirect() -> action('ProductController@showProducts');
@@ -67,7 +67,7 @@ class ProductController extends Controller
             'P_price'   => $price,
             'P_storage' => $storage,
             'P_color'   => $color,
-            'P_qty'     => $qty
+            'P_quantity'     => $qty
         ]);
         return redirect() -> action('ProductController@showProducts');
     }
@@ -88,8 +88,6 @@ class ProductController extends Controller
     public function index(){
         $products = Product::all();
         return view('newWelcome', compact('products'));
-    
-  
     }
     
         
