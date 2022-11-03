@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\orderDetail;
+USE App\Models\product;
 USE App\Models\order;
 
 class OrderController extends Controller

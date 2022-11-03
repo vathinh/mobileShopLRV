@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\FeedBackController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -103,7 +104,7 @@ Route::middleware(['auth','user-role:admin'])->group(function()
     // FEEDBACK MANAGEMENT
 
     // ORDER MANAGEMENT
-
+    Route::get("/admin/order/list",[OrderController::class, 'showOrders']) ->name("showOrders");
 });
 
 
