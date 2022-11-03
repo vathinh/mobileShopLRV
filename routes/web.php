@@ -114,5 +114,7 @@ Route::get('/', [ProductController::class, 'index']);
 
 Route::get("/user/productDetails/{id}", [ProductController::class, 'ushowProducts']) ->name("ushowProducts");
 
+Route::resource("/product/feedback", FeedBackController::class);
+
  
 
