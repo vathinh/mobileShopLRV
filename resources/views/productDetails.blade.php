@@ -26,7 +26,7 @@
                             <th style="text-align: center;">Price</th>
                             <th style="text-align: center;">Storage</th>
                             <th style="text-align: center;">Color</th>
-
+                            <th style="text-align: center;">Image</th>
                             <th style="text-align: center;">Function</th>
                             </tr>
                         </thead>
@@ -35,7 +35,7 @@
                             <td style="text-align: center;"> {{ $product -> P_price }}</td>
                             <td style="text-align: center;"> {{ $product -> P_storage }}</td>
                             <td style="text-align: center;"> {{ $product -> P_color }}</td>
-
+                            <td style="text-align: center;"> <img src="{{ $product -> P_imgPath }}" alt="{{ $product -> P_name }}" style="width:500px;height:600px;"></td>
                             <td style="text-align: center;">
                                 <p class="btn-holder"><a href="{{ route('add.to.cart', $product->P_id) }}" class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p>
                             </td>

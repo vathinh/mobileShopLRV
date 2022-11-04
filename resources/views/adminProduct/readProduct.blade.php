@@ -42,7 +42,7 @@
                     @foreach($rs as $data)
                         <tr>
                             <td style="text-align: center;"> {{ $data -> P_id }}</td>
-                            <td style="text-align: center;"> {{ $data -> P_name }}</td>
+                            <td style="text-align: center;"><a href="{{ url("/user/productDetails/{$data -> P_id}") }}">{{ $data -> P_name }}</a></td>
                             <td style="text-align: center;"> {{ $data -> P_price }}</td>
                             <td style="text-align: center;"> {{ $data -> P_storage }}</td>
                             <td style="text-align: center;"> {{ $data -> P_color }}</td>
