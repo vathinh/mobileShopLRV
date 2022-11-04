@@ -88,7 +88,7 @@
                             
                         </li>
                         <li class="has-sub">
-                            <a class="js-arrow" href="#">
+                            <a class="js-arrow" href="{{ url("/admin/order/list") }}">
                                 <i class="fas fa-copy"></i>Order Management</a>
                             <!-- <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>

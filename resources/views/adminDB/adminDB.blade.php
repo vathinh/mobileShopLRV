@@ -74,7 +74,7 @@
                     </div>
                     <div class="text">
                         <h2>Orders Management</h2>
-                        <h3><a  type="button" class="btn btn-info" disabled href="{{ url("/admin/order") }}"> More Info</a></h3>
+                        <h3><a  type="button" class="btn btn-info" disabled href="{{ url("/admin/order/list") }}"> More Info</a></h3>
                     </div>
                 </div>
                 <div class="overview-chart">
