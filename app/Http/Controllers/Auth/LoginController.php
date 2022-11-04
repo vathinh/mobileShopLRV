@@ -60,7 +60,7 @@ class LoginController extends Controller
             }
             else
             {
-              return redirect()->route('userDB.userDB');
+              return redirect()->route('newWelcome');
             }
         }
         else

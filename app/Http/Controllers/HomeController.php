@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-
+use App\Models\product;
 class HomeController extends Controller
 {
     /**
@@ -25,7 +25,8 @@ class HomeController extends Controller
      */
     public function userHome()
     {
-        return view('userDB.userDB',["msg"=>"Hello! I am user"]);
+        $products = Product::all();
+        return view('newWelcome', compact('products'));
     }
 
     /**
@@ -49,15 +50,19 @@ class HomeController extends Controller
         return view('adminDB.adminDB',["msg"=>"Hello! I am admin"]);
     }
 
+    public function userDB() {
+        return view('userDB.userDB');
+    }
+
     //1. Read Users
     public function readUser() {
         $rs = User::all();
-        return view('adminDB.readUser')->with(['rs' => $rs]);
+        return view('adminUser.readUser')->with(['rs' => $rs]);
     }
 
     //2 Create Users
     public function createUser() {
-        return view('adminDB.createUser');
+        return view('adminUser.createUser');
     }
 
     public function createUserProc(Request $rqst) {
@@ -80,7 +85,7 @@ class HomeController extends Controller
 
     public function updateUser($id) {
         $rs = User::find($id);
-        return view('adminDB.updateUser',['rs' => $rs]);
+        return view('adminUser.updateUser',['rs' => $rs]);
 
     }
 
@@ -91,19 +96,83 @@ class HomeController extends Controller
         User::where('ID', $id)
             -> update([
                 'email'         => $email,
-                'name'          => $name,
-                'password'      => $password
+                'name'          => $name
 
             ]);
-        return redirect() -> action(HomeController::class, 'readUser');
+        return redirect() -> action('HomeController@readUser');
     }
 
     // 4 Delete 
     
     public function deleteUser($id) {
+        User::where('ID', $id) -> delete();
+        return redirect() -> action('HomeController@readUser');
 
     }
 
+    //5 Reset Password
+    public function resetPwd($id) {
+        $password = "12345678";
+        User::where('ID', $id) ->update(array(
+            'password' => Hash::make($password)
+        ));
+        return redirect() -> action('HomeController@readUser')->with('success','Password has changed successfully to 12345678');
+    }
 
+
+    //View user
+    public function userDetails($id) {
+        $rs = User::find($id);
+        return view('userDB.userViewDetails',['rs' => $rs]);
+    }
+
+
+    public function userDeilsUpdate(Request $rqst, $id) {
+        $name   = $rqst -> input('txtName');
+        $surname   = $rqst -> input('txtSurname');
+        $address   = $rqst -> input('txtAddress');
+        $phone   = $rqst -> input('txtPhone');
+        $email   = $rqst -> input('txtEmail');
+        
+        User::where('ID', $id)
+            -> update([
+                'name'          => $name,
+                'surname'          => $surname,
+                'address'          => $address,
+                'phone'          => $phone,
+                'email'         => $email
+               
+
+            ]);
+        return view('userDB.userDB');
+    }
+
+    public function changePassword() {
+    
+        return view('userDB.change-password');
+    }
+
+    public function updatePassword(Request $request)
+{
+        # Validation
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|confirmed',
+        ]);
+
+
+        #Match The Old Password
+        if(!Hash::check($request->old_password, auth()->user()->password)){
+            return back()->with("error", "Old Password Doesn't match!");
+        }
+
+
+        #Update the new Password
+        User::whereId(auth()->user()->id)->update([
+            'password' => Hash::make($request->new_password)
+        ]);
+
+        return back()->with("status", "Password changed successfully!");
+}
 
 }

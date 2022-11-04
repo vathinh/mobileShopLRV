@@ -1,63 +1,96 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ config('app.Name','MobileShop')}}</title>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="au theme template">
+    <meta name="author" content="Hau Nguyen">
+    <meta name="keywords" content="au theme template">
 
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="{{ asset('vendors/plugins/fontawesome-free/css/all.min.css') }}">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{ asset('vendors/dist/css/adminlte.min.css') }}">
+    <!-- Title Page-->
+    <title>Dashboard</title>
+
+    <!-- Fontfaces CSS-->
+    <link href="{{ asset('theme/css/font-face.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('theme/vendor/font-awesome-4.7/css/font-awesome.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('theme/vendor/font-awesome-5/css/fontawesome-all.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('theme/vendor/mdi-font/css/material-design-iconic-font.min.css') }}" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="{{ asset('theme/vendor/bootstrap-4.1/bootstrap.min.css') }}" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="{{ asset('theme/vendor/animsition/animsition.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('theme/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('theme/vendor/wow/animate.css" rel="stylesheet') }}" media="all">
+    <link href="{{ asset('theme/vendor/css-hamburgers/hamburgers.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('theme/vendor/slick/slick.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('theme/vendor/select2/select2.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('theme/vendor/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="{{ asset('theme/css/theme.css') }}" rel="stylesheet" media="all">
+
 </head>
-<body class="hold-transition sidebar-mini">
-<div class="wrapper">
 
-<!-- Top menu -->
-@include('theme.topMenu')
+<body class="animsition">
+    <div class="page-wrapper">
 
-<!-- Left menu -->
-@include('theme.leftMenu')
+        <!-- Left Menu here -->
+        @include('theme.left')
 
-<!-- Main content -->
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <!-- Top menu here -->
+            @include('theme.top')
 
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <!-- Content here -->
+                        @yield('content')
+                        <!-- End content -->
 
+                        @include('theme.footer')
+                        <!-- Footer -->
+                    </div>
+                </div>
+            </div>
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+            <!-- END PAGE CONTAINER-->
 
+        </div>
 
-    <section class="content">
-        @yield('content')
-    </section>
-  </div>
-  <!-- /.content-wrapper -->
+    </div>
 
+    <!-- Jquery JS-->
+    <script src="{{ asset('theme/vendor/jquery-3.2.1.min.js') }}"></script>
+    <!-- Bootstrap JS-->
+    <script src="{{ asset('theme/vendor/bootstrap-4.1/popper.min.js') }}"></script>
+    <script src="{{ asset('theme/vendor/bootstrap-4.1/bootstrap.min.js') }}"></script>
+    <!-- Vendor JS       -->
+    <script src="{{ asset('theme/vendor/slick/slick.min.js') }}">
+    </script>
+    <script src="{{ asset('theme/vendor/wow/wow.min.js') }}"></script>
+    <script src="{{ asset('theme/vendor/animsition/animsition.min.js') }}"></script>
+    <script src="{{ asset('theme/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js') }}">
+    </script>
+    <script src="{{ asset('theme/vendor/counter-up/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ asset('theme/vendor/counter-up/jquery.counterup.min.js') }}">
+    </script>
+    <script src="{{ asset('theme/vendor/circle-progress/circle-progress.min.js') }}"></script>
+    <script src="{{ asset('theme/vendor/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
+    <script src="{{ asset('theme/vendor/chartjs/Chart.bundle.min.js') }}"></script>
+    <script src="{{ asset('theme/vendor/select2/select2.min.js') }}">
+    </script>
 
+    <!-- Main JS-->
+    <script src="{{ asset('theme/js/main.js') }}"></script>
 
-<!-- Right Menu -->
-@include('theme.RightMenu')
-
-
-<!-- Footer -->
-@include('theme.footer')
-
-</div>
-<!-- ./wrapper -->
-
-<!-- REQUIRED SCRIPTS -->
-
-<!-- jQuery -->
-<script src="{{ asset('vendors/plugins/jquery/jquery.min.js') }}"></script>
-<!-- Bootstrap 4 -->
-<script src="{{ asset('vendors/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<!-- AdminLTE App -->
-<script src="{{ asset('vendors/dist/js/adminlte.min.js') }}"></script>
 </body>
+
 </html>
+<!-- end document-->
