@@ -34,13 +34,13 @@ class ProductController extends Controller
     }
     public function createNewProductProcess(Request $rqst)
     {
-        if (!$rqst->hasFile('txtPath')) {
-            // Nếu không thì in ra thông báo
-            return "Mời chọn file cần upload";
-        }
-        // Nếu có thì thục hiện lưu trữ file vào public/images
-        $image = $rqst->file('txtPath');
-        $path = $image->move('image', $image->getClientOriginalName());
+        $rqst->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:20048',
+        ]);
+        $imageName = time().'.'.$rqst->image->extension();
+        $rqst->image->move(public_path('image'), $imageName);
+        // $image = $rqst->file('txtPath');
+        // $path = $image->move('image/', $image->getClientOriginalName());
         $id         = $rqst->input('txtID');
         $c_id = $rqst->input('txtC_id');
         $name       = $rqst->input('txtName');
@@ -48,6 +48,8 @@ class ProductController extends Controller
         $storage    = $rqst->input('Storage');
         $color      = $rqst->input('Color');
         $qty        = $rqst->input('txtQty');
+        $folder     = "public/image/";
+        $path       = $folder.$imageName;
         product::create([
             'P_id'      => $id,
             'C_id'      => $c_id,

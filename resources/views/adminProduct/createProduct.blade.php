@@ -54,7 +54,7 @@
             </tr>
             <tr>
                 <td>Image</td>
-                <td><input type="file" name="txtPath"></td>
+                <td><input type="file" name="image"></td>
             </tr>
         </table>
         <input type="submit" value="Add New Product">
