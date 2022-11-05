@@ -30,7 +30,8 @@
                             <th style="text-align: center;">Function</th>
                             </tr>
                         </thead>
-                        <tbody $product as $product <tr>
+                        <tbody $product as $product>
+                        <tr>
                             <td style="text-align: center;"> {{ $product -> P_name }}</td>
                             <td style="text-align: center;"> {{ $product -> P_price }}</td>
                             <td style="text-align: center;"> {{ $product -> P_storage }}</td>
@@ -43,8 +44,38 @@
                         </tbody>
                     </table>
                 </div>
+                <hr>
+                <br><br>
+
                 <!-- /.card-body -->
             </div>
+            <div class="card-header">
+                        <h2>Feedback Review</h2>
+                    </div>
+            <div class="card" class="table-responsive" >
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Product ID</th>
+                                        <th>Name</th>
+                                        <th>Subject</th>
+                                        <th>Comment</th>
+                                        <th>FeedBack Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($feedback as $item)
+                                    <tr>
+                                        <td>{{ $item->P_id }}</td>
+                                        <td>{{ $item->guestName }}</td>
+                                        <td>{{ $item->subject }}</td>
+                                        <td>{{ $item->comment }}</td>
+                                        <td>{{ $item->created_at }}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                </div> 
             <!-- /.card -->
             <div class="card" style="margin:20px;">
                 <div class="card-header">Create New Feedback</div>

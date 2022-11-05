@@ -5,7 +5,7 @@
   <div class="card-header">Create New Feedback</div>
   <div class="card-body">
        
-      <form action="{{ url('/admin/product/feedback') }}" method="post">
+      <form action="{{ url('/admin/product/feedback/create') }}" method="post">
         {!! csrf_field() !!}
         <label>Product Id</label></br>
         <input type="text" name="P_id" id="P_id" class="form-control"></br>
