@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 USE App\Models\order;
+use App\Models\orderDetail;
 
 class OrderController extends Controller
 {
@@ -20,7 +21,10 @@ class OrderController extends Controller
     
 
     //3. UPDATE
-    public function updateOrder(){}
+    public function vieworderuser(){
+        $rs = orderDetail::all();
+        return view ('Oder.user.myorder') -> with (['rs' => $rs]);
+    }
     public function updateOrderProcess(Request $rqst, $id){}
 
     //4. DELETE

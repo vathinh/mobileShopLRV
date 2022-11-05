@@ -46,8 +46,8 @@
                             <td style="text-align: center;"> {{ $data -> O_delieveryAddress }}</td>
                             <td style="text-align: center;"> {{ $data -> O_method == '1' ? 'card':'cash' }}</td>
                             <td style="text-align: center;">
-                                <a class="btn btn-success" href="{{ url("/admin/product/updateProduct/{$data -> p_id}") }}">Update status</a>|
-                                <a class="btn btn-danger" href="{{ url("/admin/order/deleteorder/{$data -> O_id}") }}">cancel order</a>
+                                <a class="btn btn-success" href="#">Update status</a>|
+                                <a class="btn btn-danger" href="#">cancel order</a>
                             </td>
                         </tr>
                         @endforeach
