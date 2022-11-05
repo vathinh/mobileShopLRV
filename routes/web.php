@@ -117,6 +117,5 @@ Route::get("/user/productDetails/{id}", [ProductController::class, 'ushowProduct
 
 
 Route::resource("/product/feedback", FeedBackController::class);
-
  
 

@@ -81,18 +81,18 @@
                 <div class="card-header">Create New Feedback</div>
                 <div class="card-body">
                     
-                    <form action="{{ url('/admin/product/feedback') }}" method="post">
+                    <form action="{{ url('/product/feedback/') }}" method="post">
                         {!! csrf_field() !!}
                         <label>Product Id</label></br>
-                        <input type="text" name="P_id" id="P_id" value="{{ $product -> P_id }}" disabled class="form-control"></br>
+                        <input type="text" name="P_id" id="P_id" value="{{ $product -> P_id }}" readonly class="form-control"></br>
                         <label>Name</label></br>
-                        <input type="text" name="guestName" id="name" class="form-control"></br>
+                        <input type="text" name="guestName" id="name" class="form-control" required></br>
                         <label>Email</label></br>
-                        <input type="text" name="guestEmail" id="email" class="form-control"></br>
+                        <input type="text" name="guestEmail" id="email" class="form-control" required></br>
                         <label>Subject</label></br>
-                        <input type="text" name="subject" id="subject" class="form-control"></br>
+                        <input type="text" name="subject" id="subject" class="form-control" required></br>
                         <label>Comment</label></br>
-                        <input type="text" name="comment" id="comment" class="form-control"></br>
+                        <input type="text" name="comment" id="comment" class="form-control" required></br>
                         <input type="submit" value="Save" class="btn btn-success"></br>
                     </form>
                     

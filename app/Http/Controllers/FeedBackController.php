@@ -41,7 +41,7 @@ class FeedBackController extends Controller
         //
         $input = $request->all();
         Feedback::create($input);
-        return redirect('/admin/product/feedback')->with('flash_message','Feedback success send!');
+        return redirect('/product/feedback/create')->with('flash_message','Feedback success send!');
     }
 
     /**

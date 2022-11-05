@@ -213,9 +213,6 @@ class ProductController extends Controller
         $feedback = Feedback::all()->where('P_id', $id);
         return view ('productDetails') -> with (['product' => $product]) ->with ('feedback',$feedback);
     }
-
-
-
-
+    
 
 }
