@@ -105,6 +105,8 @@ Route::middleware(['auth','user-role:admin'])->group(function()
 
     // ORDER MANAGEMENT
     Route::get("/admin/order/list",[OrderController::class, 'showOrders']) ->name("showOrders");
+
+    Route::get('/admin/order/deleteorder/{id}',[OrderController::class,'destroyOrder'])->name('destroyOrder');
 });
 
 

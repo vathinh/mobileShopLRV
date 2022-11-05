@@ -40,14 +40,14 @@
                     @foreach($rs as $data)
                         <tr>
                             <td style="text-align: center;"> {{ $data -> O_id }}</td>
-                            <td style="text-align: center;"> {{ $data -> id }}</td>
-                            <td style="text-align: center;"> {{ $data -> create_at }}</td>
-                            <td style="text-align: center;"> {{ $data -> O_status }}</td>
+                            <td style="text-align: center;"> {{ $data -> name }}</td>
+                            <td style="text-align: center;"> {{ $data -> created_at }}</td>
+                            <td style="text-align: center;"> {{ $data -> O_status == '1' ? 'shipping':'pending' }}</td>
                             <td style="text-align: center;"> {{ $data -> O_delieveryAddress }}</td>
-                            <td style="text-align: center;"> {{ $data -> O_method }}</td>
+                            <td style="text-align: center;"> {{ $data -> O_method == '1' ? 'card':'cash' }}</td>
                             <td style="text-align: center;">
-                                <a href="{{ url("/admin/product/updateProduct/{$data -> p_id}") }}">Update</a>|
-                                <a href="{{ url("/admin/product/deleteProduct/{$data -> p_id}") }}">Delete</a>
+                                <a class="btn btn-success" href="{{ url("/admin/product/updateProduct/{$data -> p_id}") }}">Update status</a>|
+                                <a class="btn btn-danger" href="{{ url("/admin/order/deleteorder/{$data -> O_id}") }}">cancel order</a>
                             </td>
                         </tr>
                         @endforeach
