@@ -19,7 +19,7 @@
                             <div class="caption">
                                 <h4><a href="{{ url("/admin/product/a_productDetails/{$product -> P_id}") }}">{{ $product->P_name }}</a></h4>
                                 <p><strong>Price: </strong> {{ $product->P_price }}$</p>
-                                <p><a href="/admin/product/updateProduct/{$product -> P_id}">Update</a></p>
+                                <p class="btn-holder"><a href="{{ route('add.to.cart', $product->P_id) }}" class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p>
                             </div>
                         </div>
                     </div>
