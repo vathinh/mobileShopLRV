@@ -49,7 +49,7 @@ Route::middleware(['auth','user-role:user'])->group(function()
 
     // Create orderDetails
     Route::post("/user/createOrderProc/{O_id}",[ProductController::class, 'createOrderProc']) ->name("createOrderProc");
-    Route::get("/user/vieworder/{O_id}",[OrderController::class, 'vieworder']) ->name("vieworder");
+    Route::get("/user/vieworder/{O_id}",[OrderController::class, 'vieworderuser']) ->name("vieworderuser");
 
 
 
@@ -105,13 +105,8 @@ Route::middleware(['auth','user-role:admin'])->group(function()
 
     // ORDER MANAGEMENT
     Route::get("/admin/order/list",[OrderController::class, 'showOrders']) ->name("showOrders");
-    // Oder
-    Route::get("/admin/oder/viewOD", [OderController::class, 'oderlist']) -> name("oderlist");
 
-    // Category Routes
-    Route::get('category',[App\Http\Controllers\Admin\CategoryController::class,'cindex']);
-    Route::get('category/create',[App\Http\Controllers\Admin\CategoryController::class,'create']);
-
+    Route::get('/admin/order/deleteorder/{id}',[OrderController::class,'destroyOrder'])->name('destroyOrder');
 });
 
 

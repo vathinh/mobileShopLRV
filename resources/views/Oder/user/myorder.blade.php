@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>{{ $invoice->name }}</title>
+        <title>{{ $rs->name }}</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
         <style type="text/css" media="screen">
@@ -111,8 +111,8 @@
 
     <body>
         {{-- Header --}}
-        @if($invoice->logo)
-            <img src="{{ $invoice->getLogo() }}" alt="logo" height="100">
+        @if($rs->logo)
+            <img src="{{ $rs->getLogo() }}" alt="logo" height="100">
         @endif
 
         <table class="table mt-5">
@@ -120,17 +120,17 @@
                 <tr>
                     <td class="border-0 pl-0" width="70%">
                         <h4 class="text-uppercase">
-                            <strong>{{ $invoice->name }}</strong>
+                            <strong>{{ $rs->name }}</strong>
                         </h4>
                     </td>
                     <td class="border-0 pl-0">
-                        @if($invoice->status)
+                        @if($rs->status)
                             <h4 class="text-uppercase cool-gray">
-                                <strong>{{ $invoice->status }}</strong>
+                                <strong>{{ $rs->status }}</strong>
                             </h4>
                         @endif
-                        <p>{{ __('invoices::invoice.serial') }} <strong>{{ $invoice->getSerialNumber() }}</strong></p>
-                        <p>{{ __('invoices::invoice.date') }}: <strong>{{ $invoice->getDate() }}</strong></p>
+                        <p>{{ __('invoices::invoice.serial') }} <strong>{{ $rs->getSerialNumber() }}</strong></p>
+                        <p>{{ __('invoices::invoice.date') }}: <strong>{{ $rs->getDate() }}</strong></p>
                     </td>
                 </tr>
             </tbody>
@@ -152,37 +152,30 @@
             <tbody>
                 <tr>
                     <td class="px-0">
-                        @if($invoice->seller->name)
+                        @if($rs->seller->name)
                             <p class="seller-name">
-                                <strong>{{ $invoice->seller->name }}</strong>
+                                <strong>{{ $rs->seller->name }}</strong>
                             </p>
                         @endif
 
-                        @if($invoice->seller->address)
+                        @if($rs->seller->address)
                             <p class="seller-address">
-                                {{ __('invoices::invoice.address') }}: {{ $invoice->seller->address }}
+                                {{ __('invoices::invoice.address') }}: {{ $rs->seller->address }}
                             </p>
                         @endif
 
-                        @if($invoice->seller->code)
+                        @if($rs->seller->code)
                             <p class="seller-code">
-                                {{ __('invoices::invoice.code') }}: {{ $invoice->seller->code }}
+                                {{ __('invoices::invoice.code') }}: {{ $rs->seller->code }}
                             </p>
                         @endif
-
-                        @if($invoice->seller->vat)
-                            <p class="seller-vat">
-                                {{ __('invoices::invoice.vat') }}: {{ $invoice->seller->vat }}
-                            </p>
-                        @endif
-
-                        @if($invoice->seller->phone)
+                        @if($rs->seller->phone)
                             <p class="seller-phone">
-                                {{ __('invoices::invoice.phone') }}: {{ $invoice->seller->phone }}
+                                {{ __('invoices::invoice.phone') }}: {{ $rs->seller->phone }}
                             </p>
                         @endif
 
-                        @foreach($invoice->seller->custom_fields as $key => $value)
+                        @foreach($rs->seller->custom_fields as $key => $value)
                             <p class="seller-custom-field">
                                 {{ ucfirst($key) }}: {{ $value }}
                             </p>
