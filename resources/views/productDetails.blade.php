@@ -15,7 +15,7 @@
                 
                     <div class="col-xs-18 col-sm-6 col-md-3">
                         <div class="thumbnail">
-                            <div><img src="{{ $product ->P_imgPath }}" alt=""></div>
+                            <div>image: <img src="{{ $product ->P_imgPath }}" alt=""></div>
                             <div class="caption">
                                 <h4><a href="{{ url("/user/productDetails/{$product -> P_id}") }}">{{ $product->P_name }}</a></h4>
                                 <p><strong>Price: </strong> {{ $product->P_price }}$</p>
