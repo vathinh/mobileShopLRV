@@ -21,10 +21,10 @@ class ProductController extends Controller
         return view('adminProduct.readProduct')->with(['rs' => $rs]);
     }
 
-    public function showProducts1()
+    public function admin_productDetails($id)
     {
-        $rs = product::all();
-        return view('adminProduct.readProduct')->with(['rs' => $rs]);
+        $rs = product::where('P_id', $id)->first();
+        return view('adminProduct.productDetails', ['rs' => $rs]);
     }
 
     //2. CREATE
@@ -105,6 +105,16 @@ class ProductController extends Controller
     {
         $products = Product::all();
         return view('newWelcome', compact('products'));
+    }
+    public function productDetails()
+    {
+        $products = Product::all();
+        return view('productDetails', compact('products'));
+    }
+    public function ushowProducts($id)
+    {
+        $product = product::where('P_id', $id)->first();
+        return view('productDetails')->with(['product' => $product]);
     }
 
 
@@ -231,9 +241,5 @@ class ProductController extends Controller
 
         return redirect()->action('ProductController@showProducts');
     }
-    public function ushowProducts($id)
-    {
-        $product = product::where('P_id', $id)->first();
-        return view('productDetails')->with(['product' => $product]);
-    }
+    
 }
