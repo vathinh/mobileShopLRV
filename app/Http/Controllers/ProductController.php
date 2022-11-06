@@ -23,8 +23,8 @@ class ProductController extends Controller
 
     public function admin_productDetails($id)
     {
-        $rs = product::where('P_id', $id)->first();
-        return view('adminProduct.productDetails', ['rs' => $rs]);
+        $product = product::where('P_id', $id)->first();
+        return view('adminProduct.productDetails', ['product' => $product]);
     }
 
     //2. CREATE

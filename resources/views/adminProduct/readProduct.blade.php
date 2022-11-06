@@ -50,7 +50,7 @@
                             <td style="text-align: center;"> {{ $product -> C_name }}</td>
                             <td style="text-align: center;">
                                 <a href="{{ url("/admin/product/updateProduct/{$product -> P_id}") }}">Update</a>
-                                <!-- <a href="{{ url("/admin/product/deleteProduct/{$data -> P_id}") }}">Delete</a> -->
+                                
                             </td>
                         </tr>
                         @endforeach
