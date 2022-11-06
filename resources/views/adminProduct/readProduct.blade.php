@@ -39,17 +39,17 @@
                         </tr>
                   </thead>
                   <tbody
-                    @foreach($rs as $data)
+                    @foreach($rs as $product)
                         <tr>
-                            <td style="text-align: center;"> {{ $data -> P_id }}</td>
-                            <td style="text-align: center;"><a href="{{ url("/user/productDetails/{$data -> P_id}") }}">{{ $data -> P_name }}</a></td>
-                            <td style="text-align: center;"> {{ $data -> P_price }}</td>
-                            <td style="text-align: center;"> {{ $data -> P_storage }}</td>
-                            <td style="text-align: center;"> {{ $data -> P_color }}</td>
-                            <td style="text-align: center;"> {{ $data -> P_quantity }}</td>
-                            <td style="text-align: center;"> {{ $data -> C_name }}</td>
+                            <td style="text-align: center;"> {{ $product -> P_id }}</td>
+                            <td style="text-align: center;"><a href="{{ url("/admin/product/a_productDetails/{$product -> P_id}") }}">{{ $product -> P_name }}</a></td>
+                            <td style="text-align: center;"> {{ $product -> P_price }}</td>
+                            <td style="text-align: center;"> {{ $product -> P_storage }}</td>
+                            <td style="text-align: center;"> {{ $product -> P_color }}</td>
+                            <td style="text-align: center;"> {{ $product -> P_quantity }}</td>
+                            <td style="text-align: center;"> {{ $product -> C_name }}</td>
                             <td style="text-align: center;">
-                                <a href="{{ url("/admin/product/updateProduct/{$data -> P_id}") }}">Update</a>
+                                <a href="{{ url("/admin/product/updateProduct/{$product -> P_id}") }}">Update</a>
                                 <!-- <a href="{{ url("/admin/product/deleteProduct/{$data -> P_id}") }}">Delete</a> -->
                             </td>
                         </tr>
