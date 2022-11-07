@@ -13,7 +13,7 @@
     @foreach($products as $product)
         <div class="col-xs-18 col-sm-6 col-md-3">
             <div class="card text-black">
-            <img src="{{ $product->P_imgPath }}"
+            <img src="{{ asset('/image/'.$product-> P_imgPath) }}"
                 class="card-img-top" alt="Apple Computer" />
             <div class="card-body">
                 <div class="text-center">

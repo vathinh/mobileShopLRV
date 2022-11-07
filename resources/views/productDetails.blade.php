@@ -10,52 +10,19 @@
 
     @yield('content')
     <div class="section__content section__content">
-        <div class="container-fluid">
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body table-responsive p-0">
-                    <table class="table table-hover text-nowrap">
-                        <thead>
-                            <th style="text-align: center;">Name</th>
-                            <th style="text-align: center;">Price</th>
-                            <th style="text-align: center;">Storage</th>
-                            <th style="text-align: center;">Color</th>
-
-                            <th style="text-align: center;">Function</th>
-                            </tr>
-                        </thead>
-                        <tbody $product as $product>
-                        <tr>
-                            <td style="text-align: center;"> {{ $product -> P_name }}</td>
-                            <td style="text-align: center;"> {{ $product -> P_price }}</td>
-                            <td style="text-align: center;"> {{ $product -> P_storage }}</td>
-                            <td style="text-align: center;"> {{ $product -> P_color }}</td>
-
-                            <td style="text-align: center;">
-                                <p class="btn-holder"><a href="{{ route('add.to.cart', $product->P_id) }}" class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p>
-                            </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <hr>
-                <br><br>
-
-            `<!-- Open Content -->
+            <!-- Open Content -->
+            <!-- /.card-header -->
             <section class="bg-light">
                 <div class="container pb-5">
                     <div class="row">
                         <div class="col-lg-5 mt-5">
                             <div class="card mb-3">
-                                <img class="card-img img-fluid" src="{{ $product->P_imgPath }}" alt="Card image cap" id="product-detail" height="100">
+                                <img src=" {{ asset('/image/'.$product-> P_imgPath) }} " alt="" style="width:550px;height: 550px;">
                             </div>
                             <div class="row">
                                 <!--Start Controls-->
                                 <div class="col-1 align-self-center">
-                                    <a href="#multi-item-example" role="button" data-bs-slide="prev">
-                                        <i class="text-dark fas fa-chevron-left"></i>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
+
                                 </div>
                                 <!--End Controls-->
                                 <!--Start Carousel Wrapper-->
@@ -66,65 +33,17 @@
                                         <!--First slide-->
                                         <div class="carousel-item active">
                                             <div class="row">
-                                                <div class="col-4">
-                                                    <a href="#">
-                                                        <img class="card-img img-fluid" src="{{ $product->P_imgPath }}" alt="Product Image 1">
-                                                    </a>
-                                                </div>
-                                                <div class="col-4">
-                                                    <a href="#">
-                                                        <img class="card-img img-fluid" src="{{ $product->P_imgPath }}" alt="Product Image 2">
-                                                    </a>
-                                                </div>
-                                                <div class="col-4">
-                                                    <a href="#">
-                                                        <img class="card-img img-fluid" src="{{ $product->P_imgPath }}" alt="Product Image 3">
-                                                    </a>
-                                                </div>
+      
                                             </div>
                                         </div>
                                         <!--/.First slide-->
 
-                                        <!--Second slide-->
-                                        <div class="carousel-item">
-                                            <div class="row">
-                                                <div class="col-4">
-                                                    <a href="#">
-                                                        <img class="card-img img-fluid" src="assets/img/product_single_04.jpg" alt="Product Image 4">
-                                                    </a>
-                                                </div>
-                                                <div class="col-4">
-                                                    <a href="#">
-                                                        <img class="card-img img-fluid" src="assets/img/product_single_05.jpg" alt="Product Image 5">
-                                                    </a>
-                                                </div>
-                                                <div class="col-4">
-                                                    <a href="#">
-                                                        <img class="card-img img-fluid" src="assets/img/product_single_06.jpg" alt="Product Image 6">
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
                                         <!--/.Second slide-->
 
                                         <!--Third slide-->
                                         <div class="carousel-item">
                                             <div class="row">
-                                                <div class="col-4">
-                                                    <a href="#">
-                                                        <img class="card-img img-fluid" src="assets/img/product_single_07.jpg" alt="Product Image 7">
-                                                    </a>
-                                                </div>
-                                                <div class="col-4">
-                                                    <a href="#">
-                                                        <img class="card-img img-fluid" src="assets/img/product_single_08.jpg" alt="Product Image 8">
-                                                    </a>
-                                                </div>
-                                                <div class="col-4">
-                                                    <a href="#">
-                                                        <img class="card-img img-fluid" src="assets/img/product_single_09.jpg" alt="Product Image 9">
-                                                    </a>
-                                                </div>
+ 
                                             </div>
                                         </div>
                                         <!--/.Third slide-->
@@ -134,10 +53,7 @@
                                 <!--End Carousel Wrapper-->
                                 <!--Start Controls-->
                                 <div class="col-1 align-self-center">
-                                    <a href="#multi-item-example" role="button" data-bs-slide="next">
-                                        <i class="text-dark fas fa-chevron-right"></i>
-                                        <span class="sr-only">Next</span>
-                                    </a>
+  
                                 </div>
                                 <!--End Controls-->
                             </div>
