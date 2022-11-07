@@ -109,11 +109,6 @@ class ProductController extends Controller
         $products = Product::all();
         return view('productDetails', compact('products'));
     }
-    public function ushowProducts($id)
-    {
-        $product = product::where('P_id', $id)->first();
-        return view('productDetails')->with(['product' => $product]);
-    }
 
 
     /**
