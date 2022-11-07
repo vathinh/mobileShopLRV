@@ -2,50 +2,29 @@
 @extends('userLayout.app')
 
 @section('content')
-<button><a href="{{ url("/user/home") }}">Back to dashboard</a></button>
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-tools">
-                        <div class="input-group input-group-sm" style="width: 150px;">
-                            <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-                            <div class="input-group-append">
-                                <button type="submit" class="btn btn-default">
-                                    <i class="fas fa-search"></i>
-                                </button>
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div> 
+    @endif
+
+    @yield('content')
+    <div class="section__content section__content">
+        <div class="container-fluid">
+            <div class="row" $rs as $product>
+                
+                    <div class="col-xs-18 col-sm-6 col-md-3">
+                        <div class="thumbnail">
+                            <div>image: <img src="{{ $product ->P_imgPath }}" alt=""></div>
+                            <div class="caption">
+                                <h4><a href="{{ url("/user/productDetails/{$product -> P_id}") }}">{{ $product->P_name }}</a></h4>
+                                <p><strong>Price: </strong> {{ $product->P_price }}$</p>
+                                <p class="btn-holder"><a href="{{ route('add.to.cart', $product->P_id) }}" class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body table-responsive p-0">
-                    <table class="table table-hover text-nowrap">
-                        <thead>
-                            <th style="text-align: center;">Name</th>
-                            <th style="text-align: center;">Price</th>
-                            <th style="text-align: center;">Storage</th>
-                            <th style="text-align: center;">Color</th>
-
-                            <th style="text-align: center;">Function</th>
-                            </tr>
-                        </thead>
-                        <tbody $product as $product <tr>
-                            <td style="text-align: center;"> {{ $product -> P_name }}</td>
-                            <td style="text-align: center;"> {{ $product -> P_price }}</td>
-                            <td style="text-align: center;"> {{ $product -> P_storage }}</td>
-                            <td style="text-align: center;"> {{ $product -> P_color }}</td>
-
-                            <td style="text-align: center;">
-                                <p class="btn-holder"><a href="{{ route('add.to.cart', $product->P_id) }}" class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p>
-                            </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <!-- /.card-body -->
+                
             </div>
-            <!-- /.card -->
         </div>
     </div>
 @endsection

@@ -94,6 +94,8 @@ Route::middleware(['auth','user-role:admin'])->group(function()
     // Update Product
     Route::get("/admin/product/updateProduct/{id}", [ProductController::class, 'updateProduct']) ->name("updateProduct");
     Route::post("/admin/product/updateProductProcess/{id}", [ProductController::class, 'updateProductProcess']) ->name("updateProductProcess");
+    // ProductDetails
+    Route::get("/admin/product/a_productDetails/{id}", [ProductController::class, 'admin_productDetails']) ->name("admin_productDetails");
 
     // Delete Product
     Route::get("/admin/product/deleteProduct/{id}", [ProductController::class, 'deleteProduct']) ->name("deleteProduct");
@@ -113,6 +115,7 @@ Route::middleware(['auth','user-role:admin'])->group(function()
 Route::get('/', [ProductController::class, 'index']);  
 
 Route::get("/user/productDetails/{id}", [ProductController::class, 'ushowProducts']) ->name("ushowProducts");
+
 
  
 
