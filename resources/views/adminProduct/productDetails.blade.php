@@ -32,7 +32,7 @@
                             <h3>Color: {{ $product -> P_color }}</h3>
                             <h3>Quantity: {{ $product -> P_quantity }}</h3>
                             <h3>Action: <a href="{{ url("/admin/product/updateProduct/{$product -> P_id}") }}">Update</a></h3>
-                            <p>Image: <img src="{{ $product -> P_imgPath }}" alt=""></p>
+                            <p>Image: <img src=" {{ asset('/image/'.$product-> P_imgPath) }} " alt="" style="width:200px;height: 200px;"></p>
                 </div>
               <!-- /.card-body -->
             </div>

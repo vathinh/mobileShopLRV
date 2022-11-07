@@ -48,8 +48,6 @@ class ProductController extends Controller
         $storage    = $rqst->input('Storage');
         $color      = $rqst->input('Color');
         $qty        = $rqst->input('txtQty');
-        $folder     = "public/image/";
-        $path       = $folder.$imageName;
         product::create([
             'P_id'      => $id,
             'C_id'      => $c_id,
@@ -58,7 +56,7 @@ class ProductController extends Controller
             'P_storage' => $storage,
             'P_color'   => $color,
             'P_quantity' => $qty,
-            'P_imgPath' => $path
+            'P_imgPath' => $imageName
         ]);
         return redirect()->action('ProductController@showProducts');
     }
