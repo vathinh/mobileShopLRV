@@ -4,7 +4,7 @@
     <section class="content">
     <button><a href="{{ url("admin/home") }}">Back to dashboard</a></button>
     <h1>List of User</h1>
-    <h3><a href="{{ url('/admin/product/createproduct') }}">Create New Category</a></h3>
+    <h3><a href="{{ url('/admin/product/createCategory') }}">Create New Category</a></h3>
     <div class="row">
           <div class="col-12">
             <div class="card">

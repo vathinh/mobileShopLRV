@@ -16,8 +16,8 @@ class ProductController extends Controller
 
     public function showProducts()
     {
-        $rs = product::join('category', 'category.C_id', '=', 'products.C_id')
-            ->get(['products.*', 'category.C_name']);
+        $rs = product::join('categories', 'categories.C_id', '=', 'products.C_id')
+            ->get(['products.*', 'categories.C_name']);
         return view('adminProduct.readProduct')->with(['rs' => $rs]);
     }
 
@@ -36,10 +36,12 @@ class ProductController extends Controller
     }
 
     //2. CREATE
-    public function createNewProduct()
+    public function createNewCategory()
     {
-        return view('adminProduct.createProduct');
+        return view('adminCategory.create');
     }
+
+    
     public function createNewProductProcess(Request $rqst)
     {
         $rqst->validate([
@@ -67,6 +69,22 @@ class ProductController extends Controller
             'P_imgPath' => $imageName
         ]);
         return redirect()->action('ProductController@showProducts');
+    }
+    public function createCategory()
+    {
+        return view('adminProduct.createProduct');
+    }
+
+    public function createNewCategoryProcess(Request $rqst) {
+        $c_id         = $rqst->input('txtC_id');
+        $c_name = $rqst->input('txtC_name');
+        $c_desc       = $rqst->input('txtC_desc');
+        category::create([
+            'C_id'      => $c_id,
+            'C_name'      => $c_name,
+            'C_desc'    => $c_desc,
+        ]);
+        return redirect()->action('ProductController@showCategory');
     }
 
     //3. UPDATE

@@ -7,7 +7,7 @@
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form action="{{ url("/admin/product/createproductProcess") }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ url("/admin/product/createCategoryProcess") }}" method="POST" enctype="multipart/form-data">
         @csrf
         <table class="table table-hover text-nowrap" border="1">
             <tr>
