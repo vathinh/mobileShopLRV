@@ -48,8 +48,6 @@ class ProductController extends Controller
         $storage    = $rqst->input('Storage');
         $color      = $rqst->input('Color');
         $qty        = $rqst->input('txtQty');
-        $folder     = "public/image/";
-        $path       = $folder.$imageName;
         product::create([
             'P_id'      => $id,
             'C_id'      => $c_id,
@@ -58,7 +56,7 @@ class ProductController extends Controller
             'P_storage' => $storage,
             'P_color'   => $color,
             'P_quantity' => $qty,
-            'P_imgPath' => $path
+            'P_imgPath' => $imageName
         ]);
         return redirect()->action('ProductController@showProducts');
     }
@@ -111,7 +109,11 @@ class ProductController extends Controller
         $products = Product::all();
         return view('productDetails', compact('products'));
     }
-
+    public function ushowProducts($id)
+    {
+        $product = product::where('P_id', $id)->first();
+        return view('productDetails')->with(['product' => $product]);
+    }
 
 
     /**
@@ -183,59 +185,43 @@ class ProductController extends Controller
         }
     }
 
-    public function checkout($id)
-    {
-
-        $O_delieveryAddress = Auth::user()->address;
-
+    public function checkout($id) {       
         order::create([
             'id' => $id
-
+            
         ]);
         $od = DB::table('orders')->latest('created_at')->first();
-        return view('checkout')->with(['od' => $od]);
+        return view('checkout')-> with (['od' => $od]);
     }
 
 
-    //2. CREATE Orders
-
-    public function createOrderProc(Request $rqst, $O_id)
-    {
-
-        $O_delieveryAddress = $rqst->input('txtAddress');
-
-        $P_id       =  $rqst->input('txtProdcutId', []);
-        $QD_quantity = $rqst->input('txtProductQuantity', []);
+    //2. CREATE OrdersDetails
+   
+    public function createOrderProc(Request $rqst, $O_id){
+       
+        $O_delieveryAddress = $rqst -> input('txtAddress');
+        
+        
 
         order::where('O_id', $O_id)
-            ->update([
-                'O_delieveryAddress'    =>  $O_delieveryAddress
-
+        -> update([
+            'O_delieveryAddress'    =>  $O_delieveryAddress
+            
+        ]);
+        
+       
+   
+        $cart = session()->get('cart', []);
+        
+        foreach(session('cart') as $id => $details) {
+            orderDetail::create([
+                'P_id'          =>$details['P_id'],
+                'O_id'          => $O_id,
+                'QD_quantity'    => $details['quantity']
+                
             ]);
-        $O_id       = $rqst->input('txtOId', []);
-
-        foreach ($rqst->session('cart') as $id => $details) {
-            $saveData = [
-                'P_id' => $rqst->txtProdcutId[$id],
-                'QD_quantity' => $rqst->txtProductQuantity[$id],
-                'O_id' => $rqst->txtOId[$id],
-            ];
-            DB::table('orderDetail')->insert($rqst->details);
         }
-
-        // orderDetail::insert($data);
-
-        // $O_id       = $rqst -> input('txtOId');
-        // $ODs = [$P_id,$O_id,$QD_quantity];
-        // foreach($ODs as $OD){
-        //     orderDetail::create([
-        //     'P_id'          => $P_id,
-        //     'O_id'          => $O_id,
-        //     'QD_quantity'    => $QD_quantity
-        //     ]);
-        // }
-
-        return redirect()->action('ProductController@showProducts');
+        return redirect() -> action('ProductController@index');
     }
 
     public function ushowProducts($id){
@@ -246,3 +232,4 @@ class ProductController extends Controller
 
 
 }
+   

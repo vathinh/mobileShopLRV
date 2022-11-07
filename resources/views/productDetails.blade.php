@@ -1,12 +1,11 @@
-
 @extends('userLayout.app')
 
 @section('content')
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div> 
-    @endif
+@if(session('success'))
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
+@endif
 
     @yield('content')
     <div class="section__content section__content">
@@ -189,4 +188,5 @@
             <!-- /.card -->
         </div>
     </div>
+</div>
 @endsection
