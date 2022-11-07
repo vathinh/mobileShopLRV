@@ -21,6 +21,14 @@ class ProductController extends Controller
         return view('adminProduct.readProduct')->with(['rs' => $rs]);
     }
 
+    public function showCategory()
+    {
+        $category = category::all();
+        return view('adminCategory.readCategory')->with(['category' => $category]);
+    }
+
+
+
     public function admin_productDetails($id)
     {
         $product = product::where('P_id', $id)->first();

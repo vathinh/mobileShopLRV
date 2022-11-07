@@ -106,6 +106,8 @@ Route::middleware(['auth','user-role:admin'])->group(function()
 
     // ORDER MANAGEMENT
 
+    // CATEGORY
+    Route::get("/admin/product/readCategory",[ProductController::class, 'showCategory']) ->name("showCategory");
 });
 
 
