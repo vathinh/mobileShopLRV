@@ -41,7 +41,7 @@
                             <td style="text-align: center;"> {{ $cat-> C_name }}</td>
                             <td style="text-align: center;"> {{ $cat -> C_desc }}</td>
                             <td style="text-align: center;">
-                                Update 
+                              <a href="/admin/category/update/{$cat -> C_id}">Update</a>    
                             </td>
                         </tr>
                         @endforeach

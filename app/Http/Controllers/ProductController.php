@@ -21,14 +21,6 @@ class ProductController extends Controller
         return view('adminProduct.readProduct')->with(['rs' => $rs]);
     }
 
-    public function showCategory()
-    {
-        $category = category::all();
-        return view('adminCategory.readCategory')->with(['category' => $category]);
-    }
-
-
-
     public function admin_productDetails($id)
     {
         $product = product::where('P_id', $id)->first();
@@ -36,9 +28,9 @@ class ProductController extends Controller
     }
 
     //2. CREATE
-    public function createNewCategory()
+    public function createNewProduct()
     {
-        return view('adminCategory.create');
+        return view('adminProduct.createProduct');
     }
 
     
@@ -70,22 +62,9 @@ class ProductController extends Controller
         ]);
         return redirect()->action('ProductController@showProducts');
     }
-    public function createCategory()
-    {
-        return view('adminProduct.createProduct');
-    }
+    
 
-    public function createNewCategoryProcess(Request $rqst) {
-        $c_id         = $rqst->input('txtC_id');
-        $c_name = $rqst->input('txtC_name');
-        $c_desc       = $rqst->input('txtC_desc');
-        category::create([
-            'C_id'      => $c_id,
-            'C_name'      => $c_name,
-            'C_desc'    => $c_desc,
-        ]);
-        return redirect()->action('ProductController@showCategory');
-    }
+
 
     //3. UPDATE
     public function updateProduct($id)

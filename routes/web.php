@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
@@ -108,12 +109,15 @@ Route::middleware(['auth','user-role:admin'])->group(function()
 
     // CATEGORY
     // Read Category
-    Route::get("/admin/product/readCategory",[ProductController::class, 'showCategory']) ->name("showCategory");
+    Route::get("/admin/product/readCategory",[CategoryController::class, 'showCategory']) ->name("showCategory");
 
     // Create Product
-    Route::get("/admin/product/createCategory", [ProductController::class, 'createNewCategory']) ->name("createNewCategory");
-    Route::post("/admin/product/createCategoryProcess", [ProductController::class, 'createNewCategoryProcess']) ->name("createNewCategoryProcess");
-
+    Route::get("/admin/product/createCategory", [CategoryController::class, 'createCategory']) ->name("createCategory");
+    Route::post("/admin/product/createCategoryProcess", [CategoryController::class, 'createNewCategoryProcess']) ->name("createNewCategoryProcess");
+    
+    // Update Category
+    Route::get("/admin/category/update/{id}", [CategoryController::class, 'updateCategory']) ->name("updateCategory");
+    Route::post("/admin/category/updateProcess/{id}", [CategoryController::class, 'updateCategoryProcess']) ->name("updateCategoryProcess");
 });
 
 
