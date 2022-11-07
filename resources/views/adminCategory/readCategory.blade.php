@@ -38,7 +38,7 @@
                     @foreach($category as $cat)
                         <tr>
                             <td style="text-align: center;"> {{ $cat -> C_id }}</td>
-                            <td style="text-align: center;"> {{ $cat-> C_name }}</td>
+                            <td style="text-align: center;"> {{ $cat -> C_name }}</td>
                             <td style="text-align: center;"> {{ $cat -> C_desc }}</td>
                             <td style="text-align: center;">
                               <a href="/admin/category/update/{$cat -> C_id}">Update</a>    
