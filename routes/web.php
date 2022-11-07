@@ -107,7 +107,13 @@ Route::middleware(['auth','user-role:admin'])->group(function()
     // ORDER MANAGEMENT
 
     // CATEGORY
+    // Read Category
     Route::get("/admin/product/readCategory",[ProductController::class, 'showCategory']) ->name("showCategory");
+
+    // Create Product
+    Route::get("/admin/product/createCategory", [ProductController::class, 'createNewCategory']) ->name("createNewCategory");
+    Route::post("/admin/product/createCategoryProcess", [ProductController::class, 'createNewCategoryProcess']) ->name("createNewCategoryProcess");
+
 });
 
 
