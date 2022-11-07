@@ -31,9 +31,10 @@
                             <th style="text-align: center;">User ID</th>
                             <th style="text-align: center;">Order Date</th>
                             <th style="text-align: center;">Order Status</th>
+                            <th style="text-align: center;">Function</th>
                             <th style="text-align: center;">Order DelieveryAddress</th>
                             <th style="text-align: center;">Order Method</th>
-                            <th style="text-align: center;">Function</th>
+                            
                         </tr>
                   </thead>
                   <tbody
@@ -42,13 +43,15 @@
                             <td style="text-align: center;"> {{ $data -> O_id }}</td>
                             <td style="text-align: center;"> {{ $data -> name }}</td>
                             <td style="text-align: center;"> {{ $data -> created_at }}</td>
-                            <td style="text-align: center;"> {{ $data -> O_status == '1' ? 'shipping':'pending' }}</td>
+                            <td style="text-align: center;"> {{  $data -> O_status == 0 ? 'Pending' : ($data -> O_status == 1 ? 'Shipping' : 'Cancel') }}  
+                            </td>
+                            <td style="text-align: center;">
+                              <a class="btn btn-success" href="{{ url("/admin/order/acceptstatus/{$data -> O_id}") }}">accept status</a>|
+                              <a class="btn btn-danger" href="{{ url("/admin/order/declinestatus/{$data -> O_id}") }}">decline order</a>
+                          </td>
                             <td style="text-align: center;"> {{ $data -> O_delieveryAddress }}</td>
                             <td style="text-align: center;"> {{ $data -> O_method == '1' ? 'card':'cash' }}</td>
-                            <td style="text-align: center;">
-                                <a class="btn btn-success" href="#">Update status</a>|
-                                <a class="btn btn-danger" href="#">cancel order</a>
-                            </td>
+                            
                         </tr>
                         @endforeach
                     </tbody>

@@ -17,12 +17,33 @@ class OrderController extends Controller
         return view ('Oder.admin.OrderList') -> with (['rs' => $rs]);
     }
 
+    public function acceptstatus($O_id)
+    {
+     
+        $status = 1;
+        order::where('O_id', $O_id) -> update([
+            'O_status' => $status
+        ]);
+        return redirect()-> action ('OrderController@showOrders');
+    }
     
-    
+    public function declinestatus($O_id)
+    {
+     
+        $status = 2;
+        order::where('O_id', $O_id) -> update([
+            'O_status' => $status
+        ]);
+        return redirect()-> action ('OrderController@showOrders');
+    }
 
-    //3. UPDATE
-    public function vieworderuser(){
-        $rs = orderDetail::all();
+    //2. ORDER USER
+    public function vieworderuser($id){
+        $rs = order::join('order_details','order_details.O_id','=','orders.O_id')
+            -> join('products','products.P_id','=','order_details.P_id')
+            // ->where('orders.id','$id')
+            ->get(['orders.O_id','products.P_imgPath', 'products.P_name','orders.created_at', 'order_details.QD_quantity','products.P_price','orders.O_status']);
+
         return view ('Oder.user.myorder') -> with (['rs' => $rs]);
     }
     public function updateOrderProcess(Request $rqst, $id){}
