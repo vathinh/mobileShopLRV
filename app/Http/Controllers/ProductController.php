@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Feedback;
 use App\Models\order;
 use App\Models\orderDetail;
 use Illuminate\Http\Request;
@@ -110,11 +111,7 @@ class ProductController extends Controller
         $products = Product::all();
         return view('productDetails', compact('products'));
     }
-    public function ushowProducts($id)
-    {
-        $product = product::where('P_id', $id)->first();
-        return view('productDetails')->with(['product' => $product]);
-    }
+
 
 
     /**
@@ -246,6 +243,6 @@ class ProductController extends Controller
         $feedback = Feedback::all()->where('P_id', $id);
         return view ('productDetails') -> with (['product' => $product]) ->with ('feedback',$feedback);
     }
-    
+
 
 }

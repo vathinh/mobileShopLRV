@@ -11,18 +11,6 @@
     @yield('content')
     <div class="section__content section__content">
         <div class="container-fluid">
-            <div class="row" $rs as $product>
-                
-                    <div class="col-xs-18 col-sm-6 col-md-3">
-                        <div class="thumbnail">
-                            <div>image: <img src="{{ $product ->P_imgPath }}" alt=""></div>
-                            <div class="caption">
-                                <h4><a href="{{ url("/user/productDetails/{$product -> P_id}") }}">{{ $product->P_name }}</a></h4>
-                                <p><strong>Price: </strong> {{ $product->P_price }}$</p>
-                                <p class="btn-holder"><a href="{{ route('add.to.cart', $product->P_id) }}" class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body table-responsive p-0">
@@ -208,6 +196,80 @@
 
                 <!-- /.card-body -->
             </div>
+
+            <div class="card-header">
+                        <h2>Feedback Review</h2>
+                    </div>
+            <div class="card" class="table-responsive" >
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Product ID</th>
+                                        <th>Name</th>
+                                        <th>Subject</th>
+                                        <th>Comment</th>
+                                        <th>FeedBack Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($feedback as $item)
+                                    <tr>
+                                        <td>{{ $item->P_id }}</td>
+                                        <td>{{ $item->guestName }}</td>
+                                        <td>{{ $item->subject }}</td>
+                                        <td>{{ $item->comment }}</td>
+                                        <td>{{ $item->created_at }}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                </div> 
+            <!-- /.card -->
+
+            @if(Route::has('login'))
+                @auth
+                <div class="card" style="margin:20px;">
+                    <div class="card-header">Create New Feedback</div>
+                    <div class="card-body">
+                        
+                        <form action="{{ url('/product/feedback/') }}" method="post">
+                            <label>Product Id</label></br>
+                            <input type="text" name="P_id" id="P_id" value="{{ $product -> P_id }}" readonly class="form-control"></br>
+                            <label>Name</label></br>
+                            <input type="text" name="guestName" id="name" class="form-control" value="{{ Auth::user()->name }}" readonly required></br>
+                            <label>Email</label></br>
+                            <input type="text" name="guestEmail" id="email" class="form-control" value="{{ Auth::user()->email }}" readonly required></br>
+                            <label>Subject</label></br>
+                            <input type="text" name="subject" id="subject" class="form-control" required></br>
+                            <label>Comment</label></br>
+                            <input type="text" name="comment" id="comment" class="form-control" required></br>
+                            <input type="submit" value="Save" class="btn btn-success"></br>
+                        </form>
+                        
+                    </div>
+                </div>
+            @else
+                <div class="card" style="margin:20px;">
+                        <div class="card-header">Create New Feedback</div>
+                        <div class="card-body">
+                            <form action="{{ url('/product/feedback/') }}" method="post">
+                                <label>Product Id</label></br>
+                                <input type="text" name="P_id" id="P_id" value="{{ $product -> P_id }}" readonly class="form-control"></br>
+                                <label>Name</label></br>
+                                <input type="text" name="guestName" id="name" class="form-control" required></br>
+                                <label>Email</label></br>
+                                <input type="text" name="guestEmail" id="email" class="form-control" required></br>
+                                <label>Subject</label></br>
+                                <input type="text" name="subject" id="subject" class="form-control" required></br>
+                                <label>Comment</label></br>
+                                <input type="text" name="comment" id="comment" class="form-control" required></br>
+                                <input type="submit" value="Save" class="btn btn-success"></br>
+                            </form>
+                            
+                        </div>
+                </div>
+                @endauth
+            @endif
             <!-- /.card -->
         </div>
     </div>
