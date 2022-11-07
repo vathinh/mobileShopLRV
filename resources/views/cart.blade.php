@@ -15,130 +15,86 @@
     <title>Document</title>
 </head>
 <body>
-<table id="cart" class="table table-hover table-condensed">
-    <thead>
-        <tr>
-            <th style="width:50%">Product</th>
-            <th style="width:10%">Price</th>
-            <th style="width:8%">Quantity</th>
-            <th style="width:22%" class="text-center">Subtotal</th>
-            <th style="width:10%"></th>
-        </tr>
-    </thead>
-    <tbody>
-        @php $total = 0 @endphp
-        @if(session('cart'))
-            @foreach(session('cart') as $id => $details)
-                @php $total += $details['price'] * $details['quantity'] @endphp
-                <tr data-id="{{ $id }}">
-                    <td data-th="Product">
-                        <div class="row">
-                            <div class="col-sm-3 hidden-xs"><img src="{{ $details['image'] }}" width="100" height="100" class="img-responsive"/></div>
-                            <div class="col-sm-9">
-                                <h4 class="nomargin">{{ $details['name'] }}</h4>
-                            </div>
+
+<div class="container px-3 my-5 clearfix">
+    <!-- Shopping cart table -->
+    <div class="card">
+        <div class="card-header">
+            <h2>Shopping Cart</h2>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered m-0">
+                <thead>
+                  <tr>
+                    <!-- Set columns width -->
+                    <th class="text-center py-3 px-4" style="min-width: 400px;">Product Name &amp; Details</th>
+                    <th class="text-right py-3 px-4" style="width: 100px;">Price</th>
+                    <th class="text-center py-3 px-4" style="width: 120px;">Quantity</th>
+                    <th class="text-right py-3 px-4" style="width: 100px;">Total</th>
+                    <th class="text-center align-middle py-3 px-0" style="width: 40px;"><a href="#" class="shop-tooltip float-none text-light" title="" data-original-title="Clear cart"><i class="ino ion-md-trash"></i></a></th>
+                  </tr>
+                </thead>
+                <tbody>
+                @php $total = 0 @endphp
+                @if(session('cart'))
+                    @foreach(session('cart') as $id => $details)
+                        @php $total += $details['price'] * $details['quantity'] @endphp       
+                  <tr data-id="{{ $id }}">
+                    <td data-th="Product" class="p-4" >
+                      <div class="media align-items-center">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="d-block ui-w-40 ui-bordered mr-4" alt="">
+                        <div class="media-body">
+                          <a href="#" class="d-block text-dark">{{ $details['name'] }}</a>
+                          <small>
+                            <span class="ui-product-color ui-product-color-sm align-text-bottom" style="background:#e81e2c;"></span> &nbsp;
+                          </small>
                         </div>
+                      </div>
                     </td>
-                    <td data-th="Price">${{ $details['price'] }}</td>
-                    <td data-th="Quantity">
-                        <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity update-cart" />
+                    <td data-th="Price" class="text-right font-weight-semibold align-middle p-4">${{ $details['price'] }}</td>
+                    <td data-th="Quantity" class="align-middle p-4"><input type="number" value="{{ $details['quantity'] }}" class="form-control quantity update-cart">
                     </td>
-                    <td data-th="Subtotal" class="text-center">${{ $details['price'] * $details['quantity'] }}</td>
-                    <td class="actions" data-th="">
+                    <td data-th="Subtotal" class="text-right font-weight-semibold align-middle p-4">${{ $details['price'] * $details['quantity'] }}</td>
+                    <td class="text-center align-middle px-0" class="actions" >
                         <button class="btn btn-danger btn-sm remove-from-cart"><i class="fa fa-trash-o"></i></button>
                     </td>
-                </tr>
-            @endforeach
-        @endif
-    </tbody>
-    <tfoot>
-        <tr>
-            <td colspan="5" class="text-right"><h3><strong>Total ${{ $total }}</strong></h3></td>
-        </tr>
-        <tr>
-            <td colspan="5" class="text-right">
-                <a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a>
+                  </tr>
+                @endforeach
+                @endif
+                </tbody>
+              </table>
+            </div>
+            <!-- / Shopping cart table -->
+        
+            <div class="d-flex flex-wrap justify-content-between align-items-center pb-4">
+              <div class="mt-4">
+                <label class="text-muted font-weight-normal">Promocode</label>
+                <input type="text" placeholder="ABC" class="form-control">
+              </div>
+              <div class="d-flex">
+                <div class="text-right mt-4 mr-5">
+                  <label class="text-muted font-weight-normal m-0">Discount</label>
+                  <div class="text-large"><strong>$0</strong></div>
+                </div>
+                <div class="text-right mt-4">
+                  <label class="text-muted font-weight-normal m-0">Total price</label>
+                  <div class="text-large"><h4><strong>${{ $total }}</strong></h4></div>
+                </div>
+              </div>
+            </div>
+        
+            <div class="float-right">
+              <a href="{{ url('/') }}" class="btn btn-lg btn-default md-btn-flat mt-2 mr-3"><i class="fa fa-angle-left"></i> Continue Shopping</a>
                 @php
                     $id = Auth::user()-> id;
                 @endphp
-                <a href="{{ url("/checkout/{$id}") }}" class="btn btn-success"><i class="fa fa-angle-right"></i> Checkout</a>
-            </td>
-        </tr>
-    </tfoot>
-</table>
-
-<section class="vh-100" >
-  <div class="container h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col">
-        <p><span class="h2">Shopping Cart </span><span class="h4">(1 item in your cart)</span></p>
-
-        <div class="card mb-4">
-          <div class="card-body p-4">
-
-            <div class="row align-items-center">
-              <div class="col-md-2">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/1.webp"
-                  class="img-fluid" alt="Generic placeholder image">
-              </div>
-              <div class="col-md-2 d-flex justify-content-center">
-                <div>
-                  <p class="small text-muted mb-4 pb-2">Name</p>
-                  <p class="lead fw-normal mb-0">iPad Air</p>
-                </div>
-              </div>
-              <div class="col-md-2 d-flex justify-content-center">
-                <div>
-                  <p class="small text-muted mb-4 pb-2">Color</p>
-                  <p class="lead fw-normal mb-0"><i class="fas fa-circle me-2" style="color: #fdd8d2;"></i>
-                    pink rose</p>
-                </div>
-              </div>
-              <div class="col-md-2 d-flex justify-content-center">
-                <div>
-                  <p class="small text-muted mb-4 pb-2">Quantity</p>
-                  <p class="lead fw-normal mb-0">1</p>
-                </div>
-              </div>
-              <div class="col-md-2 d-flex justify-content-center">
-                <div>
-                  <p class="small text-muted mb-4 pb-2">Price</p>
-                  <p class="lead fw-normal mb-0">$799</p>
-                </div>
-              </div>
-              <div class="col-md-2 d-flex justify-content-center">
-                <div>
-                  <p class="small text-muted mb-4 pb-2">Total</p>
-                  <p class="lead fw-normal mb-0">$799</p>
-                </div>
-              </div>
+                <a href="{{ url("/checkout/{$id}") }}" class="btn btn-lg btn-primary mt-2"><i class="fa fa-angle-right"></i> Checkout</a>
             </div>
-
+        
           </div>
-        </div>
-
-        <div class="card mb-5">
-          <div class="card-body p-4">
-
-            <div class="float-end">
-              <p class="mb-0 me-5 d-flex align-items-center">
-                <span class="small text-muted me-2">Order total:</span> <span
-                  class="lead fw-normal">$799</span>
-              </p>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="d-flex justify-content-end">
-          <button type="button" class="btn btn-light btn-lg me-2">Continue shopping</button>
-          <button type="button" class="btn btn-primary btn-lg">Add to cart</button>
-        </div>
-
       </div>
-    </div>
   </div>
-</section>
 
 
 <script type="text/javascript">
