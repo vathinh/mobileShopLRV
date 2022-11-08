@@ -51,7 +51,7 @@ Route::middleware(['auth','user-role:user'])->group(function()
     Route::post("/user/createOrderProc/{O_id}",[OrderController::class, 'createOrderProc']) ->name("createOrderProc");
 
     // View order
-    Route::post("/user/createOrderProc/{O_id}",[ProductController::class, 'createOrderProc']) ->name("createOrderProc");
+    Route::post("/user/createOrderProc/{O_id}",[OrderController::class, 'createOrderProc']) ->name("createOrderProc");
     Route::get("/user/vieworder/{id}",[OrderController::class, 'vieworderuser']) ->name("vieworderuser");
 
 

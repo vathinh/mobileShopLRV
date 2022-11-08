@@ -148,12 +148,14 @@ class OrderController extends Controller
     public function createOrderProc(Request $rqst, $O_id){
        
         $O_delieveryAddress = $rqst -> input('txtAddress');
+        $O_phone = $rqst -> input('txtPhone');
         
         
 
         order::where('O_id', $O_id)
         -> update([
-            'O_delieveryAddress'    =>  $O_delieveryAddress
+            'O_delieveryAddress'    =>  $O_delieveryAddress,
+            'O_phone' => $O_phone
             
         ]);
         
