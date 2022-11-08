@@ -50,6 +50,9 @@ Route::middleware(['auth','user-role:user'])->group(function()
     // Create orderDetails
     Route::post("/user/createOrderProc/{O_id}",[OrderController::class, 'createOrderProc']) ->name("createOrderProc");
 
+    // View order
+    Route::post("/user/createOrderProc/{O_id}",[ProductController::class, 'createOrderProc']) ->name("createOrderProc");
+    Route::get("/user/vieworder/{id}",[OrderController::class, 'vieworderuser']) ->name("vieworderuser");
 
 
 
@@ -105,7 +108,11 @@ Route::middleware(['auth','user-role:admin'])->group(function()
     Route::resource("/admin/product/feedback", FeedBackController::class);
     // FEEDBACK MANAGEMENT
 
-    // ORDER MANAGEMENT
+       // ORDER MANAGEMENT
+       Route::get("/admin/order/list",[OrderController::class, 'showOrders']) ->name("showOrders");
+
+       Route::get('/admin/order/acceptstatus/{O_id}',[OrderController::class,'acceptstatus'])->name('acceptstatus');
+       Route::get('/admin/order/declinestatus/{O_id}',[OrderController::class,'declinestatus'])->name('declinestatus');
 
 });
 

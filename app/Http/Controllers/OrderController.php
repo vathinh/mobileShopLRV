@@ -17,7 +17,7 @@ class OrderController extends Controller
             ->orderBy('orders.created_at','desc')
             ->get(['orders.*', 'users.name']);
 
-        return view ('Oder.admin.OrderList') -> with (['rs' => $rs]);
+        return view ('Order.Admin.OrderList') -> with (['rs' => $rs]);
     }
 
     public function acceptstatus($O_id)
@@ -47,6 +47,8 @@ class OrderController extends Controller
             ->where(['orders.id' => $id])
             ->orderBy('orders.created_at','desc')
             ->get(['orders.O_id','orders.id','products.P_imgPath', 'products.P_name','orders.created_at', 'order_details.QD_quantity','products.P_price','orders.O_status']);
+
+        return view ('Order.User.myorder') -> with (['rs' => $rs]);
      }
     
 
