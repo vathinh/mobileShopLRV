@@ -106,6 +106,7 @@ Route::middleware(['auth','user-role:admin'])->group(function()
 
     // Feedback
     Route::resource("/admin/product/feedback", FeedBackController::class);
+    Route::resource("/admin/product/feedback/create", FeedBackController::class);
     // FEEDBACK MANAGEMENT
 
        // ORDER MANAGEMENT
@@ -125,5 +126,5 @@ Route::get('/', [ProductController::class, 'index']);
 Route::get("/user/productDetails/{id}", [ProductController::class, 'ushowProducts']) ->name("ushowProducts");
 
 
+Route::resource("/product/feedback", FeedBackController::class);
  
-
