@@ -31,19 +31,19 @@ class CategoryController extends Controller
         return redirect()->action('CategoryController@showCategory');
     }
 
-    public function updateCategory($c_id)
+    public function updateCategory($id)
     {
-        $rs = category::where('C_id', $c_id)->first();
+        $rs = category::where('C_id', $id)->first();
         return view('adminCategory.update', ['rs' => $rs]);
     }
 
     public function updateCategoryProcess(Request $rqst, $c_id)
     {
-        $c_name   = $rqst->input('txtName');
-        $c_desc  = $rqst->input('txtPrice');
+        $c_name   = $rqst->input('txtCName');
+        $c_desc  = $rqst->input('txtDesc');
         category::where('C_id', $c_id)
             ->update([
-                'C_name'    => $c_name,
+                'C_name'   => $c_name,
                 'C_desc'   => $c_desc,
             ]);
         return redirect()->action('CategoryController@showCategory');

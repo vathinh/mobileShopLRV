@@ -8,7 +8,7 @@
 @endif
 
 @yield('content')
-            <form method="POST" action="{{ url("/admin/category/updateProcess/{id}/{$rs -> C_id}") }}">
+            <form method="POST" action="{{ url("/admin/category/updateProcess/{$rs -> C_id}") }}">
                 @csrf
                 <table class="table table-hover text-nowrap" border="1">
                     <tr>
@@ -17,11 +17,11 @@
                     </tr>
                     <tr>
                         <td>Name</td>
-                        <td><input type="text" name="txtName" value="{{ $rs ->C_name }}"> <br></td>
+                        <td><input type="text" name="txtCName" value="{{ $rs ->C_name }}"> <br></td>
                     </tr>
                     <tr>
                         <td>Description</td>
-                        <td><input type="text" name="txtName" value="{{ $rs ->C_desc }}"> <br></td>
+                        <td><input type="text" name="txtDesc" value="{{ $rs ->C_desc }}"> <br></td>
                     </tr>
                     
                 </table>
