@@ -5,7 +5,7 @@
     <button><a href="{{ url("admin/home") }}">Back to dashboard</a></button> <br>
     <button><a href="{{ url('/admin/product/readCategory') }}">Go to Category</a></button>
     <h1>List of User</h1>
-    <h3><a href="{{ url('/admin/product/createCategory') }}">Create New Product</a></h3>
+    <h3><a href="{{ url('/admin/product/createproduct') }}">Create New Product</a></h3>
     <div class="row">
           <div class="col-12">
             <div class="card">

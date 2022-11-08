@@ -26,13 +26,13 @@
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0" $product as $product>
                 
-                            <h3>Name: <a href="<a href="{{ url("/admin/product/a_productDetails/{$product -> P_id}") }}">{{ $product -> P_name }}"></a></h3>
-                            <h3>ID: {{ $product -> P_id }} </h3>
-                            <h3>Price: {{ $product -> P_price }}</h3>
-                            <h3>Color: {{ $product -> P_color }}</h3>
-                            <h3>Quantity: {{ $product -> P_quantity }}</h3>
-                            <h3>Action: <a href="{{ url("/admin/product/updateProduct/{$product -> P_id}") }}">Update</a></h3>
-                            <p>Image: <img src=" {{ asset('/image/'.$product-> P_imgPath) }} " alt="" style="width:200px;height: 200px;"></p>
+                            <h5>Name: <a href="<a href="{{ url("/admin/product/a_productDetails/{$product -> P_id}") }}">{{ $product -> P_name }}</a></h5> <br>
+                            <h5>ID: {{ $product -> P_id }} </h5> <br>
+                            <h5>Price: {{ $product -> P_price }}</h5> <br>
+                            <h5>Color: {{ $product -> P_color }}</h5> <br>
+                            <h5>Quantity: {{ $product -> P_quantity }}</h5> <br>
+                            <h5>Action: <a href="{{ url("/admin/product/updateProduct/{$product -> P_id}") }}">Update</a></h5> <br>
+                            <p>Image: <img src=" {{ asset('/image/'.$product-> P_imgPath) }} " alt="" style="width:260px;height: 260px;"></p>
                 </div>
               <!-- /.card-body -->
             </div>

@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-xs-18 col-sm-6 col-md-3">
                 <div class="thumbnail">
-                    <div>Image: <img src=" {{ asset('/image/'.$product-> P_imgPath) }} " alt="" style="width:200px;height: 200px;"></div>
+                    <div>Image: <img src=" {{ asset('/image/'.$product-> P_imgPath) }} " alt="" style="width:260px;height: 260px;"></div>
                     <div class="caption">
                         <h4><a href="{{ url("/user/productDetails/{$product -> P_id}") }}">{{ $product->P_name }}</a></h4>
                         <p><strong>Price: </strong> {{ $product->P_price }}$</p>
