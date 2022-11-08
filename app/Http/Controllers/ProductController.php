@@ -104,120 +104,17 @@ class ProductController extends Controller
         $products = Product::all();
         return view('newWelcome', compact('products'));
     }
-    public function productDetails()
-    {
-        $products = Product::all();
-        return view('productDetails', compact('products'));
+
+    
+
+    public function ushowProducts($id){
+        $product = product::where('P_id', $id) ->first();
+        $feedback = Feedback::all()->where('P_id', $id);
+        return view ('productDetails') -> with (['product' => $product]) ->with ('feedback',$feedback);
     }
 
 
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
-    public function cart()
-    {
-        return view('cart');
-    }
 
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
-    public function addToCart($id)
-    {
-        $product = Product::where('P_id', $id)->first();
-
-        $cart = session()->get('cart', []);
-
-        if (isset($cart[$id])) {
-            $cart[$id]['quantity']++;
-        } else {
-            $cart[$id] = [
-                "P_id" => $id,
-                "name" => $product->P_name,
-                "quantity" => 1,
-                "price" => $product->P_price,
-                "image" => $product->P_imgPath
-            ];
-        }
-
-        session()->put('cart', $cart);
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
-    }
-
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
-    public function update(Request $request)
-    {
-        if ($request->id && $request->quantity) {
-            $cart = session()->get('cart');
-            $cart[$request->id]["quantity"] = $request->quantity;
-            session()->put('cart', $cart);
-            session()->flash('success', 'Cart updated successfully');
-        }
-    }
-
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
-    public function remove(Request $request)
-    {
-        if ($request->id) {
-            $cart = session()->get('cart');
-            if (isset($cart[$request->id])) {
-                unset($cart[$request->id]);
-                session()->put('cart', $cart);
-            }
-            session()->flash('success', 'Product removed successfully');
-        }
-    }
-
-    public function checkout($id) {       
-        order::create([
-            'id' => $id
-            
-        ]);
-        $od = DB::table('orders')->latest('created_at')->first();
-        return view('checkout')-> with (['od' => $od]);
-    }
-
-
-    //2. CREATE OrdersDetails
-   
-    public function createOrderProc(Request $rqst, $O_id){
-       
-        $O_delieveryAddress = $rqst -> input('txtAddress');
-        
-        
-
-        order::where('O_id', $O_id)
-        -> update([
-            'O_delieveryAddress'    =>  $O_delieveryAddress
-            
-        ]);
-        
-       
-   
-        $cart = session()->get('cart', []);
-        
-        foreach(session('cart') as $id => $details) {
-            orderDetail::create([
-                'P_id'          =>$details['P_id'],
-                'O_id'          => $O_id,
-                'QD_quantity'    => $details['quantity']
-                
-            ]);
-        }
-        return redirect() -> action('ProductController@index');
-    }
 
 
    
