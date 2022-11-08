@@ -12,6 +12,7 @@ class OrderController extends Controller
     //1. READ
     public function showOrders(){
         $rs = order::join('users','users.id','=','orders.id')
+            ->orderBy('orders.created_at','desc')
             ->get(['orders.*', 'users.name']);
 
         return view ('Oder.admin.OrderList') -> with (['rs' => $rs]);
@@ -41,8 +42,9 @@ class OrderController extends Controller
     public function vieworderuser($id){
         $rs = order::join('order_details','order_details.O_id','=','orders.O_id')
             -> join('products','products.P_id','=','order_details.P_id')
-            // ->where('orders.id','$id')
-            ->get(['orders.O_id','products.P_imgPath', 'products.P_name','orders.created_at', 'order_details.QD_quantity','products.P_price','orders.O_status']);
+            ->where(['orders.id' => $id])
+            ->orderBy('orders.created_at','desc')
+            ->get(['orders.O_id','orders.id','products.P_imgPath', 'products.P_name','orders.created_at', 'order_details.QD_quantity','products.P_price','orders.O_status']);
 
         return view ('Oder.user.myorder') -> with (['rs' => $rs]);
     }
