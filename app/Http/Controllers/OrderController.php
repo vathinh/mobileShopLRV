@@ -172,7 +172,7 @@ class OrderController extends Controller
             ]);
         }
         $rqst ->session()->forget('cart');
-        return redirect() -> action('ProductController@index');
+        return redirect() -> action('ProductController@index') ->with("success","You order has been set!.");;
     }
 
 }
