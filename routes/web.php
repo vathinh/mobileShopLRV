@@ -32,7 +32,7 @@ Route::middleware(['auth','user-role:user'])->group(function()
     Route::get("/user/home",[HomeController::class, 'userHome'])->name("newWelcome");
     // View + ChangeInfo
     Route::get("/user/userDetails/{id}",[HomeController::class,'userDetails'])->name("user.userDetails");
-    Route::post("/user/userDetailsUpdate/{id}",[HomeController::class, 'userDeilsUpdate']) ->name("userDeilsUpdate");
+    Route::post("/user/userDetailsUpdate/{id}",[HomeController::class, 'userDetailsUpdate']) ->name("userDetailsUpdate");
 
     // User change Password
     Route::get("user/change-password", [HomeController::class, 'changePassword'])->name('change-password');

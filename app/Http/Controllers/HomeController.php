@@ -127,24 +127,24 @@ class HomeController extends Controller
     }
 
 
-    public function userDeilsUpdate(Request $rqst, $id) {
-        $name   = $rqst -> input('txtName');
-        $surname   = $rqst -> input('txtSurname');
+    public function userDetailsUpdate(Request $rqst, $id) {
+        // $name   = $rqst -> input('txtName');
+        // $surname   = $rqst -> input('txtSurname');
         $address   = $rqst -> input('txtAddress');
         $phone   = $rqst -> input('txtPhone');
         $email   = $rqst -> input('txtEmail');
         
         User::where('ID', $id)
             -> update([
-                'name'          => $name,
-                'surname'          => $surname,
+                // 'name'          => $name,
+                // 'surname'          => $surname,
                 'address'          => $address,
                 'phone'          => $phone,
                 'email'         => $email
                
 
             ]);
-        return view('userDB.userDB');
+            return redirect() -> action('HomeController@userDetails',$id);
     }
 
     public function changePassword() {
