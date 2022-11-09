@@ -119,7 +119,6 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>Product ID</th>
                                         <th>Name</th>
                                         <th>Subject</th>
                                         <th>Comment</th>
@@ -129,7 +128,6 @@
                                 <tbody>
                                 @foreach($feedback as $item)
                                     <tr>
-                                        <td>{{ $item->P_id }}</td>
                                         <td>{{ $item->guestName }}</td>
                                         <td>{{ $item->subject }}</td>
                                         <td>{{ $item->comment }}</td>
@@ -140,14 +138,13 @@
                             </table>
                 </div> 
             <!-- /.card -->
-
             @if(Route::has('login'))
-                @auth
+            @auth
                 <div class="card" style="margin:20px;">
                     <div class="card-header">Create New Feedback</div>
                     <div class="card-body">
-                        
                         <form action="{{ url('/product/feedback/') }}" method="post">
+                            @csrf
                             <label>Product Id</label></br>
                             <input type="text" name="P_id" id="P_id" value="{{ $product -> P_id }}" readonly class="form-control"></br>
                             <label>Name</label></br>
@@ -159,8 +156,7 @@
                             <label>Comment</label></br>
                             <input type="text" name="comment" id="comment" class="form-control" required></br>
                             <input type="submit" value="Save" class="btn btn-success"></br>
-                        </form>
-                        
+                        </form> 
                     </div>
                 </div>
             @else
@@ -168,6 +164,7 @@
                         <div class="card-header">Create New Feedback</div>
                         <div class="card-body">
                             <form action="{{ url('/product/feedback/') }}" method="post">
+                                @csrf
                                 <label>Product Id</label></br>
                                 <input type="text" name="P_id" id="P_id" value="{{ $product -> P_id }}" readonly class="form-control"></br>
                                 <label>Name</label></br>
@@ -183,7 +180,7 @@
                             
                         </div>
                 </div>
-                @endauth
+                @endif
             @endif
             <!-- /.card -->
         </div>

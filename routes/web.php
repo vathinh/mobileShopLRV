@@ -20,6 +20,7 @@ use App\Http\Controllers\FeedBackController;
 Route::get('/', [ProductController::class, 'index']);  
 
 
+
 Auth::routes();
 // Route User
 Route::middleware(['auth','user-role:user'])->group(function()
@@ -49,7 +50,8 @@ Route::middleware(['auth','user-role:user'])->group(function()
     // Create orderDetails
     Route::post("/user/createOrderProc/{O_id}",[ProductController::class, 'createOrderProc']) ->name("createOrderProc");
 
-
+    //feedback
+    Route::resource("/product/feedback", FeedBackController::class);
 
 
 });
@@ -117,6 +119,4 @@ Route::get('/', [ProductController::class, 'index']);
 
 Route::get("/user/productDetails/{id}", [ProductController::class, 'ushowProducts']) ->name("ushowProducts");
 
-
 Route::resource("/product/feedback", FeedBackController::class);
- 
