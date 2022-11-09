@@ -2,14 +2,14 @@
 
 @section('content')
     <section class="content">
-    <button><a href="{{ url("admin/home") }}">Back to dashboard</a></button>
-    <h1>List of User</h1>
-    <h3><a href="{{ url('/admin/product/createCategory') }}">Create New Category</a></h3>
+    <button><a href="{{ url("admin/home") }}">Back to dashboard</a></button> <br>
+    <button><a href="{{ url('/admin/product/createCategory') }}">Create New Category</a></button> <br>
+    <button><a href="{{ url("/admin/product/readproduct") }}">Go to Product Management</a></button>
     <div class="row">
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Responsive Hover Table</h3>
+              <h3 style="text-align: center">List of Categories</h3>
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
