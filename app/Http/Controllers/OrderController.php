@@ -171,6 +171,7 @@ class OrderController extends Controller
                 
             ]);
         }
+        $rqst ->session()->forget('cart');
         return redirect() -> action('ProductController@index');
     }
 
