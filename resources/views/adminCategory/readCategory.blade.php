@@ -25,25 +25,24 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
-                <table class="table table-hover text-nowrap">
+                <table class="table table-hover text-nowrap" border="1">
                   <thead>
                         
                             <th style="text-align: center;">ID</th>
                             <th style="text-align: center;">Name</th>
-                            <th style="text-align: center;">Description</th>
                             <th style="text-align: center;">Action</th>
+                            <th style="text-align: center;">Description</th>                           
                         </tr>
                   </thead>
                   <tbody>
                     @foreach($category as $cat)
                         <tr>
                             <td style="text-align: center;"> {{ $cat -> C_id }}</td>
-                            <td style="text-align: center;"> {{ $cat -> C_name }}</td>
-                            <td style="text-align: center;"> {{ $cat -> C_desc }}</td>
+                            <td style="text-align: center;"> {{ $cat -> C_name }}</td>                      
                             <td style="text-align: center;">  
                               <a href="{{ url("/admin/category/update/{$cat -> C_id}") }}">Update</a>
-                              
                             </td>
+                            <td style="text-align: center;"> {{ $cat -> C_desc }}</td>
                         </tr>
                         @endforeach
                     </tbody>
