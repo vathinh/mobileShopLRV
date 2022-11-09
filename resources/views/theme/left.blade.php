@@ -48,7 +48,7 @@
                             </ul> -->
                         </li>
                         <li class="has-sub">
-                            <a class="js-arrow" href="#">
+                            <a class="js-arrow" href="{{ url("/admin/product/feedback") }}">
                                 <i class="fas fa-desktop"></i>Feedback Management</a>
                             <!-- <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
@@ -83,6 +83,22 @@
                                 </li>
                                 <li>
                                     <a href="typo.html">Typography</a>
+                                </li>
+                            </ul> -->
+                            
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-copy"></i>Order Management</a>
+                            <!-- <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="login.html"></a>
+                                </li>
+                                <li>
+                                    <a href="register.html">Register</a>
+                                </li>
+                                <li>
+                                    <a href="forget-pass.html">Forget Password</a>
                                 </li>
                             </ul> -->
                         </li>
