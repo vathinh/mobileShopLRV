@@ -43,7 +43,7 @@
                   <tr data-id="{{ $id }}">
                     <td data-th="Product" class="p-4" >
                       <div class="media align-items-center">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="d-block ui-w-40 ui-bordered mr-4" alt="">
+                        <img src="{{ asset('/image/'.$details['image'] ) }}" class="d-block ui-w-40 ui-bordered mr-4" alt="">
                         <div class="media-body">
                           <a href="#" class="d-block text-dark">{{ $details['name'] }}</a>
                           <small>
