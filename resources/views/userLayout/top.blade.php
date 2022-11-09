@@ -5,7 +5,7 @@
             
             <div class="header-wrap">
             <div class="logo">
-                <a href="#">
+                <a href="{{ url("/")}}">
                     <img src="{{ asset('theme/images/icon/logo.png') }}" alt="Cool Admin" />
                 </a>
             </div>
@@ -46,7 +46,7 @@
                                         @foreach(session('cart') as $id => $details)
                                             <div class="account-dropdown__item">
                                                 <div class="image">
-                                                    <img src="{{ $details['image'] }}" />
+                                                    <img src="{{ asset('/image/'.$product-> P_imgPath) }}" />
                                                 </div>
                                                     <p>{{ $details['name'] }}</p>
                                                     <span class="price text-info"> ${{ $details['price'] }}</span> <span class="count"> Quantity:{{ $details['quantity'] }}</span>
@@ -97,20 +97,12 @@
                                     </div>
                                     <div class="account-dropdown__body">
                                         <div class="account-dropdown__item">
-                                        @php
-                                            $data = Auth::user()->id;
-                                        @endphp
-                                            <a href="{{ url("user/userDetails/{$data}") }}">
-                                                <i class="zmdi zmdi-account"></i>View Account</a>
-                                        </div>
+                                        
                                         <div class="account-dropdown__item">
                                             <a href="{{ url("user/userDB") }}">
-                                                <i class="zmdi zmdi-settings"></i>Setting</a>
+                                                <i class="zmdi zmdi-settings"></i>View Info</a>
                                         </div>
-                                        <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-money-box"></i>Billing</a>
-                                        </div>
+                                       
                                     </div>
                                     <div class="account-dropdown__footer">
                                         <a class="dropdown-item" href="{{ route('logout') }}"
