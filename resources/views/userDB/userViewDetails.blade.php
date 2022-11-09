@@ -61,9 +61,7 @@
         <button type="submit" class="btn btn-primary btn-sm">
             <i class="fa fa-dot-circle-o"></i> Update Informations
         </button>
-        <button type="reset" class="btn btn-danger btn-sm">
-            <i class="fa fa-ban"></i> Reset
-        </button>
+       
         <button class="btn btn-success btn-sm">
             <a href="{{ url("/user/change-password") }}">Change Password</a>
         </button>
@@ -74,51 +72,6 @@
 
 
    
-    <form method="post" action="{{ url("/user/userDetailsUpdate/{$rs -> id}") }}" class="form">
-    @csrf
-        <table class="table table-hovered">
-          
-
-            <tr>
-                <td>Name:</td>
-                <td><input type="text" name="txtName" value="{{ $rs -> name }}" ></td>
-            </tr>
-
-            <tr>
-                <td>Surname:</td>
-                <td><input type="text" name="txtSurname" value="{{ $rs -> surname }}" ></td>
-            </tr>
-
-            <tr>
-                <td>Address:</td>
-                <td><input type="text" name="txtAddress" value="{{ $rs -> address }}" ></td>
-            </tr>
-
-            <tr>
-                <td>Phone:</td>
-                <td><input type="text" name="txtPhone" value="{{ $rs -> phone }}" ></td>
-            </tr>
-
-            <tr>
-                <td>Email:</td>
-                <td><input type="email" name="txtEmail" value="{{ $rs -> email }}" ></td>
-            </tr>
-
-            
-
-            <tr>
-                <td></td>
-                <td><input type="submit" value="Update" ></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                
-                    <a href="{{ url("/user/change-password") }}">Change Password</a>
-                   
-                </td>
-            </tr>
-        </table>
-    </form>
+   
     
-endsection
+@endsection

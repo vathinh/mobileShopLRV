@@ -41,7 +41,7 @@
                     </div>
                     <div class="text">
                         <h2>View Orders </h2>
-                        <h3><a  type="button" class="btn btn-info" disabled href="{{ url("/admin/product/readproduct") }}"> More Info</a></h3>
+                        <h3><a  type="button" class="btn btn-info" disabled href="{{ url("/user/vieworder/{$data}") }}"> More Info</a></h3>
                     </div>
                 </div>
                 <div class="overview-chart">
