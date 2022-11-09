@@ -42,7 +42,7 @@
                         <tr>
                             <td style="text-align: center;"> {{ $data -> O_id }}</td>
                            
-                            <td style="text-align: center;"><img src="{{ $data -> P_imgPath }}" alt=""> </td>
+                            <td style="text-align: center;"><img src="{{ asset('/image/'.$data-> P_imgPath)  }}" alt=""> </td>
                             <td style="text-align: center;"> {{ $data -> P_name }}</td>
                             <td style="text-align: center;"> {{ $data -> created_at }}</td>
                             <td style="text-align: center;"> {{ $data -> QD_quantity }}</td> 

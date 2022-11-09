@@ -16,8 +16,8 @@ class ProductController extends Controller
 
     public function showProducts()
     {
-        $rs = product::join('category', 'category.C_id', '=', 'products.C_id')
-            ->get(['products.*', 'category.C_name']);
+        $rs = product::join('categories', 'categories.C_id', '=', 'products.C_id')
+            ->get(['products.*', 'categories.C_name']);
         return view('adminProduct.readProduct')->with(['rs' => $rs]);
     }
 
