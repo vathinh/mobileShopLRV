@@ -23,8 +23,7 @@ class CategoryController extends Controller
     public function createNewCategoryProcess(Request $rqst) {       
         $c_name = $rqst->input('txtC_name');
         $c_desc       = $rqst->input('txtC_desc');
-        category::create([
-           
+        category::create([    
             'C_name'      => $c_name,
             'C_desc'    => $c_desc,
         ]);

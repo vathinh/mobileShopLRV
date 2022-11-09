@@ -8,7 +8,7 @@
 @endif
 
 @yield('content')
-<form method="POST" action="{{ url("/admin/product/updateProductProcess/{$rs -> P_id}") }}">
+<form method="POST" enctype="multipart/form-data" action="{{ url("/admin/product/updateProductProcess/{$rs -> P_id}") }}">
     @csrf
     <table class="table table-hover text-nowrap" border="1">
         <tr>
