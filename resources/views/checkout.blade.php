@@ -148,28 +148,21 @@ span.price {
     <div class="container">
         <!-- TOP CAMPAIGN-->
         <div class="top-campaign">
-            <h3 class="title-3 m-b-30">Your orders <b>{{ count((array) session('cart')) }}</b></h3>
-            
+            <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>{{ count((array) session('cart')) }}</b></span></h4>
             <div class="table-responsive">
                 <table class="table table-top-campaign">
                     <thead>
                       <tr>
-                        <td>Order Id</td>
-                        @php
-
-                        @endphp
+                        <td><b>Order Id</b></td>   
                         <td>
-                        <input type="text" name="txtOId" value="{{ $od -> O_id}}" readonly>
+                          <h4><b>{{ $od -> O_id}}</b></h4>
                         </td>
                       </tr>
                         <tr>
-                            <th>Product ID</th>
                             <th>Product Name</th>
                             <th>Quantity</th>
                             <th>Price</th>
-                        </tr>
-
-                        
+                        </tr>                       
                     </thead>
                     <tbody>
                     @php $total = 0 @endphp
@@ -177,19 +170,20 @@ span.price {
                         @foreach(session('cart') as $id => $details)
                             @php $total += $details['price'] * $details['quantity'] @endphp
                         <tr>
-                            <td>
-                                <input type="text" name="txtProdcutId" value="{{ $id }}" readonly>
-                            </td>
-                            <td>
-                                <input type="text" name="txtProductName" value="{{ $details['name'] }}" readonly>
-                            </td>
-
-                            <td>
-                                <input type="text" name="txtProductQuantity" value="{{ $details['quantity'] }}" readonly>
+                           
+                          <td>
+                            <p>{{ $details['name'] }}</p>
+                            <!-- <input type="text" name="txtProductName" value="{{ $details['name'] }}" readonly> -->
                             </td>
 
                             <td>
-                                <input type="text" name="txtProductPrice" value="${{ $details['price'] * $details['quantity'] }}" readonly>
+                            <p>{{ $details['quantity'] }}</p>
+                              <!-- <input type="text" name="txtProductQuantity" value="{{ $details['quantity'] }}" readonly> -->
+                            </td>
+
+                            <td>
+                            <p>${{ $details['price'] * $details['quantity'] }}</p>
+                              <!-- <input type="text" name="txtProductPrice" value="${{ $details['price'] * $details['quantity'] }}" readonly> -->
                             </td>
                         </tr>
                         @endforeach
@@ -197,10 +191,18 @@ span.price {
                
                     </tbody>
                     <tfoot>
+                    <hr>
                         <tr>
-                            <td>Total</td>
+                          
                             <td>
-                                <input type="text" name="txtTotalPrice" value="${{ $total }}" readonly>
+                              
+                                <p>Total</p>
+                            </td>
+                            <td>
+
+                            </td>
+                            <td>
+                               <p>${{ $total }}</p>
                             </td>
                         </tr>
                     </tfoot>
