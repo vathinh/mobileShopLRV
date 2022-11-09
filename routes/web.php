@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\FeedBackController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,7 @@ use App\Http\Controllers\FeedBackController;
 */
 
 Route::get('/', [ProductController::class, 'index']);  
+
 
 
 Auth::routes();
@@ -38,18 +40,22 @@ Route::middleware(['auth','user-role:user'])->group(function()
     Route::post("user/change-password", [HomeController::class, 'updatePassword'])->name('update-password');
 
     // Add + Remove + Update + View Cart
-    Route::get('cart', [ProductController::class, 'cart'])->name('cart');
-    Route::get('add-to-cart/{id}', [ProductController::class, 'addToCart'])->name('add.to.cart');
-    Route::patch('update-cart', [ProductController::class, 'update'])->name('update.cart');
-    Route::delete('remove-from-cart', [ProductController::class, 'remove'])->name('remove.from.cart');
+    Route::get('cart', [OrderController::class, 'cart'])->name('cart');
+    Route::get('add-to-cart/{id}', [OrderController::class, 'addToCart'])->name('add.to.cart');
+    Route::patch('update-cart', [OrderController::class, 'update'])->name('update.cart');
+    Route::delete('remove-from-cart', [OrderController::class, 'remove'])->name('remove.from.cart');
     
     // Checkout from cart + Create order
-    Route::get('/checkout/{id}',[ProductController::class, 'checkout']); 
+    Route::get('/checkout/{id}',[OrderController::class, 'checkout']); 
 
     // Create orderDetails
-    Route::post("/user/createOrderProc/{O_id}",[ProductController::class, 'createOrderProc']) ->name("createOrderProc");
+    Route::post("/user/createOrderProc/{O_id}",[OrderController::class, 'createOrderProc']) ->name("createOrderProc");
 
-
+    // View order
+    Route::post("/user/createOrderProc/{O_id}",[OrderController::class, 'createOrderProc']) ->name("createOrderProc");
+    Route::get("/user/vieworder/{id}",[OrderController::class, 'vieworderuser']) ->name("vieworderuser");
+    //feedback
+    Route::resource("/product/feedback", FeedBackController::class);
 
 
 });
@@ -94,15 +100,22 @@ Route::middleware(['auth','user-role:admin'])->group(function()
     // Update Product
     Route::get("/admin/product/updateProduct/{id}", [ProductController::class, 'updateProduct']) ->name("updateProduct");
     Route::post("/admin/product/updateProductProcess/{id}", [ProductController::class, 'updateProductProcess']) ->name("updateProductProcess");
+    // ProductDetails
+    Route::get("/admin/product/a_productDetails/{id}", [ProductController::class, 'admin_productDetails']) ->name("admin_productDetails");
 
     // Delete Product
     Route::get("/admin/product/deleteProduct/{id}", [ProductController::class, 'deleteProduct']) ->name("deleteProduct");
 
     // Feedback
     Route::resource("/admin/product/feedback", FeedBackController::class);
+    Route::resource("/admin/product/feedback/create", FeedBackController::class);
     // FEEDBACK MANAGEMENT
 
-    // ORDER MANAGEMENT
+       // ORDER MANAGEMENT
+       Route::get("/admin/order/list",[OrderController::class, 'showOrders']) ->name("showOrders");
+
+       Route::get('/admin/order/acceptstatus/{O_id}',[OrderController::class,'acceptstatus'])->name('acceptstatus');
+       Route::get('/admin/order/declinestatus/{O_id}',[OrderController::class,'declinestatus'])->name('declinestatus');
 
 });
 
@@ -114,5 +127,4 @@ Route::get('/', [ProductController::class, 'index']);
 
 Route::get("/user/productDetails/{id}", [ProductController::class, 'ushowProducts']) ->name("ushowProducts");
 
- 
-
+Route::resource("/product/feedback", FeedBackController::class);
