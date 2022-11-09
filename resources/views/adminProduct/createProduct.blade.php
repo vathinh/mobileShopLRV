@@ -11,10 +11,6 @@
         @csrf
         <table class="table table-hover text-nowrap" border="1">
             <tr>
-                <td>ID</td>
-                <td><input type="text" name="txtID"></td>
-            </tr>
-            <tr>
                 <td>C_ID</td>
                 <td><input type="text" name="txtC_id"></td>
             </tr>

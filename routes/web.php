@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
@@ -115,6 +116,17 @@ Route::middleware(['auth','user-role:admin'])->group(function()
        Route::get('/admin/order/acceptstatus/{O_id}',[OrderController::class,'acceptstatus'])->name('acceptstatus');
        Route::get('/admin/order/declinestatus/{O_id}',[OrderController::class,'declinestatus'])->name('declinestatus');
 
+    // CATEGORY
+    // Read Category
+    Route::get("/admin/product/readCategory",[CategoryController::class, 'showCategory']) ->name("showCategory");
+
+    // Create Product
+    Route::get("/admin/product/createCategory", [CategoryController::class, 'createCategory']) ->name("createCategory");
+    Route::post("/admin/product/createCategoryProcess", [CategoryController::class, 'createNewCategoryProcess']) ->name("createNewCategoryProcess");
+    
+    // Update Category
+    Route::get("/admin/category/update/{id}", [CategoryController::class, 'updateCategory']) ->name("updateCategory");
+    Route::post("/admin/category/updateProcess/{id}", [CategoryController::class, 'updateCategoryProcess']) ->name("updateCategoryProcess");
 });
 
 
