@@ -140,29 +140,55 @@
             <!-- /.card -->
             @if(Route::has('login'))
             @auth
-                <div class="card" style="margin:20px;">
-                    <div class="card-header">Create New Feedback</div>
-                    <div class="card-body">
-                        <form action="{{ url('/product/feedback/') }}" method="post">
-                            @csrf
-                            <label>Product Id</label></br>
-                            <input type="text" name="P_id" id="P_id" value="{{ $product -> P_id }}" readonly class="form-control"></br>
-                            <label>Name</label></br>
-                            <input type="text" name="guestName" id="name" class="form-control" value="{{ Auth::user()->name }}" readonly required></br>
-                            <label>Email</label></br>
-                            <input type="text" name="guestEmail" id="email" class="form-control" value="{{ Auth::user()->email }}" readonly required></br>
-                            <label>Subject</label></br>
-                            <input type="text" name="subject" id="subject" class="form-control" required></br>
-                            <label>Comment</label></br>
-                            <input type="text" name="comment" id="comment" class="form-control" required></br>
-                            <input type="submit" value="Save" class="btn btn-success"></br>
-                        </form> 
+            <section>
+            <div class="container my-5 py-5 text-dark">
+                <div class="row d-flex justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-6">
+                    <div class="card">
+                    <div class="card-body p-4">
+                        <div class="d-flex flex-start w-100">
+                        <div class="w-100">
+                            <h5>Add a comment</h5>
+                            <div class="card-body">
+                            <form action="{{ url('/product/feedback/') }}" method="post">
+                                @csrf
+                                <label>Product Id</label></br>
+                                <input type="text" name="P_id" id="P_id" value="{{ $product -> P_id }}" readonly class="form-control"></br>
+                                <label>Name</label></br>
+                                <input type="text" name="guestName" id="name" class="form-control" value="{{ Auth::user()->name }}" readonly required></br>
+                                <label>Email</label></br>
+                                <input type="text" name="guestEmail" id="email" class="form-control" value="{{ Auth::user()->email }}" readonly required></br>
+                                <label>Subject</label></br>
+                                <input type="text" name="subject" id="subject" class="form-control" required></br>
+                                <div class="form-outline">
+                                <label class="form-label" for="textAreaExample">What is your view?</label>
+                                <textarea class="form-control" name="comment" id="comment" required rows="4"></textarea>
+                                </div>
+                                <div class="d-flex justify-content-between mt-3">
+                                <input type="submit" value="Send" class="btn btn-success">
+                                </button>
+                                </div>
+                            </div>
+                            </form> 
+                        </div>
+                        </div>
+                    </div>
                     </div>
                 </div>
+                </div>
+            </div>
+            </section>
             @else
-                <div class="card" style="margin:20px;">
-                        <div class="card-header">Create New Feedback</div>
-                        <div class="card-body">
+            <section>
+            <div class="container my-5 py-5 text-dark">
+                <div class="row d-flex justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-6">
+                    <div class="card">
+                    <div class="card-body p-4">
+                        <div class="d-flex flex-start w-100">
+                        <div class="w-100">
+                            <h5>Add a comment</h5>
+                            <div class="card-body">
                             <form action="{{ url('/product/feedback/') }}" method="post">
                                 @csrf
                                 <label>Product Id</label></br>
@@ -173,14 +199,26 @@
                                 <input type="text" name="guestEmail" id="email" class="form-control" required></br>
                                 <label>Subject</label></br>
                                 <input type="text" name="subject" id="subject" class="form-control" required></br>
-                                <label>Comment</label></br>
-                                <input type="text" name="comment" id="comment" class="form-control" required></br>
-                                <input type="submit" value="Save" class="btn btn-success"></br>
-                            </form>
-                            
+
+                                <div class="form-outline">
+                                <label class="form-label" for="textAreaExample">What is your view?</label>
+                                <textarea class="form-control" name="comment" id="comment" required rows="4"></textarea>
+                                </div>
+                                <div class="d-flex justify-content-between mt-3">
+                                <input type="submit" value="Send" class="btn btn-success">
+                                </button>
+                                </div>
+                            </div>
+                            </form> 
                         </div>
+                        </div>
+                    </div>
+                    </div>
                 </div>
-                @endif
+                </div>
+            </div>
+            </section>
+            @endauth
             @endif
             <!-- /.card -->
         </div>
