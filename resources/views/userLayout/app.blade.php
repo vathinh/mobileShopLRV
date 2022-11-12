@@ -35,61 +35,56 @@
 
 </head>
 
-<body class="animsition">
-    <div class="page-wrapper">
-
-        <!-- Left Menu here -->
-        @include('userLayout.left')
-
-
-        <!-- PAGE CONTAINER-->
-        <div class="page-container">
-            <!-- Top menu here -->
-            @include('userLayout.top')
-
-            <!-- MAIN CONTENT-->
-            <div class="main-content">
-                <div class="section__content section__content--p30">
-                    <div class="container-fluid">
-                        <!-- Content here -->
-                        @yield('content')
-                      <!-- End content -->
-                        
-                      @include('userLayout.footer')
-                        <!-- Footer -->
+<body>
+    <!-- Top menu here -->
+    @include('userLayout.top')
+        
+            <!-- Left Menu here -->
+                @include('userLayout.left') 
+                    <div class="page-wrapper">
+                        <!-- PAGE CONTAINER-->
+                            <div class="page-container">
+                            <!-- MAIN CONTENT-->
+                            <div class="main-content">
+                                <div class="section__content section__content--p30">
+                                    <div class="container-fluid">
+                                        <!-- Content here -->
+                                            @yield('content')
+                                            <!-- End content -->
+                                    </div>
+                                </div>
+                            </div>
+                        <!-- END PAGE CONTAINER-->
+                        </div>
+                       
                     </div>
-                </div>
-            </div>
-           
-            <!-- END PAGE CONTAINER-->
+                
+             <!-- Footer -->   
+        @include('userLayout.footer')
+        
+        <!-- Jquery JS-->
+        <script src="{{ asset('theme/vendor/jquery-3.2.1.min.js') }}"></script>
+        <!-- Bootstrap JS-->
+        <script src="{{ asset('theme/vendor/bootstrap-4.1/popper.min.js') }}"></script>
+        <script src="{{ asset('theme/vendor/bootstrap-4.1/bootstrap.min.js') }}"></script>
+        <!-- Vendor JS       -->
+        <script src="{{ asset('theme/vendor/slick/slick.min.js') }}">
+        </script>
+        <script src="{{ asset('theme/vendor/wow/wow.min.js') }}"></script>
+        <script src="{{ asset('theme/vendor/animsition/animsition.min.js') }}"></script>
+        <script src="{{ asset('theme/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js') }}">
+        </script>
+        <script src="{{ asset('theme/vendor/counter-up/jquery.waypoints.min.js') }}"></script>
+        <script src="{{ asset('theme/vendor/counter-up/jquery.counterup.min.js') }}">
+        </script>
+        <script src="{{ asset('theme/vendor/circle-progress/circle-progress.min.js') }}"></script>
+        <script src="{{ asset('theme/vendor/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
+        <script src="{{ asset('theme/vendor/chartjs/Chart.bundle.min.js') }}"></script>
+        <script src="{{ asset('theme/vendor/select2/select2.min.js') }}">
+        </script>
 
-        </div>
-
-    </div>
-
-    <!-- Jquery JS-->
-    <script src="{{ asset('theme/vendor/jquery-3.2.1.min.js') }}"></script>
-    <!-- Bootstrap JS-->
-    <script src="{{ asset('theme/vendor/bootstrap-4.1/popper.min.js') }}"></script>
-    <script src="{{ asset('theme/vendor/bootstrap-4.1/bootstrap.min.js') }}"></script>
-    <!-- Vendor JS       -->
-    <script src="{{ asset('theme/vendor/slick/slick.min.js') }}">
-    </script>
-    <script src="{{ asset('theme/vendor/wow/wow.min.js') }}"></script>
-    <script src="{{ asset('theme/vendor/animsition/animsition.min.js') }}"></script>
-    <script src="{{ asset('theme/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js') }}">
-    </script>
-    <script src="{{ asset('theme/vendor/counter-up/jquery.waypoints.min.js') }}"></script>
-    <script src="{{ asset('theme/vendor/counter-up/jquery.counterup.min.js') }}">
-    </script>
-    <script src="{{ asset('theme/vendor/circle-progress/circle-progress.min.js') }}"></script>
-    <script src="{{ asset('theme/vendor/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
-    <script src="{{ asset('theme/vendor/chartjs/Chart.bundle.min.js') }}"></script>
-    <script src="{{ asset('theme/vendor/select2/select2.min.js') }}">
-    </script>
-
-    <!-- Main JS-->
-    <script src="{{ asset('theme/js/main.js') }}"></script>
+        <!-- Main JS-->
+        <script src="{{ asset('theme/js/main.js') }}"></script>
 
 </body>
 
