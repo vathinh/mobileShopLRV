@@ -7,7 +7,8 @@
             <div class="header-wrap">
             <div class="logo">
                 <a href="{{ url("/")}}">
-                    <img src="{{ asset('theme/images/icon/logo.png') }}" alt="Cool Admin" />
+                    <img src="{{ asset('image/logo.png') }}" width="90" 
+     height="90" alt="Cool Admin" />
                 </a>
             </div>
                 <form class="form-header" action="" method="POST">
