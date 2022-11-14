@@ -43,7 +43,7 @@
                     <div class="login-content">
                     <div class="login-logo">
                             <a href="#">
-                                <img src="{{ asset('theme/images/icon/logo.png') }}" alt="CoolAdmin">
+                                <img src="{{ asset('image/logo.png') }}" alt="CoolAdmin">
                             </a>
                         </div>
                         <!-- Start content -->
