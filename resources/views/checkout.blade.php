@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -55,7 +56,7 @@ body {
   padding: 0 16px;
 }
 
-.container {
+.containerr {
   background-color: #f2f2f2;
   padding: 5px 20px 15px 20px;
   border: 1px solid lightgrey;
@@ -127,7 +128,7 @@ span.price {
 <p>Resize the browser window to see the effect. When the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other.</p>
 <div class="row">
   <div class="col-75">
-    <div class="container">
+    <div class="containerr">
       <form action="{{ url("user/createOrderProc/{$od -> O_id}") }}" method="POST">
       @csrf
         <div class="row">
@@ -157,7 +158,7 @@ span.price {
   </div>
 
   <div class="col-25">
-    <div class="container">
+    <div class="containerr">
         <!-- TOP CAMPAIGN-->
         <div class="top-campaign">
             <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>{{ count((array) session('cart')) }}</b></span></h4>
