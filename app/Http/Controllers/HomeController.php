@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\product;
+use Illuminate\Support\Facades\Validator;
+
 class HomeController extends Controller
 {
     /**
@@ -127,24 +129,38 @@ class HomeController extends Controller
     }
 
 
-    public function userDetailsUpdate(Request $rqst, $id) {
+
+    public function userDetailsUpdate(Request $rqst) {
+
+       
         // $name   = $rqst -> input('txtName');
         // $surname   = $rqst -> input('txtSurname');
-        $address   = $rqst -> input('txtAddress');
-        $phone   = $rqst -> input('txtPhone');
-        $email   = $rqst -> input('txtEmail');
+        // $address   = $rqst -> input('txtAddress');
+        // $phone   = $rqst -> input('txtPhone');
+        // $email   = $rqst -> input('txtEmail');
+
+        $rqst->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'surname' => ['required', 'string', 'max:255'],
+            'address' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'integer', 'min:10'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users']
+        ]);
+      
         
-        User::where('ID', $id)
-            -> update([
+        User::whereId(auth()->user()->id)->update([
+           
                 // 'name'          => $name,
                 // 'surname'          => $surname,
-                'address'          => $address,
-                'phone'          => $phone,
-                'email'         => $email
+                'name' => $rqst->name,
+                'surname' => $rqst->surname,
+                'address' =>$rqst->address,
+                'phone' =>$rqst->phone,
+                'email' => $rqst->email
                
 
             ]);
-            return redirect() -> action('HomeController@userDetails',$id);
+            return redirect() -> action('HomeController@userDetails',auth()->user()->id);
     }
 
     public function changePassword() {
