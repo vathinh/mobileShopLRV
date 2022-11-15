@@ -130,37 +130,45 @@ class HomeController extends Controller
 
 
 
-    public function userDetailsUpdate(Request $rqst) {
+    public function userDetailsUpdate(Request $rqst, $id) {
 
        
-        // $name   = $rqst -> input('txtName');
-        // $surname   = $rqst -> input('txtSurname');
-        // $address   = $rqst -> input('txtAddress');
-        // $phone   = $rqst -> input('txtPhone');
-        // $email   = $rqst -> input('txtEmail');
-
+        // $name   = $rqst -> input('name');
+        // $surname   = $rqst -> input('surname');
+        // $address   = $rqst -> input('address');
+        // $phone   = $rqst -> input('phone');
+       
         $rqst->validate([
             'name' => ['required', 'string', 'max:255'],
             'surname' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'integer', 'min:10'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users']
+        ]);
+       
+
+        User::where('ID', $id)
+        -> update([
+            'name' => $rqst->name,
+            'surname' => $rqst->surname,
+            'address' =>$rqst->address,
+            'phone' =>$rqst->phone
+
         ]);
       
         
-        User::whereId(auth()->user()->id)->update([
+        // User::whereId(auth()->user()->id)->update([
            
-                // 'name'          => $name,
-                // 'surname'          => $surname,
-                'name' => $rqst->name,
-                'surname' => $rqst->surname,
-                'address' =>$rqst->address,
-                'phone' =>$rqst->phone,
-                'email' => $rqst->email
+        //         // 'name'          => $name,
+        //         // 'surname'          => $surname,
+                // 'name' => $rqst->name,
+                // 'surname' => $rqst->surname,
+                // 'address' =>$rqst->address,
+                // 'phone' =>$rqst->phone,
+               
                
 
-            ]);
-            return redirect() -> action('HomeController@userDetails',auth()->user()->id);
+        //     ]);
+            return redirect() -> action('HomeController@userDetails',$id)->with("status", "Info has been changed successfully!");
     }
 
     public function changePassword() {
