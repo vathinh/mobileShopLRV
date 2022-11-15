@@ -50,9 +50,27 @@
             </div>
         </div>
     </div>
-    
+    <div class="col-sm-6 col-lg-3">
+        <div class="overview-item overview-item--c3">
+            <div class="overview__inner">
+                <div class="overview-box clearfix">
+                    <div class="icon">
+                        <i class="zmdi zmdi-calendar-note"></i>
+                    </div>
+                    <div class="text">
+                        <h2>Feedback Management</h2>
+                        <h3><a  type="button" class="btn btn-info" disabled href="{{ url("/user/product/feedback") }}"> More Info</a></h3>
+                    </div>
+                </div>
+                <div class="overview-chart">
+                    <canvas id="widgetChart3"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
     
 </div>
+
 <div class="row">
     <!-- <div class="col-lg-6">
         <div class="au-card recent-report">

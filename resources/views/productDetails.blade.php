@@ -18,44 +18,6 @@
                             <div class="card mb-3">
                                 <img src=" {{ asset('/image/'.$product-> P_imgPath) }} " alt="" style="width:550px;height: 550px;">
                             </div>
-                            <div class="row">
-                                <!--Start Controls-->
-                                <div class="col-1 align-self-center">
-
-                                </div>
-                                <!--End Controls-->
-                                <!--Start Carousel Wrapper-->
-                                <div id="multi-item-example" class="col-10 carousel slide carousel-multi-item" data-bs-ride="carousel">
-                                    <!--Start Slides-->
-                                    <div class="carousel-inner product-links-wap" role="listbox">
-
-                                        <!--First slide-->
-                                        <div class="carousel-item active">
-                                            <div class="row">
-      
-                                            </div>
-                                        </div>
-                                        <!--/.First slide-->
-
-                                        <!--/.Second slide-->
-
-                                        <!--Third slide-->
-                                        <div class="carousel-item">
-                                            <div class="row">
- 
-                                            </div>
-                                        </div>
-                                        <!--/.Third slide-->
-                                    </div>
-                                    <!--End Slides-->
-                                </div>
-                                <!--End Carousel Wrapper-->
-                                <!--Start Controls-->
-                                <div class="col-1 align-self-center">
-  
-                                </div>
-                                <!--End Controls-->
-                            </div>
                         </div>
                         <!-- col end -->
                         <div class="col-lg-7 mt-5">
@@ -112,31 +74,6 @@
                 <!-- /.card-body -->
             </div>
 
-            <div class="card-header">
-                        <h2>Feedback Review</h2>
-                    </div>
-            <div class="card" class="table-responsive" >
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Subject</th>
-                                        <th>Comment</th>
-                                        <th>FeedBack Date</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($feedback as $item)
-                                    <tr>
-                                        <td>{{ $item->guestName }}</td>
-                                        <td>{{ $item->subject }}</td>
-                                        <td>{{ $item->comment }}</td>
-                                        <td>{{ $item->created_at }}</td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                </div> 
             <!-- /.card -->
             @if(Route::has('login'))
             @auth
@@ -148,7 +85,7 @@
                     <div class="card-body p-4">
                         <div class="d-flex flex-start w-100">
                         <div class="w-100">
-                            <h5>Add a comment</h5>
+                            <h5>Add a feedback</h5>
                             <div class="card-body">
                             <form action="{{ url('/product/feedback/') }}" method="post">
                                 @csrf
