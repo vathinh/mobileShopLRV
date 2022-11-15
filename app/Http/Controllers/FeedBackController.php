@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Feedback;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class FeedBackController extends Controller
 {
@@ -18,6 +21,7 @@ class FeedBackController extends Controller
         $feedback = Feedback::all();
         return view('feedback.index')->with('feedback',$feedback);
     }
+
 
     /**
      * Show the form for creating a new resource.
