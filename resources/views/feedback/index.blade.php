@@ -9,11 +9,11 @@
                     </div>
                     @if(Auth::check() && Auth::user()->role == "admin")
                     <div class="card-body">
-                        <a href="{{ url('/admin/product/feedback/create') }}" class="btn btn-success btn-sm" title="Add New Student">
+                        <!-- <a href="{{ url('/admin/product/feedback/create') }}" class="btn btn-success btn-sm" title="Add New Student">
                             Add New
                         </a>
                         <br/>
-                        <br/>
+                        <br/> -->
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
@@ -39,7 +39,7 @@
   
                                         <td>
                                             <a href="{{ url('/admin/product/feedback/' . $item->FB_id) }}" title="View Feedback"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/admin/product/feedback/' . $item->FB_id . '/edit') }}" title="Edit Feedback"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                            <!-- <a href="{{ url('/admin/product/feedback/' . $item->FB_id . '/edit') }}" title="Edit Feedback"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a> -->
   
                                             <form method="POST" action="{{ url('/admin/product/feedback' . '/' . $item->FB_id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('DELETE') }}
