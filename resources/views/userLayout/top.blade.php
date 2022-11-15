@@ -47,7 +47,7 @@
                                         @foreach(session('cart') as $id => $details)
                                             <div class="account-dropdown__item">
                                                 <div class="image">
-                                                    <img src="{{ asset('/image/'.$product-> P_imgPath) }}" />
+                                                    <img src="{{ asset('/image/'.$details['image']) }}" />
                                                 </div>
                                                     <p>{{ $details['name'] }}</p>
                                                     <span class="price text-info"> ${{ $details['price'] }}</span> <span class="count"> Quantity:{{ $details['quantity'] }}</span>
