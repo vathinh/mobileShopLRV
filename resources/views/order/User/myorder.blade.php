@@ -27,7 +27,7 @@
                 <table class="table table-hover text-nowrap">
                   <thead>
                         
-                            <th style="text-align: center;">Order ID</th>
+                            <th style="text-align: center;">Order Details ID</th>
                             
                             <th style="text-align: center;">Product Image</th>
                             <th style="text-align: center;">Product Name</th>
