@@ -37,7 +37,7 @@
         <tr>
             <td>Color</td>
             <td>
-                <input type="radio" id="red" name="Color" value="Red">
+                <input type="radio" id="red" name="Color" value="Red" checked>
                 <label for="red">Red</label>
                 <input type="radio" id="blue" name="Color" value="Blue">
                 <label for="blue">Blue</label>
@@ -47,11 +47,11 @@
         </tr>
         <tr>
             <td>Quantity</td>
-            <td><input type="text" placeholder="1,2,3 ..." name="txtQty"></td>
+            <td><input type="text" placeholder="1,2,3 ..." name="txtQty" value="{{ $rs ->P_quantity }}"></td>
         </tr>
         <tr>
             <td>Image</td>
-            <td><input type="file" name="image"></td>
+            <td><input type="file" name="image" value="{{ $rs ->P_imgPath }}"></td>
         </tr>
     </table>
     <input type="submit" value="Update">
