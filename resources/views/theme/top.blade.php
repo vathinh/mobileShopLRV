@@ -142,6 +142,16 @@
                                                 </div>
                                             </div> -->
 
+                                            <div class="account-dropdown__body">
+                                                <div class="account-dropdown__item">
+                                                
+                                                <div class="account-dropdown__item">
+                                                    <a href="{{ url("admin/home") }}">
+                                                        <i class="zmdi zmdi-settings"></i>Admin Dashboard</a>
+                                                </div>
+                                            
+                                            </div>
+
                                             <div class="account-dropdown__footer">
                                             <a class="dropdown-item" href="{{ route('logout') }}"
                                                 onclick="event.preventDefault();

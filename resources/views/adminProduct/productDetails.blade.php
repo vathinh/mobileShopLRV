@@ -1,46 +1,100 @@
 @extends('theme.app')
 
 @section('content')
-    <section class="content">
-    <button><a href="{{ url("admin/home") }}">Back to dashboard</a></button>
-    <h1>List of User</h1>
-    <h3><a href="{{ url('/admin/product/createproduct') }}">Create New Product</a></h3>
-    <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Responsive Hover Table</h3>
-
-                <div class="card-tools">
-                  <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                    <div class="input-group-append">
-                      <button type="submit" class="btn btn-default">
-                        <i class="fas fa-search"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body table-responsive p-0" $product as $product>
-                
-                            <h5>Name: <a href="<a href="{{ url("/admin/product/a_productDetails/{$product -> P_id}") }}">{{ $product -> P_name }}</a></h5> <br>
-                            <h5>ID: {{ $product -> P_id }} </h5> <br>
-                            <h5>Price: {{ $product -> P_price }}</h5> <br>
-                            <h5>Color: {{ $product -> P_color }}</h5> <br>
-                            <h5>Quantity: {{ $product -> P_quantity }}</h5> <br>
-                            <h5>Action: <a href="{{ url("/admin/product/updateProduct/{$product -> P_id}") }}">Update</a></h5> <br>
-                            <p>Image: <img src=" {{ asset('/image/'.$product-> P_imgPath) }} " alt="" style="width:260px;height: 260px;"></p>
-                </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
+@if(session('success'))
+<div class="alert alert-success">
+  {{ session('success') }}
+</div>
+@endif
+@yield('content')
+<section class="content">
+  <button><a href="{{ url("admin/home") }}">Back to dashboard</a></button> <br>
+  <button><a href="{{ url('/admin/product/readCategory') }}">Go to Category</a></button> <br>
+  <button><a href="{{ url('/admin/product/createproduct') }}">Create New Product</a></button>
+  <!-- Open Content -->
+  <!-- /.card-header -->
+  <section class="bg-light">
+    <div class="container pb-5">
+      <div>
+        <br>
+        <h3 style="text-align: center;">Product Infomation</h3>
+      </div>
+      <div class="row">
+        <div class="col-lg-5 mt-5">
+          <div class="card mb-3">
+            <img src=" {{ asset('/image/'.$product-> P_imgPath) }} " alt="" style="width:400px;height: 400px;">
           </div>
         </div>
-        <!-- /.row -->
-       
-    </section>
+        <!-- col end -->
+        <div class="col-lg-7 mt-5">
+          <div class="card">
+            <div class="card-body">
+              <ul class="list-inline">
+                <li class="list-inline-item">
+                  <h6>Product Name:</h6>
+                </li>
+                <li class="list-inline-item">
+                  <p class="text-muted"><strong>{{ $product -> P_name }}</strong></p>
+                </li>
+              </ul>
+              <ul class="list-inline">
+                <li class="list-inline-item">
+                  <h6>Price: </h6>
+                </li>
+                <li class="list-inline-item">
+                  <p class="text-muted"><strong>{{ $product -> P_price }}</strong></p>
+                </li>
+              </ul>
 
-    @endsection
+              <ul class="list-inline">
+                <li class="list-inline-item">
+                  <h6>Brand:</h6>
+                </li>
+                <li class="list-inline-item">
+                  <p class="text-muted"><strong>{{ $product -> C_name }}</strong></p>
+                </li>
+              </ul>
+
+              <ul class="list-inline">
+                <li class="list-inline-item">
+                  <h6>Color :</h6>
+                </li>
+                <li class="list-inline-item">
+                  <p class="text-muted"><strong>{{ $product -> P_color }}</strong></p>
+                </li>
+              </ul>
+
+              <ul class="list-inline">
+                <li class="list-inline-item">
+                  <h6>Storage :</h6>
+                </li>
+                <li class="list-inline-item">
+                  <p class="text-muted"><strong>{{ $product -> P_storage }}</strong></p>
+                </li>
+              </ul>
+              <ul class="list-inline">
+                <li class="list-inline-item">
+                  <h6>Action :</h6>
+                </li>
+                <li class="list-inline-item">
+                  <a href="{{ url("/admin/product/updateProduct/{$product -> P_id}") }}">
+                    <button type="button" class="btn btn-success">Update</button>
+                  </a>
+                </li>
+              </ul>
+              <ul class="list-inline">
+                <li class="list-inline-item">
+                  <h6>Description :</h6>
+                </li>
+                <li class="list-inline-item">
+                  <p class="text-muted">{{ $product -> C_desc }}</p>
+                </li>
+              </ul>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  @endsection

@@ -13,6 +13,11 @@
         {{ session('error') }}
     </div>
     @endif
+    @if(session('delesucc'))
+    <div class="alert alert-success" role="alert">
+        {{ session('delesucc') }}
+    </div>
+    @endif
   <!-- <div class="table-data__tool"> -->
       <!-- <div class="table-data__tool-left">
           <div class="rs-select2--light rs-select2--md">
@@ -99,8 +104,8 @@
                           </button>
                          
 
-                          <button  onclick="return confirm('Are you sure to delete this user?')" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                            <a href="{{ url("admin/user/deleteUser/{$data -> id}") }}" > 
+                          <button  class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                            <a onclick="return confirm('Are you sure to delete this user?')"  href="{{ url("admin/user/deleteUser/{$data -> id}") }}" > 
                               <i class="zmdi zmdi-delete"></i>
                             </a> 
                           </button>

@@ -8,6 +8,12 @@
 @endif
 
 @yield('content')
+<button><a href="{{ url("admin/home") }}">Back to dashboard</a></button> <br>
+    <button><a href="{{ url('/admin/product/readCategory') }}">Go to Category</a></button> <br>
+    <button><a href="{{ url('/admin/product/createproduct') }}">Create New Product</a></button>
+    <div>
+        <h2 style="text-align: center;">Update Product</h2>
+    </div>
 <form method="POST" enctype="multipart/form-data" action="{{ url("/admin/product/updateProductProcess/{$rs -> P_id}") }}">
     @csrf
     <table class="table table-hover text-nowrap" border="1">
