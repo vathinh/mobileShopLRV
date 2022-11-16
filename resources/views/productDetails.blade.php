@@ -92,14 +92,14 @@
                                 <label>Product Id</label></br>
                                 <input type="text" name="P_id" id="P_id" value="{{ $product -> P_id }}" readonly class="form-control"></br>
                                 <label>Name</label></br>
-                                <input type="text" name="guestName" id="name" class="form-control" value="{{ Auth::user()->name }}" readonly required></br>
+                                <input type="text" name="guestName" id="name" class="form-control" value="{{ Auth::user()->name }}" readonly pattern="^[^\s]+(\s+[^\s]+)*$" required></br>
                                 <label>Email</label></br>
-                                <input type="text" name="guestEmail" id="email" class="form-control" value="{{ Auth::user()->email }}" readonly required></br>
+                                <input type="text" name="guestEmail" id="email" class="form-control" value="{{ Auth::user()->email }}" pattern="^\S+$" readonly required></br>
                                 <label>Subject</label></br>
-                                <input type="text" name="subject" id="subject" class="form-control" required></br>
+                                <input type="text" name="subject" id="subject" class="form-control" pattern="^[^\s]+(\s+[^\s]+)*$" required></br>
                                 <div class="form-outline">
-                                <label class="form-label" for="textAreaExample">What is your view?</label>
-                                <textarea class="form-control" name="comment" id="comment" required rows="4"></textarea>
+                                <label class="form-label" for="textAreaExample">What is your review?</label>
+                                <input type="text" class="form-control" name="comment" id="comment" pattern="^[^\s]+(\s+[^\s]+)*$" required rows="4"></input>
                                 </div>
                                 <div class="d-flex justify-content-between mt-3">
                                 <input type="submit" value="Send" class="btn btn-success">
@@ -131,15 +131,15 @@
                                 <label>Product Id</label></br>
                                 <input type="text" name="P_id" id="P_id" value="{{ $product -> P_id }}" readonly class="form-control"></br>
                                 <label>Name</label></br>
-                                <input type="text" name="guestName" id="name" class="form-control" required></br>
+                                <input type="text" name="guestName" id="name" class="form-control" pattern="^[^\s]+(\s+[^\s]+)*$" required></br>
                                 <label>Email</label></br>
-                                <input type="text" name="guestEmail" id="email" class="form-control" required></br>
+                                <input type="text" name="guestEmail" id="email" class="form-control" pattern="^\S+$" required></br>
                                 <label>Subject</label></br>
-                                <input type="text" name="subject" id="subject" class="form-control" required></br>
+                                <input type="text" name="subject" id="subject" class="form-control" pattern="^[^\s]+(\s+[^\s]+)*$" required></br>
 
                                 <div class="form-outline">
-                                <label class="form-label" for="textAreaExample">What is your view?</label>
-                                <textarea class="form-control" name="comment" id="comment" required rows="4"></textarea>
+                                <label class="form-label" for="textAreaExample">What is your review?</label>
+                                <input type="text" class="form-control" name="comment" id="comment" pattern="^[^\s]+(\s+[^\s]+)*$" required rows="4"></input>
                                 </div>
                                 <div class="d-flex justify-content-between mt-3">
                                 <input type="submit" value="Send" class="btn btn-success">
