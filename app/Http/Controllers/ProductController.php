@@ -69,7 +69,7 @@ class ProductController extends Controller
     public function updateProductProcess(Request $rqst, $id)
     {   
         $rqst->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:20048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg,webp|max:20048',
         ]);
         $name       = $rqst->input('txtName');
         $imageName = $name . '.' . $rqst->image->extension();
