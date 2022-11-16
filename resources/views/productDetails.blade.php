@@ -99,7 +99,7 @@
                                 <input type="text" name="subject" id="subject" class="form-control" pattern="^[^\s]+(\s+[^\s]+)*$" required></br>
                                 <div class="form-outline">
                                 <label class="form-label" for="textAreaExample">What is your review?</label>
-                                <input type="textarea" class="form-control" name="comment" id="comment" pattern="^[^\s]+(\s+[^\s]+)*$" required rows="4"></input>
+                                <input type="text" class="form-control" name="comment" id="comment" pattern="^[^\s]+(\s+[^\s]+)*$" required rows="4"></input>
                                 </div>
                                 <div class="d-flex justify-content-between mt-3">
                                 <input type="submit" value="Send" class="btn btn-success">
@@ -139,7 +139,7 @@
 
                                 <div class="form-outline">
                                 <label class="form-label" for="textAreaExample">What is your review?</label>
-                                <input type="textarea" class="form-control" name="comment" id="comment" pattern="^[^\s]+(\s+[^\s]+)*$" required rows="4"></input>
+                                <input type="text" class="form-control" name="comment" id="comment" pattern="^[^\s]+(\s+[^\s]+)*$" required rows="4"></input>
                                 </div>
                                 <div class="d-flex justify-content-between mt-3">
                                 <input type="submit" value="Send" class="btn btn-success">
