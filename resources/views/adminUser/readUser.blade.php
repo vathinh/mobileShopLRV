@@ -2,7 +2,7 @@
 
 @section('content')
   <!-- DATA TABLE -->
-  <h3 class="title-5 m-b-35">User Lists</h3>
+  <h1 class="title-5 m-b-35">User Lists</h1>
   @if (session('success'))
     <div class="alert alert-success" role="alert">
         {{ session('success') }}
