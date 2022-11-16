@@ -1,6 +1,11 @@
 @extends('theme.app')
 
 @section('content')
+@if (session('success'))
+    <div class="alert alert-success" role="alert">
+      {{ session('success')}}
+    </div>
+@endif
     <section class="content">
     <button><a href="{{ url("admin/home") }}">Back to dashboard</a></button> <br>
     <button><a href="{{ url('/admin/product/readCategory') }}">Go to Category</a></button> <br>

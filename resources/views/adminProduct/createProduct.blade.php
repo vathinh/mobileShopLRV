@@ -25,7 +25,7 @@
             <tr>
                 <td>Storage</td>
                 <td>
-                    <input type="radio" id="64Gb" name="Storage" value="64">
+                    <input type="radio" id="64Gb" name="Storage" value="64" checked> 
                     <label for="64">64Gb</label>
                     <input type="radio" id="128Gb" name="Storage" value="128">
                     <label for="128">128Gb</label>
@@ -36,7 +36,7 @@
             <tr>
                 <td>Color</td>
                 <td>
-                    <input type="radio" id="red" name="Color" value="Red">
+                    <input type="radio" id="red" name="Color" value="Red" checked>
                     <label for="red">Red</label>
                     <input type="radio" id="blue" name="Color" value="Blue">
                     <label for="blue">Blue</label>
