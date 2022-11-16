@@ -39,7 +39,7 @@
   
                                         <td>
                                             <a href="{{ url('/admin/product/feedback/' . $item->FB_id) }}" title="View Feedback"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <!-- <a href="{{ url('/admin/product/feedback/' . $item->FB_id . '/edit') }}" title="Edit Feedback"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a> -->
+                                            <a href="{{ url('/admin/product/feedback/' . $item->FB_id . '/edit') }}" title="Edit Feedback"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Reply</button></a>
   
                                             <form method="POST" action="{{ url('/admin/product/feedback' . '/' . $item->FB_id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('DELETE') }}
@@ -80,13 +80,13 @@
                                         <td>{{ $item->comment }}</td>
                                         <td>
                                             <a href="{{ url('/admin/product/feedback/' . $item->FB_id) }}" title="View Feedback"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/admin/product/feedback/' . $item->FB_id . '/edit') }}" title="Edit Feedback"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                            <!-- <a href="{{ url('/admin/product/feedback/' . $item->FB_id . '/edit') }}" title="Edit Feedback"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a> -->
   
-                                            <form method="POST" action="{{ url('/admin/product/feedback' . '/' . $item->FB_id) }}" accept-charset="UTF-8" style="display:inline">
+                                            <!-- <form method="POST" action="{{ url('/admin/product/feedback' . '/' . $item->FB_id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}
                                                 <button type="submit" class="btn btn-danger btn-sm" title="Delete Feedback" onclick="return confirm('Confirm delete?')"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-                                            </form>
+                                            </form> -->
                                         </td>
                                     </tr>
                                     @endif
