@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\product;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     /**
@@ -60,14 +60,8 @@ class HomeController extends Controller
     //1. Read Users
     public function readUser() {
         $rs = User::all();
-        $ro = order::join('users','users.id','=','orders.id')
-        ->orderBy('orders.created_at','desc')
-        ->get(['orders.*', 'users.name']);
-        $boo = false;
-        if( $ro == null ) {
-            $boo = true;
-        }
-        return view('adminUser.readUser')->with(['rs' => $rs, 'boo'=> $boo]);
+       
+        return view('adminUser.readUser')->with(['rs' => $rs]);
     }
 
     public function viewMore($id) {
@@ -120,16 +114,16 @@ class HomeController extends Controller
     // 4 Delete 
     
     public function deleteUser($id) {
-        $rs = order::join('users','users.id','=','orders.id')
-        ->orderBy('orders.created_at','desc')
-        ->get(['orders.*', 'users.name']);
+        $rs = order::find($id);
+        // return redirect() -> action('HomeController@readUser')->with('delesucc','Succesfully delete the user');
         if($rs != null) {
             return redirect() -> action('HomeController@readUser') ->with('error','Cannot delete the user');
+        } else {
+            DB::table('users')->where('id', intval($id))->delete();
+            return redirect()->route('readUser')->with('delesucc',"Delete user successfully!");
         }
-
-        User::where('ID', $id) -> delete();
-        return redirect() -> action('HomeController@readUser');
-
+        
+       
     }
 
     //5 Reset Password
