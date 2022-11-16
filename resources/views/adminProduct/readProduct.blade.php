@@ -10,7 +10,7 @@
   <button><a href="{{ url("admin/home") }}">Back to dashboard</a></button> <br>
   <button><a href="{{ url('/admin/product/readCategory') }}">Go to Category</a></button> <br>
   <button><a href="{{ url('/admin/product/createproduct') }}">Create New Product</a></button>
-  <div >
+  <div>
     <h3 style="text-align: center">List of Products</h3>
   </div>
 
@@ -25,9 +25,6 @@
             <th style="text-align: center;">ID</th>
             <th style="text-align: center;">Name</th>
             <th style="text-align: center;">Price</th>
-            <th style="text-align: center;">Storage</th>
-            <th style="text-align: center;">Color</th>
-            <th style="text-align: center;">Quantity</th>
             <th style="text-align: center;">Type</th>
             <th style="text-align: center;">Action</th>
           </tr>
@@ -39,12 +36,12 @@
             <td style="text-align: center;"> {{ $product -> P_id }}</td>
             <td style="text-align: center;"><a href="{{ url("/admin/product/a_productDetails/{$product -> P_id}") }}">{{ $product -> P_name }}</a></td>
             <td style="text-align: center;"> {{ $product -> P_price }}</td>
-            <td style="text-align: center;"> {{ $product -> P_storage }}</td>
-            <td style="text-align: center;"> {{ $product -> P_color }}</td>
-            <td style="text-align: center;"> {{ $product -> P_quantity }}</td>
             <td style="text-align: center;"> {{ $product -> C_name }}</td>
-            <td style="text-align: center;">
-              <a href="{{ url("/admin/product/updateProduct/{$product -> P_id}") }}">Update</a>
+            <td class="card-body" style="text-align:center">
+             
+                <a href="{{ url("/admin/product/updateProduct/{$product -> P_id}") }}">
+                  <button type="button" class="btn btn-success">Update</button>
+                </a>
 
             </td>
           </tr>
