@@ -49,7 +49,7 @@
 
 
                         <div class="row mb-3">
-                            <label for="phone" class="col-md-4 col-form-label text-md-end">{{ __('Phone') }}</label>
+                            <label for="phone" class="col-md-4 col-form-label text-md-end">{{ __('Phone (+84)') }}</label>
 
                             <div class="col-md-6">
                                 <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>

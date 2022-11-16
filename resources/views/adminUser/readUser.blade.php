@@ -57,7 +57,7 @@
                   <!-- <th>Surname</th> -->
                   <th>Email</th>
                   <!-- <th>Address</th> -->
-                  <th>Phone</th>
+                  <th>Phone (+84)</th>
                   <th>Role</th>
                   <th></th>
               </tr>
@@ -92,15 +92,15 @@
                             </a>
                             </button>
                          
-                          <button  class="item" data-toggle="tooltip" data-placement="top" title="Reset Password">
-                            <a  onclick="return confirm('Are you sure to reset this password?')"  href="{{ url("admin/user/resetPwd/{$data -> id}") }}" > 
+                          <button  onclick="return confirm('Are you sure to reset this password?')" class="item" data-toggle="tooltip" data-placement="top" title="Reset Password">
+                            <a   href="{{ url("admin/user/resetPwd/{$data -> id}") }}" > 
                                 <i class="fa fa-repeat"></i> 
                             </a>                          
                           </button>
                          
 
-                          <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                            <a onclick="return confirm('Are you sure to delete this user?')" href="{{ url("admin/user/deleteUser/{$data -> id}") }}" > 
+                          <button  onclick="return confirm('Are you sure to delete this user?')" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                            <a href="{{ url("admin/user/deleteUser/{$data -> id}") }}" > 
                               <i class="zmdi zmdi-delete"></i>
                             </a> 
                           </button>
