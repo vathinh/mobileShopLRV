@@ -20,6 +20,8 @@
         <input type="text" name="subject" id="subject" value="{{$feedback->subject}}" readonly class="form-control"></br>
         <label>Comment</label></br>
         <input type="text" name="comment" id="comment" value="{{$feedback->comment}}" readonly class="form-control"></br>
+        <label>Admin Reply</label></br>
+        <input type="text" name="adminReply" id="adminReply" value="{{$feedback->adminReply}}" class="form-control"></br>
 
         <input type="submit" value="Update" class="btn btn-success"></br>
     </form>
