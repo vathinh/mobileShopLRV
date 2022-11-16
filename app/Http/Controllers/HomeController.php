@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\order;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -59,7 +60,19 @@ class HomeController extends Controller
     //1. Read Users
     public function readUser() {
         $rs = User::all();
-        return view('adminUser.readUser')->with(['rs' => $rs]);
+        $ro = order::join('users','users.id','=','orders.id')
+        ->orderBy('orders.created_at','desc')
+        ->get(['orders.*', 'users.name']);
+        $boo = false;
+        if( $ro == null ) {
+            $boo = true;
+        }
+        return view('adminUser.readUser')->with(['rs' => $rs, 'boo'=> $boo]);
+    }
+
+    public function viewMore($id) {
+        $us = User::where('id', $id) ->first();
+        return view ('adminUser.userDetails') -> with (['us' => $us, ]);
     }
 
     //2 Create Users
@@ -107,6 +120,13 @@ class HomeController extends Controller
     // 4 Delete 
     
     public function deleteUser($id) {
+        $rs = order::join('users','users.id','=','orders.id')
+        ->orderBy('orders.created_at','desc')
+        ->get(['orders.*', 'users.name']);
+        if($rs != null) {
+            return redirect() -> action('HomeController@readUser') ->with('error','Cannot delete the user');
+        }
+
         User::where('ID', $id) -> delete();
         return redirect() -> action('HomeController@readUser');
 

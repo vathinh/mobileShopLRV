@@ -40,7 +40,7 @@
                         <i class="zmdi zmdi-shopping-cart"></i>
                     </div>
                     <div class="text">
-                        <h2>View Orders </h2>
+                        <h2>View Orders Information and Status </h2>
                         <h3><a  type="button" class="btn btn-info" disabled href="{{ url("/user/vieworder/{$data}") }}"> More Info</a></h3>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
                         <i class="zmdi zmdi-calendar-note"></i>
                     </div>
                     <div class="text">
-                        <h2>Feedback Management</h2>
+                        <h2>Feedback Management Information</h2>
                         <h3><a  type="button" class="btn btn-info" disabled href="{{ url("/user/product/feedback") }}"> More Info</a></h3>
                     </div>
                 </div>

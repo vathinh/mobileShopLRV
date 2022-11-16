@@ -6,7 +6,7 @@
 
 <div class="card">
     <div class="card-header">
-        <strong>Basic Form</strong> Elements
+        <strong>Change Information</strong> 
     </div>
     <div class="card-body card-block">
         <!-- <form method="post" action="{{ url("/user/userDetailsUpdate/{$rs -> id}") }}" enctype="multipart/form-data" class="form-horizontal">
@@ -137,12 +137,22 @@
 
 
             <div class="card-footer">
-        <button type="submit" class="btn btn-primary btn-sm">
+
+        <button type="button" class="btn btn-outline-primary">
+            <a href="{{ url("/user/userDB") }}">
+                <i class="fa fa-arrow-left"></i>&nbsp; Back To Dashboard 
+            </a>
+        </button>
+
+        <button onclick="return confirm('Are you to update your information?')" type="submit" class="btn btn-primary btn-sm">
             <i class="fa fa-dot-circle-o"></i> Update Informations
         </button>
+
+        
        
         <button class="btn btn-success btn-sm">
-            <a href="{{ url("/user/change-password") }}">Change Password</a>
+            <a style="color: white;" href="{{ url("/user/change-password") }}">
+             <i class="fa fa-repeat"></i> Change Password</a>
         </button>
         </form>
     </div>

@@ -3,13 +3,18 @@
 @section('content')
   <!-- DATA TABLE -->
   <h3 class="title-5 m-b-35">User Lists</h3>
-  <div class="table-data__tool">
   @if (session('success'))
     <div class="alert alert-success" role="alert">
         {{ session('success') }}
     </div>
     @endif
-      <div class="table-data__tool-left">
+    @if(session('error'))
+    <div class="alert alert-danger" role="alert">
+        {{ session('error') }}
+    </div>
+    @endif
+  <!-- <div class="table-data__tool"> -->
+      <!-- <div class="table-data__tool-left">
           <div class="rs-select2--light rs-select2--md">
               <select class="js-select2" name="property">
                   <option selected="selected">All Properties</option>
@@ -41,52 +46,67 @@
               <div class="dropDownSelect2"></div>
           </div>
       </div>
-  </div>
+  </div> -->
   <div class="table-responsive table-responsive-data2">
-      <table class="table table-data2">
+      <table id="userTable" class="table table-data2">
           <thead>
               <tr>
                  
-                  <th>ID</th>
+                  <!-- <th>ID</th> -->
                   <th>Name</th>
-                  <th>Surname</th>
+                  <!-- <th>Surname</th> -->
                   <th>Email</th>
-                  <th>Address</th>
+                  <!-- <th>Address</th> -->
                   <th>Phone</th>
                   <th>Role</th>
-                  <th>Action</th>
                   <th></th>
               </tr>
           </thead>
           <tbody>
           @foreach($rs as $data)
               <tr class="tr-shadow">
-                  <td>{{ $data -> id }}</td>
+                  <!-- <td>{{ $data -> id }}</td> -->
                   <td>{{ $data -> name }}</td> 
-                  <td>{{ $data -> surname }}</td> 
+                  <!-- <td>{{ $data -> surname }}</td>  -->
                   <td>
                       <span class="block-email">{{ $data -> email }}</span>
                   </td>
-                  <td>{{ $data -> address }}</td> 
+                  <!-- <td>{{ $data -> address }}</td>  -->
                   <td>{{ $data -> phone }}</td> 
-                  <td class="desc">{{ $data -> role }}</td> 
+                  <td class="desc">
+                    
+                    <span 
+                        class="{{  $data -> role == 'admin' ? 'role admin' : ($data -> role == 'user' ? 'role user' : ($data -> role == 'editor' ? 'role member' : '')) }}" 
+                    >
+                        {{ $data -> role }}
+                    </span>
+                </td> 
                  
                   <!-- icon -->
                   <td>
+                    @if($data -> role != 'admin')
                       <div class="table-data-feature">
-                         
-                          <button class="item" data-toggle="tooltip" data-placement="top" title="Reset Password">
-                            <a href="{{ url("admin/user/resetPwd/{$data -> id}") }}">
-                              <i class="zmdi zmdi-edit"></i>
+                      <button class="item" data-toggle="tooltip" data-placement="top" title="More">
+                            <a  href="{{ url("admin/user/viewMore/{$data -> id}") }}" > 
+                                <i class="zmdi zmdi-more"></i>
                             </a>
-                             
+                            </button>
+                         
+                          <button  class="item" data-toggle="tooltip" data-placement="top" title="Reset Password">
+                            <a  onclick="return confirm('Are you sure to reset this password?')"  href="{{ url("admin/user/resetPwd/{$data -> id}") }}" > 
+                                <i class="fa fa-repeat"></i> 
+                            </a>                          
                           </button>
+                         
+
                           <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                            <a href="{{ url("admin/user/deleteUser/{$data -> id}") }}">
+                            <a onclick="return confirm('Are you sure to delete this user?')" href="{{ url("admin/user/deleteUser/{$data -> id}") }}" > 
                               <i class="zmdi zmdi-delete"></i>
                             </a> 
-                              
                           </button>
+                         
+                        @endif
+                         
                          
                       </div>
                   </td>
@@ -96,9 +116,18 @@
               @endforeach
           </tbody>
       </table>
+
+      
   </div>
   <!-- END DATA TABLE -->
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+            $('#userTable').DataTable();
+        });
+</script>
 
     
     @endsection

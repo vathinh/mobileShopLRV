@@ -73,7 +73,7 @@ Route::middleware(['auth','user-role:admin'])->group(function()
     // USER MANAGEMENT
     // Read user
     Route::get("/admin/user/readUser",[HomeController::class, 'readUser']) ->name("readUser");
-
+    Route::get("/admin/user/viewMore/{id}",[HomeController::class, 'viewMore']) ->name("viewMore");
     // Create user
     Route::get("/admin/user/createUser",[HomeController::class, 'createUser']) ->name("createUser");
     Route::post("/admin/user/createUserProc",[HomeController::class, 'createUserProc']) ->name("createUserProc");

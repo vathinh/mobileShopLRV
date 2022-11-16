@@ -54,8 +54,7 @@
                         @yield('content')
                         <!-- End content -->
 
-                        @include('theme.footer')
-                        <!-- Footer -->
+                        
                     </div>
                 </div>
             </div>
@@ -65,7 +64,8 @@
         </div>
 
     </div>
-
+    @include('theme.footer')
+                        <!-- Footer -->
     <!-- Jquery JS-->
     <script src="{{ asset('theme/vendor/jquery-3.2.1.min.js') }}"></script>
     <!-- Bootstrap JS-->
