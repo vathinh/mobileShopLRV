@@ -10,7 +10,7 @@
     </div>
     <div class="card-body card-block">
         <form method="post" action="{{ url("/user/userDetailsUpdate/{$rs -> id}") }}" enctype="multipart/form-data" class="form-horizontal">
-        @csrf
+            @csrf
             <div class="row form-group">
                 <div class="col col-md-3">
                     <label class=" form-control-label">Name</label>
@@ -54,10 +54,7 @@
                 </div>
             </div>
 
-            
-        </form>
-    </div>
-    <div class="card-footer">
+            <div class="card-footer">
         <button type="submit" class="btn btn-primary btn-sm">
             <i class="fa fa-dot-circle-o"></i> Update Informations
         </button>
@@ -67,6 +64,9 @@
         </button>
 
     </div>
+        </form>
+    </div>
+  
 </div>
 
 

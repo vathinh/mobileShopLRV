@@ -1,14 +1,15 @@
 @extends('authLayouts.app')
 
 @section('content')
-@error('email')
-    <span class="invalid-feedback" role="alert">
-        <strong>{{ $message }}</strong>
-    </span>
-@enderror
+
 
 <form method="POST" action="{{ route('login') }}">
     @csrf
+    @if (session('error'))
+    <div class="alert alert-danger" role="alert">
+        {{ session('error') }}
+    </div>
+    @endif
 
     <div class="row mb-3">
         <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
@@ -18,7 +19,7 @@
 
             @error('email')
                 <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
+                    <strong>{{ $error }}</strong>
                 </span>
             @enderror
         </div>
@@ -32,7 +33,7 @@
 
             @error('password')
                 <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
+                    <strong>{{ $error }}</strong>
                 </span>
             @enderror
         </div>

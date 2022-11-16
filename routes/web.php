@@ -22,6 +22,7 @@ use App\Http\Controllers\OrderController;
 Route::get('/', [ProductController::class, 'index']);  
 
 
+
 Auth::routes();
 // Route User
 Route::middleware(['auth','user-role:user'])->group(function()
@@ -33,7 +34,7 @@ Route::middleware(['auth','user-role:user'])->group(function()
     Route::get("/user/home",[HomeController::class, 'userHome'])->name("newWelcome");
     // View + ChangeInfo
     Route::get("/user/userDetails/{id}",[HomeController::class,'userDetails'])->name("user.userDetails");
-    Route::post("/user/userDetailsUpdate/{id}",[HomeController::class, 'userDeilsUpdate']) ->name("userDeilsUpdate");
+    Route::post("/user/userDetailsUpdate/{id}",[HomeController::class, 'userDetailsUpdate']) ->name("userDetailsUpdate");
 
     // User change Password
     Route::get("user/change-password", [HomeController::class, 'changePassword'])->name('change-password');
@@ -54,7 +55,8 @@ Route::middleware(['auth','user-role:user'])->group(function()
     // View order
     Route::post("/user/createOrderProc/{O_id}",[OrderController::class, 'createOrderProc']) ->name("createOrderProc");
     Route::get("/user/vieworder/{id}",[OrderController::class, 'vieworderuser']) ->name("vieworderuser");
-
+    //feedback
+    Route::resource("/product/feedback", FeedBackController::class);
 
 
 });
@@ -137,6 +139,4 @@ Route::get('/', [ProductController::class, 'index']);
 
 Route::get("/user/productDetails/{id}", [ProductController::class, 'ushowProducts']) ->name("ushowProducts");
 
-
 Route::resource("/product/feedback", FeedBackController::class);
- 

@@ -1,5 +1,5 @@
 <!-- Remove the container if you want to extend the Footer to full width. -->
-<div class="container my-5">
+
 
   <footer class="text-white text-center text-lg-start" style="background-color: #23242a;">
     <!-- Grid container -->
@@ -45,10 +45,10 @@
 
           <ul class="fa-ul" style="margin-left: 1.65em;">
             <li class="mb-3">
-              <span class="fa-li"><i class="fas fa-home"></i></span><span class="ms-2">New York, NY 10012, US</span>
+              <span class="fa-li"><i class="fas fa-home"></i></span><span class="ms-2">590 CMT8, Q.10, TP.HCM</span>
             </li>
             <li class="mb-3">
-              <span class="fa-li"><i class="fas fa-envelope"></i></span><span class="ms-2">info@example.com</span>
+              <span class="fa-li"><i class="fas fa-envelope"></i></span><span class="ms-2">Team2@example.com</span>
             </li>
             <li class="mb-3">
               <span class="fa-li"><i class="fas fa-phone"></i></span><span class="ms-2">+ 01 234 567 88</span>
@@ -95,5 +95,5 @@
     <!-- Copyright -->
   </footer>
   
-</div>
+
 <!-- End of .container -->

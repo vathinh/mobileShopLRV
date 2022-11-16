@@ -42,12 +42,14 @@
                         <tr>
                             <td style="text-align: center;"> {{ $data -> O_id }}</td>
                            
-                            <td style="text-align: center;"><img src="{{ $data -> P_imgPath }}" alt=""> </td>
+                            <td style="text-align: center;"><img src="{{ asset('/image/'.$data-> P_imgPath)  }}" alt="" style="width: 20%"> </td>
                             <td style="text-align: center;"> {{ $data -> P_name }}</td>
                             <td style="text-align: center;"> {{ $data -> created_at }}</td>
                             <td style="text-align: center;"> {{ $data -> QD_quantity }}</td> 
                             <td style="text-align: center;"> {{ $data -> P_price }}</td>
-                            <td style="text-align: center;"> {{  $data -> O_status == 0 ? 'Pending' : ($data -> O_status == 1 ? 'Shipping' : 'Cancel') }}</td>
+                            <td style="text-align: center;"> <button class="{{  $data -> O_status == 0 ? 'btn btn-info' : ($data -> O_status == 1 ? 'btn btn-success' : 'btn btn-danger') }}" 
+                              >{{  $data -> O_status == 0 ? 'Pending' : ($data -> O_status == 1 ? 'Shipping' : 'Cancel') }}</td>
+                            
                         </tr>
                         @endforeach
                     </tbody>

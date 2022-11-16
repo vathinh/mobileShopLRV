@@ -10,9 +10,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  
+    <link href="{{ asset('theme/css/font-face.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('theme/vendor/font-awesome-4.7/css/font-awesome.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('theme/vendor/font-awesome-5/css/fontawesome-all.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('theme/vendor/mdi-font/css/material-design-iconic-font.min.css') }}" rel="stylesheet" media="all">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <title>Document</title>
+    <title>MobileShop Team2</title>
 </head>
 <body>
 
@@ -43,7 +46,7 @@
                   <tr data-id="{{ $id }}">
                     <td data-th="Product" class="p-4" >
                       <div class="media align-items-center">
-                        <img src="{{ asset('/image/'.$details['image'] ) }}" class="d-block ui-w-40 ui-bordered mr-4" alt="">
+                        <img src="{{ asset('/image/'.$details['image'] ) }}" class="d-block ui-w-40 ui-bordered mr-4" alt="" width="300" height="300">
                         <div class="media-body">
                           <a href="#" class="d-block text-dark">{{ $details['name'] }}</a>
                           <small>
@@ -139,5 +142,6 @@
     });
   
 </script>
+@include('userLayout.footer')
 </body>
 </html>

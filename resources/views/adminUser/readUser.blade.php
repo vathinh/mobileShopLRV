@@ -2,8 +2,13 @@
 
 @section('content')
   <!-- DATA TABLE -->
-  <h3 class="title-5 m-b-35">data table</h3>
+  <h3 class="title-5 m-b-35">User Lists</h3>
   <div class="table-data__tool">
+  @if (session('success'))
+    <div class="alert alert-success" role="alert">
+        {{ session('success') }}
+    </div>
+    @endif
       <div class="table-data__tool-left">
           <div class="rs-select2--light rs-select2--md">
               <select class="js-select2" name="property">
