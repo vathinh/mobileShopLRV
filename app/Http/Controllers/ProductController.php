@@ -22,8 +22,9 @@ class ProductController extends Controller
     }
 
     public function admin_productDetails($id)
-    {
-        $product = product::where('P_id', $id)->first();
+    {   $product = product::join('categories', 'categories.C_id', '=', 'products.C_id')
+        ->get(['products.*', 'categories.C_name', 'categories.C_desc'])
+        ->where('P_id', $id)->first();
         return view('adminProduct.productDetails', ['product' => $product]);
     }
 
