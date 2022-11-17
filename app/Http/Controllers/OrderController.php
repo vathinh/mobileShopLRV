@@ -7,7 +7,7 @@ USE App\Models\order;
 use App\Models\orderDetail;
 use Illuminate\Support\Facades\DB;
 use App\Models\product;
-
+use App\Models\User;
 
 class OrderController extends Controller
 {
@@ -18,6 +18,16 @@ class OrderController extends Controller
             ->get(['orders.*', 'users.name']);
 
         return view ('Order.Admin.OrderList') -> with (['rs' => $rs]);
+    }
+    public function showDetails($id) {
+        $rs = User::join('orders','orders.id','=','users.id')
+                -> join('order_details','order_details.O_id','=','orders.O_id')
+                -> join('products','products.P_id','=','order_details.P_id')
+                -> where(['orders.O_id' => $id])
+                ->get(['orders.*','users.name','products.P_imgPath', 'products.P_name','orders.created_at', 'order_details.QD_quantity','products.P_price' ,'order_details.OD_id']);
+
+        $ro = order::where('O_id',$id) ->first();
+                return view('Order.Admin.orderDetails') ->with(['rs' => $rs, 'ro' => $ro]);
     }
 
     public function acceptstatus($O_id)

@@ -25,6 +25,6 @@
                     </tr>
                     
                 </table>
-                <input type="submit" value="Update">
+                <input type="submit" value="Update" onclick="return confirm('Are you sure to update this category?')">
             </form>
 @endsection

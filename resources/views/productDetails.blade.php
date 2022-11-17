@@ -24,7 +24,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h1 class="h2">{{ $product -> P_name }}</h1>
-                                    <p class="h3 py-2">{{ $product -> P_price }}</p>
+                                    <p class="h3 py-2">Price: {{ $product -> P_price }}</p>
 
                                     <ul class="list-inline">
                                         <li class="list-inline-item">

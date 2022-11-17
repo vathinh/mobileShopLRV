@@ -2,13 +2,13 @@
 
 @section('content')
     <section class="content">
-    <button><a href="{{ url("admin/home") }}">Back to dashboard</a></button>
-    <h1>List of Orders</h1>
+    <a class="btn btn-primary" href="{{ url("admin/order/list") }}">Back to Orders List</a>
+  
     <div class="row">
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Responsive Hover Table</h3>
+                <h3 class="card-title">Orders List</h3>
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
@@ -29,12 +29,12 @@
                         
                             <th style="text-align: center;">Order ID</th>
                             <th style="text-align: center;">User Name</th>                                                     
-                            <th style="text-align: center;">Order DelieveryAddress</th>
                             <th style="text-align: center;">Phone </th>
                             <th style="text-align: center;">Order Method</th>
                             <th style="text-align: center;">Order Status</th>
                             <th style="text-align: center;">Order Date</th>
-                            <th style="text-align: center;">Function</th>
+                            <th style="text-align: center;">Action</th>
+
                            
                             
                         </tr>
@@ -44,7 +44,6 @@
                         <tr>
                             <td style="text-align: center;"> {{ $data -> O_id }}</td>
                             <td style="text-align: center;"> {{ $data -> name }}</td>
-                            <td style="text-align: center;"> {{ $data -> O_delieveryAddress }}</td>
                             <td style="text-align: center;"> {{ $data -> O_phone }}</td>
                             <td style="text-align: center;"> {{ $data -> O_method == '1' ? 'card':'cash' }}</td>
                             <td style="text-align: center;"> 
@@ -64,6 +63,9 @@
                               @if($data -> O_status == 2)
                               <a class="btn btn-success" href="{{ url("/admin/order/acceptstatus/{$data -> O_id}") }}">accept status</a>
                               @endif
+                          </td>
+                          <td>
+                          <a class="btn btn-primary" href="{{ url("/admin/order/showDetails/{$data -> O_id}") }}">Show more </a>
                           </td>
                             
                           
