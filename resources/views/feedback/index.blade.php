@@ -1,5 +1,10 @@
 @extends('theme.app')
 @section('content')
+    @if (session('success'))
+    <div class="alert alert-success" role="alert">
+        {{ session('success') }}
+    </div>
+    @endif
     <div class="container">
         <div class="row" style="margin:20px;">
             <div class="col-12">

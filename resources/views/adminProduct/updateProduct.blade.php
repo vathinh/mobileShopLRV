@@ -109,7 +109,7 @@
                 </div>
             </div>
             <div class="card-footer" style="text-align: center;">
-                <button type="submit" class="btn btn-primary btn-sm">
+                <button type="submit" class="btn btn-primary btn-sm" onclick="return confirm('Are you sure to update this product?')">
                     <i class="fa fa-dot-circle-o"></i> Update
                 </button>
             </div>
