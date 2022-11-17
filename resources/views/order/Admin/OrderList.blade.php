@@ -54,10 +54,10 @@
                             <td style="text-align: center;">
                               @if($data -> O_status == 0)
                               <a class="btn btn-success" href="{{ url("/admin/order/acceptstatus/{$data -> O_id}") }}">accept status</a>
-                              <a class="btn btn-danger" href="{{ url("/admin/order/declinestatus/{$data -> O_id}") }}">decline order</a>
+                              <a onclick="return confirm('Are you sure you want to decline this order?')"  class="btn btn-danger" href="{{ url("/admin/order/declinestatus/{$data -> O_id}") }}">decline order</a>
                               @endif
                               @if($data -> O_status == 1)
-                              <a class="btn btn-danger" href="{{ url("/admin/order/declinestatus/{$data -> O_id}") }}">decline order</a>
+                              <a onclick="return confirm('Are you sure you want to decline this order?')"  class="btn btn-danger" href="{{ url("/admin/order/declinestatus/{$data -> O_id}") }}">decline order</a>
                               @endif
 
                               @if($data -> O_status == 2)
