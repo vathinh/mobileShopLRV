@@ -153,9 +153,9 @@ class HomeController extends Controller
         // $phone   = $rqst -> input('phone');
        
         $rqst->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'surname' => ['required', 'string', 'max:255'],
-            'address' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'min:3','max:255'],
+            'surname' => ['required', 'string', 'min:3', 'max:255'],
+            'address' => ['required', 'string', 'min:3', 'max:255'],
             'phone' => ['required', 'integer', 'min:10', 'max:11'],
         ]);
        
