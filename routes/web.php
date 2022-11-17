@@ -118,6 +118,8 @@ Route::middleware(['auth','user-role:admin'])->group(function()
        Route::get('/admin/order/acceptstatus/{O_id}',[OrderController::class,'acceptstatus'])->name('acceptstatus');
        Route::get('/admin/order/declinestatus/{O_id}',[OrderController::class,'declinestatus'])->name('declinestatus');
 
+       Route::get('/admin/order/showDetails/{O_id}',[OrderController::class,'showDetails'])->name('showDetails');
+
     // CATEGORY
     // Read Category
     Route::get("/admin/product/readCategory",[CategoryController::class, 'showCategory']) ->name("showCategory");
