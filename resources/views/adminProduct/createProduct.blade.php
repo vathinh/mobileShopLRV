@@ -35,7 +35,7 @@
                         <label for="email-input" class=" form-control-label">Product Price </label>
                     </div>
                     <div class="col-12 col-md-9">
-                        <input type="text" id="txtPrice" name="txtPrice" class="form-control" required pattern="[0-9]" placeholder="Price of product">
+                        <input type="number" min="0" step="1" id="txtPrice" name="txtPrice" class="form-control" required placeholder="Price of product">
                     </div>
                 </div>
 
@@ -68,7 +68,7 @@
                         <label for="email-input" class=" form-control-label">Quantity </label>
                     </div>
                     <div class="col-12 col-md-9">
-                        <input type="text" id="txtQty" name="txtQty" placeholder="Quantity: 1,2,3 ..." class="form-control" required pattern="[0-9]">
+                        <input type="number" min="0" step="1" id="txtQty" name="txtQty" placeholder="Quantity: 1,2,3 ..." class="form-control" required>
                     </div>
                 </div>
                 <div class="row form-group">

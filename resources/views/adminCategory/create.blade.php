@@ -1,28 +1,43 @@
 @extends('theme.app')
 
 @section('content')
+
+<div>
+    <button><a href="{{ url("admin/home") }}">Back to dashboard</a></button> <br>
+    <button><a href="{{ url('/admin/product/readCategory') }}">Go to Category Management</a></button> <br>
+    <button><a href="{{ url('/admin/product/readproduct') }}">List of Products</a></button>
+</div>
 <div class="card card-primary">
     <div class="card-header">
-    <button><a href="{{ url("admin/home") }}">Back to dashboard</a></button>
-        <h3 class="card-title">Create new Category</h3>
+        <h3 style="text-align: center;">Create New Category</h3>
     </div>
-    <!-- /.card-header -->
-    <!-- form start -->
-    <form action="{{ url("/admin/product/createCategoryProcess") }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        <table class="table table-hover text-nowrap" border="1">
-            <tr>
-                <td>C_name</td>
-                <td><input type="text" name="txtC_name"> <br></td>
-            </tr>
-            <tr>
-                <td>C_desc</td>
-                <td><input type="text" name="txtC_desc"> <br></td>
-            </tr>
-        </table>
-        <input type="submit" value="Add New Category">
-    </form>
+    <div class="card">
+        <div class="card-body card-block">
+            <form method="POST" enctype="multipart/form-data" class="form-horizontal" action="{{ url("/admin/product/createCategoryProcess") }}">
+                @csrf
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label for="text-input" class=" form-control-label">Category Name</label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <input type="text" id="txtC_name" name="txtC_name" placeholder="Iphone, Ipad, Macbook, ..." class="form-control" required>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-3">
+                        <label for="text-input" class=" form-control-label">Category Description</label>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <input type="text" id="txtC_desc" name="txtC_desc" placeholder="Description of category" class="form-control" required>
+                    </div>
+                </div>
+                <div class="card-footer" style="text-align: center;">
+                    <button type="submit" class="btn btn-primary btn-sm">
+                        <i class="fa fa-dot-circle-o"></i> Create
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
-<!-- /.card -->
-
 @endsection

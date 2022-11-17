@@ -39,7 +39,7 @@
                     <label for="email-input" class=" form-control-label">Product Price: </label>
                 </div>
                 <div class="col-12 col-md-9">
-                    <input type="text" id="txtPrice" name="txtPrice" value="{{ $rs ->P_price }}" class="form-control" required>
+                    <input type="number" id="txtPrice" name="txtPrice" value="{{ $rs ->P_price }}" class="form-control" required>
                 </div>
             </div>
 
