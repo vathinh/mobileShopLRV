@@ -1,4 +1,4 @@
-@extends('userLayout.app')
+@extends('theme.app')
 
 @section('content')
 @if(session('success'))
@@ -57,7 +57,6 @@
                         <div class="radio">
                             <label for="radio2" class="form-check-label ">
                                 <input type="radio" id="256Gb" name="Storage" value="128" class="form-check-input" {{ ($rs->P_storage=="128")? "checked" : "" }}>128Gb
-
                             </label>
                         </div>
                         <div class="radio">
