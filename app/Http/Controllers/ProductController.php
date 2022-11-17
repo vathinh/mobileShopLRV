@@ -117,7 +117,9 @@ class ProductController extends Controller
     
 
     public function ushowProducts($id){
-        $product = product::where('P_id', $id) ->first();
+        $product = product::join('categories', 'categories.C_id', '=', 'products.C_id')
+        ->get(['products.*', 'categories.C_name', 'categories.C_desc'])
+        ->where('P_id', $id)->first();
         $feedback = Feedback::all()->where('P_id', $id);
         return view ('productDetails') -> with (['product' => $product]) ->with ('feedback',$feedback);
     }
