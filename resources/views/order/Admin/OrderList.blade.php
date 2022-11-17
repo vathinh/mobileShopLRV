@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="content">
-    <button><a href="{{ url("admin/home") }}">Back to dashboard</a></button>
+    <a class="btn btn-primary" href="{{ url("admin/order/list") }}">Back to Orders List</a>
   
     <div class="row">
           <div class="col-12">
