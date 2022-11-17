@@ -156,7 +156,7 @@ class HomeController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'surname' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
-            'phone' => ['required', 'integer', 'min:10'],
+            'phone' => ['required', 'integer', 'min:10', 'max:11'],
         ]);
        
 
