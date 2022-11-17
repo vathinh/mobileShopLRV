@@ -71,7 +71,7 @@ class FeedBackController extends Controller
     {
         //
         $feedback = Feedback::find($id);
-        return view('feedback.edit')->with('feedback',$feedback);
+        return view('feedback.edit')->with('feedback',$feedback,'success','Replied to customer');
     }
 
     /**
