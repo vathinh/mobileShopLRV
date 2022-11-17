@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laravel Add To Cart Function - LaravelTuts.com</title>
+    <title>MobileShop Add To Cart</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -35,14 +35,20 @@
                     <th class="text-right py-3 px-4" style="width: 100px;">Price</th>
                     <th class="text-center py-3 px-4" style="width: 120px;">Quantity</th>
                     <th class="text-right py-3 px-4" style="width: 100px;">Total</th>
-                    <th class="text-center align-middle py-3 px-0" style="width: 40px;"><a href="#" class="shop-tooltip float-none text-light" title="" data-original-title="Clear cart"><i class="ino ion-md-trash"></i></a></th>
+                    <th class="text-right py-3 px-4" style="width: 100px;">Revmove</th>
                   </tr>
                 </thead>
                 <tbody>
                 @php $total = 0 @endphp
+                @php $tq =0 @endphp
                 @if(session('cart'))
                     @foreach(session('cart') as $id => $details)
-                        @php $total += $details['price'] * $details['quantity'] @endphp       
+                        @php 
+                          $total += $details['price'] * $details['quantity']                      
+                        @endphp     
+                        @php
+                          $tq += $details['quantity']   
+                        @endphp              
                   <tr data-id="{{ $id }}">
                     <td data-th="Product" class="p-4" >
                       <div class="media align-items-center">
@@ -55,12 +61,16 @@
                         </div>
                       </div>
                     </td>
+
                     <td data-th="Price" class="text-right font-weight-semibold align-middle p-4">${{ $details['price'] }}</td>
+
                     <td data-th="Quantity" class="align-middle p-4"><input type="number" value="{{ $details['quantity'] }}" class="form-control quantity update-cart">
-                    </td>
+                    
+                  </td>
                     <td data-th="Subtotal" class="text-right font-weight-semibold align-middle p-4">${{ $details['price'] * $details['quantity'] }}</td>
+
                     <td class="text-center align-middle px-0" class="actions" >
-                        <button class="btn btn-danger btn-sm remove-from-cart"><i class="fa fa-trash-o"></i></button>
+                        <button class="btn btn-danger btn-sm remove-from-cart"><i class="fa-trash-o"></i></button>
                     </td>
                   </tr>
                 @endforeach
@@ -69,7 +79,8 @@
               </table>
             </div>
             <!-- / Shopping cart table -->
-        
+
+            @if($tq <= 10 && $tq > -1)
             <div class="d-flex flex-wrap justify-content-between align-items-center pb-4">
               <div class="mt-4">
                 <label class="text-muted font-weight-normal">Promocode</label>
@@ -93,7 +104,14 @@
                     $id = Auth::user()-> id;
                 @endphp
                 <a href="{{ url("/checkout/{$id}") }}" class="btn btn-lg btn-primary mt-2"><i class="fa fa-angle-right"></i> Checkout</a>
-            </div>
+                @else
+                <div class="alert alert-danger" role="alert">
+											Total Quantity must in range from 1 - 10. <br>
+                      For ordering more products please contact us at 19001821.
+                </div>
+                @endif
+               
+          </div>
         
           </div>
       </div>
