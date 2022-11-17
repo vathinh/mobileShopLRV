@@ -87,7 +87,7 @@
                                         <td>{{ $item->comment }}</td>
                                         <td style="color: blue;">{{ $item->adminReply }}</td>
                                         <td>
-                                            <a href="{{ url('/admin/product/feedback/' . $item->FB_id) }}" title="View Feedback"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                            <a href="{{ url('/user/product/feedback/' . $item->FB_id) }}" title="View Feedback"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <!-- <a href="{{ url('/admin/product/feedback/' . $item->FB_id . '/edit') }}" title="Edit Feedback"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a> -->
   
                                             <!-- <form method="POST" action="{{ url('/admin/product/feedback' . '/' . $item->FB_id) }}" accept-charset="UTF-8" style="display:inline">
